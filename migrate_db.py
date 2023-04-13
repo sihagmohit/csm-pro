@@ -1,0 +1,3 @@
+import twin_database_operations
+
+twin_database_operations.update_customer_details_to_old_db()

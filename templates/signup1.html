@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bracket">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/bracket">
+    <meta property="og:title" content="Bracket">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">  -->  <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+   <title>Twin 4.0</title>
+
+    
+	<link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bracket.css')}}"> 
+	
+	
+
+	
+	<style>
+
+
+:root {
+  --windows-blue: #365ec8;
+  --bluish: #3091c9;
+  --warm-blue: #5460dc;
+  --white: #ffffff;
+  --dusk-blue: #28499f;
+  --bluey-grey: #85a5c2;
+  --light-sky-blue: #d4e3f0;
+  --lipstick: #bb166b;
+  --bluish-grey-20: rgba(115, 137, 156, 0.2);
+  --topaz: #16b8bb;
+  --aquamarine: #00d7af;
+  --metallic-blue: #546593;
+  --bluish-grey: #73899c;
+  --very-light-pink: #d7d7d7;
+  --gray-medium: rgba(205, 205, 210, 0.5);
+  --text: #77777a;
+  ---style: #002251;
+}
+
+.Rectangle {
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--white);
+}
+
+.Rectangle-dark {
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var( --metallic-blue );
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--white);
+}
+	
+.dark_backgorund {
+
+  opacity: 0.89;
+  background-image: linear-gradient(to bottom, #3b76ef 0%, #211b4e 100%);
+  mix-blend-mode: multiply;
+ background-color: #6e6e6e;
+ 
+}
+
+.FORGOT-YOUR-PASSWORD {
+  width: 160px;
+  height: 36px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.87px;
+  text-align: center;
+  color:#365ec8 ;
+  margin: auto;
+  
+}
+
+.Message_Text{
+
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+
+}
+
+
+
+.transparent-input {
+   background-color: rgba(0, 0, 0, 0);
+   border:none;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+
+   }
+   
+   
+.div_bottom_border{
+	background-color: rgba(0, 0, 0, 0);
+	border:none;
+	border-bottom: 2px solid  var(--windows-blue);
+	font-family: Manrope;
+	  font-size: 12px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: 1.5px;
+	  color: var(--windows-blue);
+		
+}   
+      
+input[readonly].transparent-input{
+	background-color:transparent;
+	border:none;
+	font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+	
+	
+}
+.form-control:focus {
+	background-color:transparent;
+ font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+	
+}
+
+.transparent-input-bottom {
+  
+  background-color: rgba(0, 0, 0, 0);
+   border:none;
+   border-bottom: 2px solid  var(--windows-blue);
+	  font-family: Manrope;
+	  font-size: 12px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: 1;
+	  color: var(--windows-blue);
+
+   }
+   
+
+
+
+.Please-confirm-your {
+  width: 197px;
+  height: 34px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+   margin: auto;
+}
+
+
+.Placeholder-Copy-2 {
+  
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.45px;
+  text-align: center;
+  color: var(--windows-blue);
+}
+
+.Still-having-trouble {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+}
+.Still-having-trouble-1 {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--windows-blue);
+  margin:auto;
+}
+
+  .Please-provide-the-r {
+  font-family: Manrope;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+  
+  
+  
+  }
+
+.Placeholder-Copy {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.3px;
+  color: var(--windows-blue);
+}
+.form-control.base {
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  background-color: #fbfbfb;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--windows-blue)
+  
+  }
+
+.form-control.base::-webkit-input-placeholder {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--windows-blue);
+   border:none;
+}
+ 
+.form-control.base1 {
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  background-color: #fbfbfb;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--windows-blue);
+   border:none;
+  
+  }
+
+.form-control.base1::-webkit-input-placeholder {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--windows-blue);
+  border:none;
+}
+
+ .Placeholder-Copy-2 {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.3px;
+  color: var(--windows-blue);
+}
+ 
+	</style>
+	
+
+	</head>
+
+  <body class="bg-dark">
+
+	<div class="d-flex align-items-center justify-content-center ht-100v "  >
+		
+		
+      <div class="login-wrapper wd-400 wd-xs-450  ">
+        
+		<div class="signin-logo tx-center tx-28 tx-bold tx-inverse pd-b-20"><span class="tx-normal"><img src="{{ url_for('static', filename='img/fie.png')}}" width="40%"></span></div> 
+      
+		<div class="Please-provide-the-r pb-20 mg-b-10 "> Please provide the required information to sign up. </div> 
+      
+	  
+		<div class="pd-5  pd-xs-40 bg-white ">
+			
+		
+		 <div class="form-group">
+			<label for="o_id" class="Placeholder-Copy"> Organisation </label>
+			<input type="text" class="form-control base" id="o_id" value="TWIN" readonly>
+		  </div>
+
+
+
+     <div class="form-group">
+      <label for="e_id" class="Placeholder-Copy"> Email ID </label>
+      <input type="text" class="form-control base" id="e_id" placeholder="example@gmail.com">
+      </div>
+
+      <div class="Placeholder-Copy" id="msg">
+      
+    </div>
+		
+			
+		
+	<label for="inputgrp1" class="Placeholder-Copy pt-2" > Phone Number :</label>
+				
+		<div class="input-group p-0 mb-3 form-control base" id="inputgrp1">
+		
+		<div class="input-group-prepend" >
+			<button class="btn form-control base1" type="button">+91</button>
+		  </div>
+		  <input type="number" id="phone" class="form-control base1 " maxlength="10" value={{ phone }} >
+			  <div class="input-group-append">
+			  
+				<button class="btn bg-white" type="button" id="button_ok_indication"> </button>
+				
+			  </div>
+		</div>
+		
+		<div class="Placeholder-Copy-2 pb-2 " id="number_exists">
+			
+		</div>
+		
+			
+			
+			<button onclick ="signup_user()" id="generate_otp_button" class="btn btn-block tx-white Rectangle-dark" disabled>Generate OTP</button>
+			<div  id ="otp_timer" class="Message_Text pb-2"></div>
+			
+		
+		<div class="Placeholder-Copy-2  p-2">
+			Verify your number using the OTP we just shared with you
+		</div>
+		
+		
+		<div class="row mb-3   pt-2">
+		
+		 
+		 <div class="col-2 p-1"><input type="number" maxlength="1" id="otp1" class="form-control transparent-input-bottom"></div>
+		 <div class="col-2 p-1"><input type="number" maxlength="1" id="otp2" class="form-control transparent-input-bottom"></div>
+		 <div class="col-2 p-1"><input type="number" maxlength="1" id="otp3" class="form-control transparent-input-bottom"></div>
+		 <div class="col-2 p-1"><input type="number" maxlength="1" id="otp4" class="form-control transparent-input-bottom"></div>
+		 <div class="col-2 p-1"><input type="number" maxlength="1" id="otp5" class="form-control transparent-input-bottom"></div>
+		 <div class="col-2 p-1"><input type="number" maxlength="1" id="otp6" class="form-control transparent-input-bottom"></div>
+		 
+		
+		
+		
+		</div>
+		
+		<script>
+		
+		var phone = document.getElementById("phone");
+		
+		phone.onkeyup = function() {
+			console.log(this.value.length );
+			if (this.value.length == parseInt(this.attributes["maxlength"].value)) {
+				
+				if (document.getElementById("o_id").value != "" ) {
+				
+					document.getElementById("button_ok_indication").innerHTML =  '<img src="/static/img/verified.png"/>'  ;
+					document.getElementById("generate_otp_button").disabled = false ;
+					document.getElementById("generate_otp_button").style.backgroundColor = "#365ec8"; 
+					
+				}
+					
+			}
+		}	
+		
+		
+	
+		
+		
+		
+		var opt1 = document.getElementById("otp1");
+		var opt2 = document.getElementById("otp2");
+		var opt3 = document.getElementById("otp3");
+
+		
+		var opt4 = document.getElementById("otp4");
+		var opt5 = document.getElementById("otp5");
+		var opt6 = document.getElementById("otp6");
+
+
+		
+	opt1.onkeyup = function() {
+    if (this.value.length === parseInt(this.attributes["maxlength"].value)) {
+        opt2.focus();
+    }
+}
+
+
+	opt2.onkeyup = function() {
+    if (this.value.length === parseInt(this.attributes["maxlength"].value)) {
+        opt3.focus();
+    }
+}
+
+	opt3.onkeyup = function() {
+    if (this.value.length === parseInt(this.attributes["maxlength"].value)) {
+        opt4.focus();
+    }
+}
+
+		
+	opt4.onkeyup = function() {
+    if (this.value.length === parseInt(this.attributes["maxlength"].value)) {
+        opt5.focus();
+    }
+}
+		
+	opt5.onkeyup = function() {
+    if (this.value.length === parseInt(this.attributes["maxlength"].value)) {
+        opt6.focus();
+    }
+}
+	opt6.onkeyup = function() {
+    if (this.value.length === parseInt(this.attributes["maxlength"].value)) {
+      if ( otp_sent == true )
+	  {
+		document.getElementById("verify_otp_button").disabled = false;
+	  }
+    
+	}
+}
+		
+
+		
+		</script>
+		
+		<div class="Placeholder-Copy-2 pb-2 " id="otp_status_msg">
+			
+		</div>
+		
+		
+		
+		</div>
+		
+		<button id="verify_otp_button" onclick ="verify_otp()" class="btn btn-block mg-t-10 tx-white Rectangle" disabled> NEXT </button>
+		<div  id ="success" class="Message_Text pb-2"> </div>
+		<div  id ="error" class="Message_Text pb-2"> </div>
+		
+		
+		<div  id ="divinfo" class="tx-success">
+			 
+		
+		
+		</div>
+
+		<a href="/" class="tx-12 d-block mg-t-20 tx-center tx-white Forgot-Password "><u> Back </u></a>
+    
+		
+		
+	 
+	 </div><!-- login-wrapper -->
+	 
+    </div><!-- d-flex -->
+
+
+
+	
+	
+	
+	<script src="{{ url_for('static', filename='lib/jquery/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/popper.js/popper.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/moment/moment.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-switchbutton/jquery.switchButton.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/peity/jquery.peity.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{url_for('static',filename='socket.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bracket.js')}}"></script>
+	
+	<script>
+function countdown() {
+    var seconds = 60;
+    function tick() {
+        var counter = document.getElementById("otp_timer");
+        seconds--;
+        counter.innerHTML = "Resend in 0:" + (seconds < 1 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+     
+	  counter.innerHTML = "";	
+	 document.getElementById("generate_otp_button").style.backgroundColor = "#365ec8";
+	 document.getElementById("generate_otp_button").innerHTML = "RESEND "
+	 document.getElementById("generate_otp_button").disabled = false ;
+	 
+			
+        }
+    }
+    tick();
+}
+
+function verify_otp()
+{
+	var phone = document.getElementById("phone").value;
+	//var otp = document.getElementById("otp").value;
+	
+	var otp = document.getElementById("otp1").value + document.getElementById("otp2").value + document.getElementById("otp3").value + document.getElementById("otp4").value 
+			   + document.getElementById("otp5").value + document.getElementById("otp6").value;
+	
+	
+	socket.emit("verify_otp_data_partial",otp);
+	console.log(otp);
+	
+}
+
+function signin_page(){
+
+window.location = "login";
+
+}
+
+
+</script>
+
+<script>
+var socket=io.connect('http://'+document.domain+":"+location.port)
+
+var otp_sent = false;
+
+function signup_user(){
+
+
+//document.getElementById("success").innerHTML = "OTP Sent.";
+var phone = document.getElementById("phone").value;
+var o_id = document.getElementById("o_id").value;
+var email_id = document.getElementById("e_id").value;
+
+
+
+ validateEmail(email_id);
+
+if(validateEmail(email_id)==true){
+
+  data = {
+ "o_id":o_id,
+ "phone":phone,
+ "email_id":email_id,
+ }
+ socket.emit("Sign_Up_Request_1" ,data)
+ 
+}
+else{
+ document.getElementById("msg").innerHTML="Please enter valid email address."
+}
+ 
+ 
+ 
+ //socket.emit("Sign_Up_Request_1" ,data)
+ 
+ }
+
+
+
+function validateEmail(emailField){
+      
+          if(emailField.includes("@")==true){
+            return true;
+          }
+          else{
+            return false;
+        }
+        }
+        
+
+
+
+
+
+ 
+ socket.on("sign_up_status",function(msg){
+ 
+ console.log(msg);
+ if (msg=="This number already exists in organisation."){
+	document.getElementById("number_exists").innerHTML = "OTP not sent. This number already exists in database.<a href='/forgotpassword'> <u> Forgot Password ? </u> </a> ";
+	
+ }
+ else {
+	
+	document.getElementById("generate_otp_button").style.backgroundColor = "#546593";
+	document.getElementById("generate_otp_button").innerHTML = "SENT !"
+	document.getElementById("generate_otp_button").disabled = true ;
+	otp_sent = true;
+	// start the countdown
+	countdown();
+	
+ }
+
+ 
+ });
+
+
+socket.on("otp_status",function(msg){ 
+
+if (msg == "Verification not successful."){
+
+document.getElementById("otp_status_msg").innerHTML = msg;
+
+}
+else{
+
+document.getElementById("otp_status_msg").innerHTML = "Verification Successful. " + msg;
+
+location.href = "/signup2";
+
+}
+
+});
+ 
+
+</script>
+  </body>
+</html>

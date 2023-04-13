@@ -1,0 +1,369 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+<style>
+
+:root {
+  --windows-blue: #365ec8;
+  --bluish: #3091c9;
+  --warm-blue: #5460dc;
+  --white: #ffffff;
+  --dusk-blue: #28499f;
+  --bluey-grey: #85a5c2;
+  --light-sky-blue: #d4e3f0;
+  --lipstick: #bb166b;
+  --bluish-grey-20: rgba(115, 137, 156, 0.2);
+  --topaz: #16b8bb;
+  --aquamarine: #00d7af;
+  --metallic-blue: #546593;
+  --bluish-grey: #73899c;
+  --very-light-pink: #d7d7d7;
+  --gray-medium: rgba(205, 205, 210, 0.5);
+  --text: #77777a;
+  ---style: #002251;
+}
+	
+	
+.CARD_HEADER_FONT {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 2.93px;
+  text-align: center;
+  color: #292b2c;
+}
+.Rectangle {
+  
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+
+  }
+  .Alert-font {
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.61;
+  letter-spacing: 0.38px;
+  color: var(--dusk-blue);
+}
+
+.Have-you-experien {
+
+	font-family: Manrope;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 2.14;
+	letter-spacing: 0.38px;
+	color: #292b2c;
+
+}
+
+.YES {
+								
+								font-family: Manrope;
+								font-size: 12px;
+								font-weight: normal;
+								font-stretch: normal;
+								font-style: normal;
+								line-height: 0.92;
+								letter-spacing: 0.5px;
+								color: #546593;
+								background-color: ;
+								}
+
+.Oval-Copy {
+  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: var(--bluish-grey-20);
+}
+
+.I-have-read-the-term {
+  font-family: Manrope;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+  color: var(--dusk-blue);
+}
+.form-control.base {
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  background-color: #fbfbfb;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #292b2c;
+  
+  }
+
+.form-control.base::-webkit-input-placeholder {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+ 
+   border:none;
+}
+
+.WEAK {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #ff60ac;
+  background-color:#FFF;
+}
+.strong {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: var(--aquamarine);
+  background-color:#FFF;
+}
+	
+
+	</style>
+ 
+ 
+      <div class="row no-gutters  mg-t-10">
+        <div class="col-sm-12 col-lg-12">
+          
+		  
+		   <div class="card">
+         
+		 
+          <div class="card-body">
+				
+				 <div class="tx-12   CARD_HEADER_FONT">
+             MY ACCOUNT
+          </div><!-- card-header -->
+				
+			  <div class="form-group">
+				<label for="name" class="Have-you-experien"> Name </label>
+			  <input type="text" id="name" class="form-control base" placeholder="Enter your Name" data-toggle="popover"  data-placement="top"  title="Enter your full name" data-content="Sample Name - Aditya Joshi">
+			  <!-- <a href="#" > <i class="fa fa-info-circle" aria-hidden="true"></i>  </a> -->
+			</div><!-- form-group -->
+		  
+			 <div class="form-group">
+				<label for="phone" class="Have-you-experien"> Phone </label>
+			  <input type="number" id="phone" class="form-control base" placeholder="Enter your Number" data-toggle="popover"  data-placement="top"  title="Enter your mobile number" data-content="Sample Number : +91 9922998224 ">
+			  <!-- <a href="#" > <i class="fa fa-info-circle" aria-hidden="true"></i>  </a> -->
+			</div><!-- form-group -->
+		  
+				
+			
+			<div class="form-group">
+			 <label for="employee_id" class="Have-you-experien"> Employee ID </label>
+			  <input type="text" id="employee_id"  class="form-control base" placeholder="Enter your employee ID"
+			  data-toggle="popover"  data-placement="top"  
+			  title="Valid Employee ID" 
+			  data-html="true" 
+			  data-content="Please enter a valid employee ID. ">      			  
+			</div><!-- form-group -->
+			
+			<div class="form-group">
+			   <label for="age" class="Have-you-experien"> Date of Birth </label>
+			  <input type="date" id="age" class="form-control base" placeholder="" value="1990-01-01" >      			  			  
+			</div><!-- form-group -->
+			
+				<form >
+			<div class="pt-1 pb-1 Have-you-experien">
+				Select one of the following
+				</div>
+			  <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="employee_type">
+				<label class="form-check-label Have-you-experien" for="employee_type">Full-time Employee </label>
+			  </div>
+			   <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="employee_type_labour">
+				<label class="form-check-label Have-you-experien" for="employee_type_labour"> Contract</label>
+				 </div>
+				
+				</form>
+				
+				<div class="form-group">
+				 <label for="contract_organisation" class="Have-you-experien"> Contract Organisation </label>
+			  <input type="text" id="contract_organisation" class="form-control base" placeholder="Enter contract organisation" 
+			  data-toggle="popover"  data-placement="top" 
+			   data-html="true" 
+			  title="Contract Organisation" data-content="Please enter your contract organisation. <span class='tx-danger'>Please do not fill this field if you are a full-time employee.</span> ">
+			  <!-- <a href="#" > <i class="fa fa-info-circle" aria-hidden="true"></i>  </a> -->
+			</div><!-- form-group -->
+		  
+			
+			<hr>
+			
+			<div class="Have-you-experien pd-2" id="master_console" ></div>
+			<button type="button" onclick=get_changes() class="btn Rectangle btn-block"> SAVE </button>
+          </div>
+		  </div>
+		  
+		  
+		  
+		  
+           
+        </div>
+      </div>
+
+
+
+	  
+	  
+
+
+
+<!--High Temp Modal -->
+<div class="modal fade" id="temp_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	 <div class="modal-header bg-danger">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+		    <img src="/static/img/reject.svg" height="200px" class="rounded mx-auto d-block" alt="...">
+      </div>
+      <div class="modal-body">
+    	<div class="p-2 tx-black alert alert-danger" role="alert"> 
+		Temperature entered is above 100 Fahrenheit !! 
+		</div>
+	  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>	
+
+
+
+
+<script>
+
+ 
+var socket=io.connect('http://'+document.domain+":"+location.port)
+
+socket.emit("get_profile");
+
+socket.on("send_profile",function(dataSet){
+  console.log(dataSet);
+  //dataSet[0]["age"] = 20;
+  var keys = ["name" , "phone" , "employee_id" , "age", "contract_organisation" ];
+  
+  for (var key = 0 ; key < keys.length ;key ++){
+    console.log(keys[key]);
+	document.getElementById(keys[key]).value = dataSet[0][keys[key]] ;
+  
+  }
+  if (dataSet[0]["employee_type"] == "Full Time"){
+  //console.log("OK")
+  document.getElementById('employee_type').checked = true ;
+  }
+  else {
+  document.getElementById('employee_type_labour').checked = true ;
+  }
+  
+  
+});
+
+
+socket.on("master_console",function(data){
+ document.getElementById("master_console").innerHTML = data ;
+}); 
+
+
+</script>
+
+
+<script>
+//var socket=io.connect('http://'+document.domain+":"+location.port)
+
+ //======================================
+function CheckPassword(password) 
+{ 
+var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+if(password.match(paswd)) 
+{ 
+//alert('Correct, try another...')
+return true;
+}
+else
+{ 
+//alert('Wrong...!')
+return false;
+}
+}  
+
+
+//=========================================== 
+ 
+
+</script>	
+	
+		
+		<script>
+function get_changes()
+{
+ var number = document.getElementById("phone").value;
+ if (number.length != 10){
+ 
+	document.getElementById("master_console").innerHTML = "Please check the phone number entered." ;
+ 
+ }
+ else {
+ var dataSet = {};
+ 
+  var keys = ["name" , "phone" , "employee_id" , "age", "contract_organisation" ];
+  
+  for (var key = 0 ; key < keys.length ;key ++){
+    console.log(keys[key]);
+	 dataSet[keys[key]] = document.getElementById(keys[key]).value  ;
+  
+  }
+  if (document.getElementById('employee_type').checked ){
+	 dataSet["employee_type"] = "Full Time"
+  }
+  else {
+	dataSet["employee_type"] = "Contract"
+  }
+  
+  console.log(dataSet);
+  socket.emit("Profile_Update" ,dataSet)
+	
+ }
+}
+</script>
+
+ 
+{% endblock %}

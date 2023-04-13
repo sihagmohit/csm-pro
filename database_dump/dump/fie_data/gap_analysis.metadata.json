@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"8d7dfbab0ce345d6b7f96e0028951353","collectionName":"gap_analysis","type":"collection"}

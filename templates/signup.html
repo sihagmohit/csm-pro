@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bracket">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/bracket">
+    <meta property="og:title" content="Bracket">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+	<!--	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --> 
+    <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+   <title>Cyronics IOT</title>
+
+    
+	<link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bracket.css')}}"> 
+
+
+	</head>
+
+  <body>
+
+    <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v bg-primary">
+
+      <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
+        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><img src="/static/img/grey_logo.svg" width="60%"></div>
+        <div class="tx-center mg-b-30">Ensuring Workplace Safety</div>
+		
+		<div  id="questions" style="height: 300px; overflow-y: auto;">
+			<!--<div class="form-group">
+			  <input type="number"  id="o_id" class="form-control" placeholder="Organisation ID ">
+			</div> <!-- form-group -->
+		  
+		  <div class="form-group" >    
+			  <select class="form-control" id="o_id" >
+				   <option value="" selected disabled>Select Organisation</option>
+				  <option value="KPCL, Saswad"> 001 </option>
+				  <option value="C4i4">002 </option>
+				  <option value="Cyronics" >  003 </option>
+				  <option value="Aakar Foundry" >004 </option>
+				  <option value="Dummy" >005 </option>
+				  <option value="KOEL" >006 </option>
+
+				  
+			</select>
+			</div><!-- form-group -->
+
+			
+
+
+		  
+			<div class="form-group">
+			  <input type="text" id="name" class="form-control" placeholder="Enter your Name" data-toggle="popover"  data-placement="top"  title="Enter your full name" data-content="Sample Name - Aditya Joshi">
+			  <!-- <a href="#" > <i class="fa fa-info-circle" aria-hidden="true"></i>  </a> -->
+			</div><!-- form-group -->
+		  
+		  <div class="form-group">
+			  <input type="password" id="password" class="form-control" 
+			  placeholder="Enter your password"
+			  data-toggle="popover"  data-placement="top"
+			data-html="true" 			  
+			  title="Password Requirement" 
+			  data-content="Must be  between 7 to 15 characters which contain at least one numeric digit and a special character. 
+			<span class = 'tx-primary'> Sample Password - newdelhi1! </span>">         
+			</div><!-- form-group -->
+			
+			<div class="form-group">
+			  <input type="password" id ="verify_password" class="form-control" placeholder="Verify your password"    
+			  data-toggle="popover"  data-placement="top"  
+			  title="Verify Password" 
+			  data-content="Password must match the password entered before.">         			  
+			</div><!-- form-group -->
+			
+			<div class="form-group">
+			  <input type="number" id="phone"  class="form-control" placeholder="Enter your phone number"
+			  data-toggle="popover"  data-placement="top"  
+			  title="Valid Phone Number" 
+			  data-html="true" 
+			  data-content="You will receive OTP message on the 10 digit mobile number. This number will be used for signing in later.  <span class = 'tx-primary'> Sample Number : 9999999999</span> ">      			  
+			</div><!-- form-group -->
+			
+			<div class="form-group">
+			  <input type="text" id="employee_id"  class="form-control" placeholder="Enter your employee ID"
+			  data-toggle="popover"  data-placement="top"  
+			  title="Valid Employee ID" 
+			  data-html="true" 
+			  data-content="Please enter a valid employee ID. ">      			  
+			</div><!-- form-group -->
+
+
+			<div class="form-group">
+			
+			  <input type="number" id="age" class="form-control" placeholder="Enter your Age"
+			   data-toggle="popover"  data-placement="top"  
+				title="Age " 
+			  data-html="true" 
+			  data-content="Please enter your age in years.  <span class = 'tx-primary'> Sample Age : 40 </span> ">      			  			  
+			</div><!-- form-group -->
+			
+				<form class="tx-black">
+			<div class="pt-1 pb-1">
+				Select one of the following
+				</div>
+			  <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="employee_type">
+				<label class="form-check-label" for="employee_type">Full-time Employee </label>
+			  </div>
+			   <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="employee_type_labour">
+				<label class="form-check-label" for="employee_type_labour"> Contract</label>
+				 </div>
+				
+				</form>
+				
+				<div class="form-group">
+			  <input type="text" id="contract_organisation" class="form-control" placeholder="Enter contract organisation" 
+			  data-toggle="popover"  data-placement="top" 
+			   data-html="true" 
+			  title="Contract Organisation" data-content="Please enter your contract organisation. <span class='tx-danger'>Please do not fill this field if you are a full-time employee.</span> ">
+			  <!-- <a href="#" > <i class="fa fa-info-circle" aria-hidden="true"></i>  </a> -->
+			</div><!-- form-group -->
+		  
+			
+			<hr>
+			
+			<form class="tx-black">
+			<div class="pt-1 pb-1">
+				Do you have any of the following ?
+				</div>
+			  <div class="form-check pl-4 ">
+				<input type="checkbox" class="form-check-input" id="heart">
+				<label class="form-check-label" for="heart">Heart Problems</label>
+			  </div>
+			   <div class="form-check pl-4 ">
+				<input type="checkbox" class="form-check-input" id="respiratory">
+				<label class="form-check-label" for="respiratory">Respiratory Problems</label>
+				 </div>
+				 <div class="form-check pl-4 ">
+				<input type="checkbox" class="form-check-input" id="bp">
+				<label class="form-check-label" for="bp">Blood Pressure</label>
+				 </div>
+				 <div class="form-check pl-4 ">
+				<input type="checkbox" class="form-check-input" id="diabetes">
+				<label class="form-check-label" for="diabetes">Diabetes</label>
+				 </div>
+				 <div class="form-check pl-4 ">
+				<input type="checkbox" class="form-check-input" id="none">
+				<label class="form-check-label" for="none">None of the above</label>
+				 </div>
+				</form>
+				
+				<hr>
+				<form class="tx-black">
+			<div class="pt-1 pb-1">
+				Do you have family members below 10 years of age or greater 65 years of age?
+				</div>
+			  <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="yes_age">
+				<label class="form-check-label" for="yes_age">Yes </label>
+			  </div>
+			   <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="no_age">
+				<label class="form-check-label" for="no_age"> No</label>
+				 </div>
+				
+				</form>
+				
+			<hr>
+			
+			
+			
+			
+			
+
+		</div>
+		<div  id ="error" class="tx-danger"></div>
+		<div  id ="success" class="tx-primary"></div>
+		
+        <button onclick=" relocate_signup()"  class="btn btn-warning btn-block p-2">Sign Up</button>
+		
+		
+<script>
+ //======================================
+function CheckPassword(password) 
+{ 
+var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+if(password.match(paswd)) 
+{ 
+//alert('Correct, try another...')
+return true;
+}
+else
+{ 
+//alert('Wrong...!')
+return false;
+}
+}  
+
+
+//=========================================== 
+ 
+
+</script>	
+	
+		
+		<script>
+function relocate_signup()
+{
+ // form filters 
+ var password = document.getElementById("password").value;
+ var verify_password = document.getElementById("verify_password").value;
+ var phone = document.getElementById("phone").value;
+ var age = document.getElementById("age").value;
+ var o_id = document.getElementById("o_id").value;
+ var name = document.getElementById("name").value;
+ var employee_id = document.getElementById("employee_id").value;
+
+ var contract_organisation = document.getElementById("contract_organisation").value;
+ 
+ var error = document.getElementById("error");
+ var success =  document.getElementById("success");
+ 
+ password_flag = CheckPassword(password)
+if( password_flag == false ){
+error.innerHTML = "Password must be  between 7 to 15 characters which contain at least one numeric digit and a special character. "
+}
+else if (password != verify_password){
+	error.innerHTML = "Passwords do not match"
+}
+else if(phone.length != 10) {
+ error.innerHTML = "Please enter a valid 10 digit phone number."
+ }
+ 
+else if (age == 0 || age < 10  ){
+ error.innerHTML = "Please enter valid age to continue." 
+}
+else if (o_id == "" ){
+ error.innerHTML = "Please select Organisation ID to continue." 
+}
+else {
+ error.innerHTML = "";
+ success.innerHTML = "Signing Up ... ";
+ 
+ //--------------------------------------
+ 
+ 
+var heart = 0;
+if (document.getElementById('heart').checked) {
+	heart = 'yes';
+} else {
+	heart = "no";
+}
+
+var diabetes = 0;
+if (document.getElementById('diabetes').checked) {
+	diabetes = 'yes';
+} else {
+	diabetes = "no";
+}
+
+var bp = 0;
+if (document.getElementById('bp').checked) {
+	bp = 'yes';
+} else {
+	bp = "no";
+}
+
+var respiratory = 0;
+if (document.getElementById('respiratory').checked) {
+	respiratory = 'yes';
+} else {
+	respiratory = "no";
+}
+
+var none = 0;
+if (document.getElementById('none').checked) {
+	none = 'yes';
+} else {
+	none = "no";
+}
+
+
+var yes_age = 0
+if (document.getElementById('yes_age').checked) {
+	yes_age = 'yes';
+} else {
+	yes_age= "no";
+}
+
+
+var employee_type = 0
+if (document.getElementById('employee_type').checked) {
+	employee_type = 'Full Time';
+} else {
+	employee_type= "Contract";
+}
+ 
+ 
+ 
+ 
+ data = {
+ "o_id":o_id,
+ "name":name,
+ "password":password,
+ "phone":phone,
+ "employee_id": employee_id,
+ "age":age,
+ "role" : "",
+ "respiratory":respiratory,
+ "diabetes":diabetes,
+ "heart":heart,
+ "bp":bp,
+ "none":none,
+ "yes_age":yes_age,
+ "employee_type":employee_type,
+ "contract_organisation" : contract_organisation,
+ }
+ socket.emit("Sign_Up_Request" ,data)
+ }
+} 
+</script>
+	 <div class="mg-t-10 tx-center tx-primary">C4i4 | Cyronics </div>
+
+	 <div class="alert alert-primary" role="alert">
+   For any issues related to sign up process / OTP please contact 9922998224 immediately. 
+</div>
+     
+	 
+	 </div><!-- login-wrapper -->
+	 
+    </div><!-- d-flex -->
+
+   
+	<script src="{{ url_for('static', filename='lib/jquery/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/popper.js/popper.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/moment/moment.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-switchbutton/jquery.switchButton.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/peity/jquery.peity.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{url_for('static',filename='socket.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bracket.js')}}"></script>
+	
+	
+  </body>
+</html>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();   
+});
+</script>
+
+
+<script>
+var socket=io.connect('http://'+document.domain+":"+location.port)
+socket.emit("Sign Up")
+ 
+ socket.on("signup_questions",function(questions){
+ console.log(questions);
+ inner_html = ""
+ 
+ for(var i = 0 ;i < questions.length ;i++){
+ console.log(i);
+
+ }
+
+});
+ socket.on("sign_up_status",function(msg){
+ console.log(msg);
+ if (msg == "Redirecting ..."){
+ 
+	location.href = "/verifyotp";
+ 
+ }
+ else{
+ success.innerHTML = "";
+ error.innerHTML = msg; 
+ }
+ 
+ 
+ });
+ 
+ </script>
+
+
+</script>

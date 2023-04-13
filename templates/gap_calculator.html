@@ -1,0 +1,787 @@
+{% extends "template.html" %}
+{% block content %}
+
+<!-- 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script> -->
+
+
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   }
+
+med   
+.button_1{
+
+    margin-left: 800%;
+}
+.button_2{
+
+    margin-left: 1000%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+
+
+</style>
+
+
+
+<div class="p-3">
+ <div class="p-1 mb-3">
+      <div class="tx-dark tx-15 tx-bold">PRODUCTION PLAN</div>
+   </div>
+
+
+<div class="tx-dark tx-15 tx-bold">MACHINE PRODUCTION PLAN 
+   
+</div>
+
+<div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div id="table_button">
+            
+      </div>
+      
+      <!-- <input type="text" class="form-control" placeholder="Search" id="search_table"> -->
+      <div class="input-group">
+
+         <input type="text" id="datatable1_search" class="form-control mr-2" placeholder="Search" >
+
+          <button type="button" class="btn btn-lg btn-info Rectangle_without_color button_1" id ="edit" onclick="edit_all_machine()"><i class="fa fa-pencil" >EDIT</i></button>
+
+
+    <button type="button" class="btn btn-lg btn-danger Rectangle_without_color"  onclick="reset_all_machine()"><i class="fa fa-refresh"  >RESET</i></button> 
+      </div>
+   </div>
+   
+   
+      <table id="datatable1" class="table table-sm table-striped table-bordered" style="width:100%" >
+         <thead class="bg-dark tx-white">
+            <tr>
+               <th>SR.NO.</th>
+               <th>SELECT</th>
+               <th>MACHINE NAME</th>
+               <th>TOTAL PLANNED Qty.</th>
+              <!--  <th>EDIT</th>
+               <th>RESET</th> -->
+            </tr>
+         </thead>
+         <tbody id="tablebody">
+   
+   
+         </tbody>
+      </table>
+
+</div>
+
+
+<div class="p-1 mb-3">
+      <div class="tx-dark tx-15 tx-bold">SELECTED MACHINE</div>
+      <div id="select_items"></div>
+
+   </div>
+
+
+
+
+
+ <div class="p-1 mb-3">
+      <div class="tx-dark tx-15 tx-bold">GAP ANALYSIS</div>
+   </div>
+
+
+<div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div id="table_button3">
+      </div>
+        <div class="input-group">
+
+         <input type="text" id="datatable3_search" class="form-control mr-2" placeholder="Search" >
+   </div>
+
+
+ <!-- class="table table-sm table-striped table-bordered pt-2 pb-2" -->
+   <table id="datatable3" class=" table-striped table-bordered"  style="width: 100%;" >
+      <thead class="bg-dark tx-white">
+         <tr>
+            <th>SR.NO.</th>
+            <th>PART DESCRIPTION</th>
+            <th>LIVE SALES ORDER QUANTITY</th>
+            <th>PRODUCTION PLAN QTY. CONSIDERING BUFFER STOCK</th>
+            <th>ACTUAL REQUIRED QUANTITY</th>
+            <th>WIP QTY</th>
+            <th>FINISH STORE STOCK AS ON DATE</th>
+            <th>ISSUED QTY. FOR THE ASSLY</th>
+            <th>FINAL ORDER QUANTITY</th>
+            <th>SUPPLIER DETAILS</th>
+             <!-- <th>Cumulative</th> -->
+         </tr>
+      </thead>
+      <tbody id="tablebody3">
+
+      </tbody>
+   </table>
+
+<!-- </div> -->
+
+
+
+<div class="modal-dialog modal-dialog-centered">
+      <div class="modal" id="reset_modal"  aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-body">
+              <div class="d-flex justify-content-center">
+                <div id = "loading" class="loader row"> </div>
+              </div>
+              <div style="color: #ffff">Please wait till auto refresh........
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+<div class="modal-dialog modal-dialog-centered">
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:100%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color:black;">EDIT</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="width:100%">
+
+        <div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+              <div id="table_button2">
+              </div>
+              
+              <div class="input-group">
+                 <input type="text" id="datatable2_search" class="form-control" placeholder="Search" >
+              </div>
+        </div>
+
+
+   <table id="datatable2" class="table table-striped table-bordered"   >
+      <thead class="bg-dark tx-white" >
+         <tr>
+            <th> Sr.NO.</th>
+            <th>MACHINE NAME</th>
+            <th>Quantity</th>
+         </tr>
+
+       </thead>
+      <tbody id="tablebody1">
+
+       </tbody>
+   </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="save_changes()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+
+   
+      <script type="text/javascript"> 
+
+           
+    $.fn.dataTable.ext.errMode = 'none';
+    var socket = io.connect('http://'+document.domain+':'+location.port);
+
+    var machine = [];
+    var quantity = [];
+    var record = {}
+    var cnt = 0
+    var check =0
+    document.getElementById("loading").style.display = "none";
+      
+    socket.emit('send_machine_sales_data');
+
+    socket.on('get_machine_sales_data',function(data){
+    console.log(data)
+
+    $('#datatable1').dataTable().fnDestroy();
+    
+    // n_length = data.length
+          
+    var str ='';
+        for(var i=0;i<data.length;i++){
+
+            // arr.push(data[i]['_id'])
+            str +='<tr>'
+            str +='<td>'+String(i+1)+'</td>';
+            record[i.toString()]= 0;
+
+            str +='<td>'+'<input type="checkbox" id ="'+i+'" onclick = "select_machine(this,\''+data[i]['_id']+'\',\''+data[i]['Total']+'\')">'+'</td>';
+            str +='<td>'+ data[i]['_id']+'</td>';
+
+            // str +='<td>'+ data[i]['machine_code']+'</td>';
+            
+            str +='<td id= "'+(data[i]['_id'])+'" contentEditable="false">'+data[i]['Total']+'</td>';
+  
+             str +='</tr>'
+          }
+
+      document.getElementById("tablebody").innerHTML = str;
+
+
+        console.log("tableeeee");
+      
+      $('#datatable1').dataTable().fnDestroy();
+
+       var table1 = $('#datatable1').DataTable( {
+              //"scrollX": true,
+              lengthChange: false,
+              "dom": 'lrtip',
+              "deferRender": true,
+
+              "initComplete": function (settings, json) {
+          $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+      
+      buttons: [
+                  { 
+                      // class :"btn btn-lg"
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+
+
+              ]
+      
+      
+          } );
+          table1.buttons( 0, null ).containers().appendTo( '#table_button' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable1_search').on( 'keyup', function () {
+          table1.search( this.value ).draw();
+          console.log("working")
+      } );
+      });
+
+// machine_data =[]
+
+function select_machine(element,machine,quantity){
+
+    if (document.getElementById(element.id).checked == true){
+
+        var json_data = {'Machine' : machine , "quantity" :quantity }
+        record[(element.id).toString()] = json_data
+        
+
+    }else{
+        record[(element.id).toString()] = 0
+        // console.log("cc")
+
+    }
+    
+    console.log("RECORD DATA :: " , record)
+    // machine_data.push(record)
+}
+
+var select_value = []
+var table2;
+function edit_all_machine(){
+    $('#datatable2').dataTable().fnDestroy();
+    $('#exampleModal').modal('show');
+    // record
+    // console.log("bbbbbbb",record)
+    // console.log(n_length)
+    // console.log(record.key()
+    select_value = []
+    var str ='';
+
+    Object.entries(record).forEach(([key, value]) => {
+        // console.log(value)
+    
+    try{
+        if(value == 0){
+            // console.log("True")
+        }else{
+            console.log("EDIT false" , key , value)
+            var _uniq_id = key.toString() + "_*"
+            select_value.push({"_id":_uniq_id , "Machine": value["Machine"] , "quantity":value['quantity']})
+            // console.log("$$$$$$$$$$$$$$$$$$$$$$",select_value)
+             // console.log(value)
+            cnt = cnt + 1
+            // console
+                str +='<tr>'
+                str +='<td>'+String(parseInt(key)+1)+'</td>';
+                str +='<td>'+value["Machine"]+'</td>';
+                var uniq = 'id' + cnt;
+                // console.log("unique",uniq ,value["quantity"])
+                str +='<td>'+'<input style ="width:60px" type="text" id ="'+_uniq_id+'" value="'+value['quantity']+'" >'+'</td>';
+                str +='</tr>'
+        
+
+        }
+    }
+    catch(e){
+
+    }
+    
+
+});
+    
+
+      document.getElementById("tablebody1").innerHTML = str;
+      
+      $('#datatable2').dataTable().fnDestroy();
+         
+       table2 = $('#datatable2').DataTable( {
+              // "fixedHeader": true,
+          
+             pageLength: 60,
+              "lengthChange": false,
+              "bPaginate": false, 
+              "dom": 'lrtip',
+              "deferRender": true,
+
+              "initComplete": function (settings, json) {
+              $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+      
+      buttons: [
+                  { 
+                      // class :"btn btn-lg"
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+             }
+
+              ]
+      
+      
+          } );
+          table2.buttons( 0, null ).containers().appendTo( '#table_button2' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable2_search').on( 'keyup', function () {
+          table2.search( this.value ).draw();
+          console.log("working")
+      } );
+      }
+
+
+   
+
+
+    function reset_all_machine(){
+
+        $('#reset_modal').modal('show');
+        document.getElementById("loading").style.display = "block";
+
+             data = "done"
+        
+                $.ajax({
+                      type: 'POST',
+                      url: '/reset_machine_data',
+                      data: JSON.stringify(data),
+                      contentType: 'application/json',
+                      success: function (data) {
+                        console.log(data)
+                        document.getElementById("loading").style.display = "none";
+                         
+                        $('#reset_modal').modal('hide');
+                          location.reload();
+                          
+                      }
+                  });
+        }
+
+
+
+
+function gap_analysis_detials(machine_data){
+    $.ajax({
+        type: 'POST',
+        url: '/getting_gap_calculator',
+        data: JSON.stringify(machine_data),
+        contentType: 'application/json',
+        success: function (data) {
+
+            $('#datatable3').dataTable().fnDestroy();
+        // socket.emit('send_machine_sales_data');
+            console.log(data);
+
+      var str ='';
+
+      for(var i=0;i<data.length;i++){
+            str +='<tr>'
+            str +='<td>'+String(i+1)+'</td>';
+            str +='<td>'+ data[i]['parts']+'</td>';
+            str +='<td>'+ data[i]['live_sales'] +'</td>';
+
+            str +='<td>'+ data[i]['production']+'</td>';
+            str +='<td>'+ data[i]['actual_required']+'</td>';
+            if(data[i]['wip_qty'] == undefined ){
+                str +='<td>'+'0'+'</td>';
+            }
+            else{
+                str +='<td>'+ data[i]['wip_qty']+'</td>';
+            }
+
+             if(data[i]['finish_stock'] == undefined ){
+                   str +='<td>'+'0'+'</td>';
+            }
+            else{
+                str +='<td>'+ data[i]['finish_stock']+'</td>';
+            }
+
+             if(data[i]['issued_qty'] == undefined ){
+                   str +='<td>'+'0'+'</td>';
+            }
+            else{
+                str +='<td>'+ data[i]['issued_qty']+'</td>';
+            }
+              
+            str +='<td>'+ data[i]['final_order']+'</td>';
+
+            var supplier_data = data[i]['supplier_list']
+
+            str +='<td>'
+            for(j=0;j<=supplier_data.length;j++)
+            {
+              if(supplier_data[j] == undefined){
+                str +='' 
+                 }
+              else{
+
+
+              str += supplier_data[j]
+               str +='<br>'
+           }
+              
+            }
+
+
+            str +='</td>';
+
+           // str +='<td>'+ data[i]['Cumulative_data']+'</td>';
+           str +='</tr>';
+
+          }
+
+      document.getElementById("tablebody3").innerHTML = str;
+
+
+   $('#datatable3').dataTable().fnDestroy();
+ 
+      var table3 = $('#datatable3').DataTable( {
+
+
+        "lengthChange": false,
+
+        "dom": 'lrtip',
+        "deferRender": true,
+        "pageLength": 5,
+        "initComplete": function (settings, json) {
+          $("#datatable3").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+              
+      
+      buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+              ]
+      
+      
+          } );
+      table3.buttons( 0, null ).containers().appendTo( '#table_button3' );
+      
+      $('#datatable3_search').on( 'keyup', function () {
+          table3.search( this.value ).draw();
+          console.log("working")
+      } );
+}
+  });
+
+}      
+
+
+
+
+
+
+
+
+function save_changes(){
+
+// console.log( "TABLE DATA :: " , table2.rows().data());
+
+
+// data_table = table2.rows().data()
+
+// console.log("SELECTED VAL BEFORE :: " , select_value)
+
+// for(var i = 0 ; i < data_table.length ; i++){
+//     console.log(data_table[i][0])
+//     // console.log(data_table[i][3])
+
+//     select_value[i]['quantity'] = document.getElementById().value ;
+
+
+// }
+        var uniq =''
+
+            for(var i = 0 ; i < select_value.length ; i++){
+
+                console.log("----" , document.getElementById(select_value[i]['_id']))
+                select_value[i]['quantity'] = document.getElementById(select_value[i]['_id']).value ;
+            }
+
+
+            console.log("SELECTED VAL :: " , select_value)
+
+
+
+        $('#reset_modal').modal('show');
+        document.getElementById("loading").style.display = "block";
+  
+            $.ajax({
+                type: 'POST',
+                url: '/edit_particular_data',
+                data: JSON.stringify(select_value),
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    $('#reset_modal').modal('hide');
+                    document.getElementById("loading").style.display = "none";
+                    console.log("check***********************",select_value)
+
+                    var str ='';
+                    str +='<tr>'
+                    str +='<td>'
+                    for(var i=0;i<select_value.length;i++) {
+                     
+                     str += '<b>'+select_value[i]['Machine']+'</b>'
+                     str += '<br>'
+
+                    }
+                    str +='</td>'
+                    str +='</tr>'
+
+
+                    document.getElementById('select_items').innerHTML= str;
+                    gap_analysis_detials(select_value);
+                    socket.emit('send_machine_sales_data');
+
+
+                }
+            });
+        
+        // socket.emit('send_machine_sales_data');
+        $('#exampleModal').modal('hide');
+        // $('#datatable1').dataTable().fnDestroy();
+        
+
+        
+        
+        
+        
+
+
+    }
+
+
+
+  
+</script>
+
+{% endblock %}

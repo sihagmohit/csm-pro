@@ -1,0 +1,402 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   }
+   .dataTables_scrollHeadInner{  width:100% !important; }
+   .dataTables_scrollHeadInner table{  width:100% !important; }
+   .twin_red{
+   background-color:#C94C0F;
+   }
+   .twin_green{
+   background-color:#6CBF1D;
+   }
+   .twin_yellow{
+   background-color:#BFBF1D;
+   }
+   .twin_inactive_blue{
+   background-color:#0768A6;
+   }
+   .twin_grey{
+   background-color:#343A40;
+   }
+</style>
+<div class="row mg-b-1 mg-l-5">
+   <button type="button" class="btn btn-light" onclick="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+</div>
+<script type="text/javascript">
+   function back(){
+         window.history.back();
+       }
+</script>
+<div class="card mg-t-20 ">
+   <div class="card-header">
+      <div class="tx-dark tx-15 tx-bold">ADDITIONAL NOTES
+      </div>
+   </div>
+   <!-- card-header -->
+   <div class="card-body ">
+      <!-- ====================== Row Start ================================== -->
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">RPO</label>
+               <input type="text" class="form-control form-control-sm" id="rpo" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Client Name</label>
+               <input type="text" class="form-control form-control-sm" id="client_name" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Machine Type</label>
+               <input type="text" class="form-control form-control-sm" id="machine_type" readonly>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Delivery Date</label>
+               <input type="date" style="height:31px;" class="form-control base" id="delivery_date" placeholder="dd/MM/YYYY" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Point of Contact</label>
+               <input type="text" class="form-control form-control-sm" id="poc" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Machine Subtype</label>
+               <input type="text" class="form-control form-control-sm" id="machine_subtype" readonly>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <div class='row '>
+         <div class='col-lg-12 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Current Status</label>
+               <div class="progress" style="height: 50px;" id="total_status"></div>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+   </div>
+</div>
+<hr>
+<div class="row">
+   <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="form-group">
+         <label class="tx-black">Project Status</label>
+         <input type="radio" style="margin-left:20px;" name="project_status" value="PROJECT HALT" id="ph"><button type="button" class="btn twin_red ml-2 Rectangle">DELAYED</button>
+         <input type="radio" style="margin-left:20px;" name="project_status" value="WORK IN PROGRESS" id="wip" ><button type="button" class="btn twin_green ml-2 Rectangle">WORK IN PROGRESS</button>
+         <input type="radio" style="margin-left:20px;" name="project_status" value="READY TO DISPATCH" id="rtd"><button type="button" class="btn Rectangle twin_blue ml-2 ">READY TO DISPATCH</button>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="form-group">
+         <label class="tx-black">Additional Notes</label>
+         <textarea class="form-control form-control-sm" id="additional_notes" required></textarea>
+      </div>
+   </div>
+</div>
+<br>
+<div class="row mb-2">
+   <div class="col-5"><small id="console_status"></small></div>
+</div>
+<div class='row pt-2 pb-2 justify-content-start'>
+   <div class='col-lg-4 col-md-12'>
+      <button id="save" class="btn btn-block Rectangle" onclick="save_details()">SAVE</button>
+      <small id="button_help"> </small>
+   </div>
+</div>
+<div class = "card shadow-base bd-1 pt-3 mt-3" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); ">
+   <div class="card-header">
+      <div class="tx-dark tx-15 tx-bold">PROJECT STATUS LOG</div>
+   </div>
+   <div class="card-body" >
+      <table id="datatable1" class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" >
+         <thead class="bg-dark tx-white">
+            <tr>
+               <th>SR.NO.</th>
+               <th>PROJECT STATUS</th>
+               <th>REMARKS</th>
+               <th>UPDATED ON</th>
+               <th>UPDATED BY</th>
+            </tr>
+         </thead>
+         <tbody id="tablebody">
+         </tbody>
+      </table>
+   </div>
+</div>
+<footer class="br-footer">
+   <div class="footer-left">
+      <div class="mg-b-2">Copyright &copy; 2020.Cyronics. All Rights Reserved.</div>
+   </div>
+</footer>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script>
+   var socket=io.connect('http://'+document.domain+":"+location.port)
+   
+   var rpo = '{{rpo}}';
+   
+   socket.emit("get_client_info",rpo);
+   
+   socket.on('sent_client_info', function(data) {
+   
+   
+     $('#datatable1').dataTable().fnDestroy();
+     console.log(data);
+   
+     if(data["Project Status"] == "WORK IN PROGRESS"){
+   
+   document.getElementById("wip").checked = true;
+   
+     }
+   
+       else if(data["Project Status"] == "PROJECT HALT"){
+   
+   document.getElementById("ph").checked = true;
+   
+       }
+         else if (data["Project Status"] == "READY TO DISPATCH"){
+   
+   document.getElementById("rtd").checked = true;
+   
+         }
+   
+   
+   
+   
+   
+   
+   
+   
+     document.getElementById("rpo").value = data["RPO"];
+     document.getElementById("client_name").value = data["Client Name"];
+     document.getElementById("machine_type").value = data["Machine Type"];
+     document.getElementById("delivery_date").value = data["Delivery Date"];
+     document.getElementById("poc").value = data["POC"];
+     document.getElementById("machine_subtype").value = data["Machine Subtype"]
+   
+     var num = data["Total Status %"];
+     num1 = num.replace("%","");
+   var num2 = parseFloat(num1);
+   var n = num2.toFixed(2);
+   var n_str = n.toString();
+   
+   var total_status = n_str + "%";
+   
+     inner_html = "";
+     inner_html += '<div class="progress-bar progress-bar-striped twin_green" role="progressbar" style="width: '+n+'%;height: 50px;" >';
+     inner_html += '<center><b><label style="padding-top:18px;font-size: 15px;">'+total_status+'</label></b></center></div>';
+     document.getElementById("total_status").innerHTML = inner_html;
+   
+   
+     if("STATUS LOG" in data){
+   
+       var inner_html = "";
+     for(var j=0; j< data["STATUS LOG"].length;j++){
+       inner_html += '<tr>';
+       inner_html += '<td>'+String(j+1)+'</td>';
+   
+       if(data["STATUS LOG"][j]["Project Status"] == "PROJECT HALT"){
+   
+     
+     inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm twin_red Rectangle_without_color">DELAYED</button> </td>';
+   
+   }
+   else if(data["STATUS LOG"][j]["Project Status"] == "WORK IN PROGRESS"){
+   
+     
+     inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm twin_green Rectangle_without_color">IN PROGRESS</button></td> ';
+   
+   }
+   
+   else if(data["STATUS LOG"][j]["Project Status"] == "READY TO DISPATCH"){
+     
+     inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm twin_blue Rectangle">READY TO DISPATCH</button></td> ';
+   
+   }
+   
+   
+   
+   
+   
+   
+       inner_html += '<td>'+data["STATUS LOG"][j]["Additional Notes"]+'</td>';
+       inner_html += '<td>'+data["STATUS LOG"][j]["updated_on"]+'</td>';
+       inner_html += '<td>'+data["STATUS LOG"][j]["updated_by"]+'</td>';
+       inner_html += '</tr>';
+   
+   
+     } // for closed
+   
+     document.getElementById("tablebody").innerHTML = inner_html;
+   
+   
+   $('#datatable1').dataTable().fnDestroy();
+   
+   var table1 = $('#datatable1').DataTable( {
+         //"scrollX": true,
+         lengthChange: false,
+         "dom": 'lrtip',
+         "deferRender": true,
+         "initComplete": function (settings, json) {
+     $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+   },
+   
+   
+   buttons: [
+             {
+                 extend: 'collection',
+                 text: 'Export',
+                 autoClose: true,
+                 buttons: [
+                 {
+                 extend:    'copy',
+                 text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                 titleAttr: 'Copy'
+                 },
+                 {
+                 extend:    'excel',
+                 text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                 titleAttr: 'Excel'
+                 },
+                 {
+                 extend:    'pdf',
+                 text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                 titleAttr: 'PDF'
+                 },
+                 {
+                 extend:    'print',
+                 text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                 titleAttr: 'Print'
+                 },
+                 {
+                 extend:    'csv',
+                 text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                 titleAttr: 'CSV'
+                 },
+                 {
+                 extend:    'colvis',
+                 text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                 titleAttr: 'Columns'
+                 },
+                 ]
+             }
+         ]
+   
+   
+     } );
+   
+   
+   
+   
+   
+   
+   
+   } // if closed 
+   
+   
+   
+   
+   }); // socket closed 
+   
+   function save_details(){
+   
+     var project_status;
+   
+   var ele = document.getElementsByName('project_status');
+   
+             for(i = 0; i < ele.length; i++) {
+                 if(ele[i].checked){
+                     project_status = ele[i].value;
+                 }
+                 else{
+                     document.getElementById("console_status").value = "Please fill all the fields to save the data.";
+                 }
+             }
+   
+     var client_name = document.getElementById("client_name").value;
+     var additional_notes = document.getElementById("additional_notes").value;
+   
+   if(project_status.length > 0 && additional_notes.length > 0){
+   
+   var additional_details = {};
+   
+   additional_details["RPO"] = rpo;
+   // additional_details["Client Name"] = client_name;
+   additional_details["Project Status"] = project_status;
+   additional_details["Additional Notes"] = additional_notes;
+     additional_details["updated_by"] = '{{name}}';
+   socket.emit("save_additional_notes",additional_details);
+   
+   document.getElementById("console_status").innerHTML = "Status Updated!";
+   
+   }
+   
+   else{
+   
+   document.getElementById("console_status").innerHTML = "Please add a note for the action.";
+   }
+   
+   socket.emit("get_client_info",rpo);
+   }
+   
+   
+</script>
+{% endblock %}

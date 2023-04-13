@@ -1,0 +1,2128 @@
+{
+    "timestamp": "21/06/2022, 12:26:56",
+    "data": {
+        "machine_stocks": [
+            {
+                "sr_no": 1,
+                "machine_name": "Auto Broaching Machine Model:PRO-BROACH+",
+                "machine_code": "PRO-BROACH (PLUS)",
+                "stock_group": "IMPACT M/C",
+                "category": "Broaching Machine",
+                "base_units": "No.",
+                "fg_quantity": 13
+            },
+            {
+                "sr_no": 2,
+                "machine_name": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)",
+                "machine_code": "PRO-BROACH P+ (U&V)",
+                "stock_group": "IMPACT M/C",
+                "category": "Broaching Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 3,
+                "machine_name": "Auto Broaching Machine Model:PRO-BROACH+ [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 4,
+                "machine_name": "Auto Correction Horrizontal Balancing Machine",
+                "machine_code": "BALANCE TECH HAC 300",
+                "stock_group": "BMD M/C",
+                "category": "Auto-correction Vertical Balancing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 5,
+                "machine_name": "Auto Correction Vertical Balancing Machine",
+                "machine_code": "BALANCE TECH VAC 10",
+                "stock_group": "BMD M/C",
+                "category": "Auto-correction Vertical Balancing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 6,
+                "machine_name": "Auto Impact Testing Machine Model:AUTO IMPACT-30",
+                "machine_code": "AUTO IMPACT-30",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 7,
+                "machine_name": "Auto Impact Testing Machine Model:AUTO IMPACT-75",
+                "machine_code": "AUTO IMPACT-75",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 8,
+                "machine_name": "Auto Turret Touch Screen Vickers Hardness Testing",
+                "machine_code": "VM-50 TS PRO",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 9,
+                "machine_name": "Bend Rebend Testing Machine Model : POWER BEND - PRO",
+                "machine_code": "POWER BEND PRO",
+                "stock_group": "HTD M/C",
+                "category": "Bend - Rebend Testing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 10,
+                "machine_name": "Bridge Type Computerized  Brinell Hardness Testing Machine",
+                "machine_code": "BRINMAX B3000 B",
+                "stock_group": "HTD M/C",
+                "category": "Bridge Type Computerized Brinell Hardness Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 11,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 E",
+                "machine_code": "B-3000 E",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 12,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 H",
+                "machine_code": "B-3000 H",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 13,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 O",
+                "machine_code": "B-3000 O",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 14,
+                "machine_name": "BRINELL HARDNESS TESTER B3000-O-SPL",
+                "machine_code": "B-3000 O SPL",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 15,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 PC",
+                "machine_code": "B-3000 PC",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 16,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 PCFA",
+                "machine_code": "B-3000 PCFA",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 17,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 PCFA [INLINE]",
+                "machine_code": "B-3000 PCFA [INLINE]",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 18,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 PCFA[SPL]",
+                "machine_code": "B-3000 PCFA[SPL]",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 19,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 PCFA [TWO SCREW]",
+                "machine_code": "B-3000 PCFA [TWO SCREW]",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 20,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 SPL [INLINE]",
+                "machine_code": "B-3000 SPL [INLINE]",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 21,
+                "machine_name": "BRINELL HARDNESS TESTER B-3000 T.S",
+                "machine_code": "B-3000 TS",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 22,
+                "machine_name": "Brinell Hardness Tester Model:B-30000 PRO",
+                "machine_code": "B-30000 PRO",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 23,
+                "machine_name": "Brinell Hardness Tester Model:B-3000 LC",
+                "machine_code": "B-3000 LC",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 24,
+                "machine_name": "Brinell Hardness Tester Model:B-3000 LC (Mini)",
+                "machine_code": "Brinmax-3000 (Mini)",
+                "stock_group": "HTD M/C",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 25,
+                "machine_name": "Brinell Hardness Tester Model:B-3000 LC (Mini) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 26,
+                "machine_name": "Brinell Hardness Tester Model:B-3000 PRO",
+                "machine_code": "B-3000 PRO",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 27,
+                "machine_name": "Brinell Image Analysis System (BIAS)",
+                "machine_code": "BIAS",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 28,
+                "machine_name": "Brinell Image Analysis System (BIAS) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 29,
+                "machine_name": "COMPRESSION TESTING MACHINE (CTM-50)",
+                "machine_code": "CTM-50",
+                "stock_group": "OTHER M/C",
+                "category": "Analog Compression Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 30,
+                "machine_name": "COMPRESSION TESTING MACHINE ELECTRONIC (CTE-100)",
+                "machine_code": "CTE-100",
+                "stock_group": "OTHER M/C",
+                "category": "Electronic Compression Testing",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 31,
+                "machine_name": "COMPRESSION TESTING MACHINE ELECTRONIC (CTE-200)",
+                "machine_code": "CTE-200",
+                "stock_group": "OTHER M/C",
+                "category": "Electronic 4 Column Compression Testing",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 32,
+                "machine_name": "COMPRESSION TESTING MACHINE ELECTRONIC CTE-300 PRO",
+                "machine_code": "CTE-300 PRO",
+                "stock_group": "OTHER M/C",
+                "category": "CTE PRO",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 33,
+                "machine_name": "COMPRESSION TESTING MACHINE ELECTRONIC (CTE-50)",
+                "machine_code": "CTE-50",
+                "stock_group": "OTHER M/C",
+                "category": "Electronic Compression Testing",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 34,
+                "machine_name": "Compression Testing Machine Model:CTM-100 ECO",
+                "machine_code": "CTM-100 ECO",
+                "stock_group": "OTHER M/C",
+                "category": "CTE PRO",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 35,
+                "machine_name": "COMPRESSION TESTING MACHINE SERVO CTES-50",
+                "machine_code": "CTES-50",
+                "stock_group": "OTHER M/C",
+                "category": "Electronic Compression Testing",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 36,
+                "machine_name": "COMPRESSION TESTING MACHINE SERVO [CTES-100]",
+                "machine_code": "CTES-100",
+                "stock_group": "OTHER M/C",
+                "category": "Electronic Compression Testing",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 37,
+                "machine_name": "Computerised Vickers Hardness Tester Model:VM-50-TS",
+                "machine_code": "VM-50 TS",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 38,
+                "machine_name": "Computerised Vickers Hardness Tester Model:VM-50-TS [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 39,
+                "machine_name": "Computerized Modular  Brinell Hardness Testing Machine",
+                "machine_code": "B-3000 MOD",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 40,
+                "machine_name": "DIGITAL BRINELL HARDNESS TESTER B-3000 O [D]",
+                "machine_code": "B-3000 O [D]",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 41,
+                "machine_name": "DIGITAL CHARPY IMPACT TESTING M/C [IT-30 ASTM -D]",
+                "machine_code": "IT-30 ASTM D",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 42,
+                "machine_name": "DIGITAL CHARPY IMPACT TESTING M/C [IT-40 ASTM -D]",
+                "machine_code": "IT-40 ASTM D",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 43,
+                "machine_name": "DIGITAL ERICHSION TESTING MACHINE-(ET-20 D)",
+                "machine_code": "ET-20 D",
+                "stock_group": "OTHER M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 44,
+                "machine_name": "DIGITAL ERICHSION TESTING MACHINE-(ET-20 D) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 45,
+                "machine_name": "Digital Rockwell Cum Brinell Hardness Tester Model:",
+                "machine_code": "RASNEB-TS",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 46,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS M/C [RAB-1 D ]",
+                "machine_code": "RAB-1 [D]",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 47,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER(RASNE-3)",
+                "machine_code": "RASNE-3",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 4
+            },
+            {
+                "sr_no": 48,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER(RASNE-3) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 49,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER(RASNEB-3)",
+                "machine_code": "RASNEB-3",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 50,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER(RASNEB-3 SPL)",
+                "machine_code": "RASNEB-3 (SPL)",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 51,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER(RASNEB-3) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 52,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER RASNE (SPL)",
+                "machine_code": "RASNE-SPL",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 53,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER(RASNET-3)",
+                "machine_code": "RASNET-3",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 54,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER(RASNET-3) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 55,
+                "machine_name": "DIGITAL ROCKWELL HARDNESS TESTER [RAS D]",
+                "machine_code": "RAS [D]",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 3
+            },
+            {
+                "sr_no": 56,
+                "machine_name": "Digital Rockwell Touch Screen Hardness Tester",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 57,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING MACHINE(Unitek-11200",
+                "machine_code": "Unitek  11200",
+                "stock_group": "OTHER M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 58,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING MACHINE(Unitek 9402)",
+                "machine_code": "UNITEK-9402",
+                "stock_group": "OTHER M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 59,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING MACHINE(Unitek 9405)",
+                "machine_code": "UNITEK-9405",
+                "stock_group": "OTHER M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 60,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING MACHINE(Unitek 9410)",
+                "machine_code": "UNITEK-9410",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 61,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING MACHINE(Unitek-9450)",
+                "machine_code": "UNITEK-9450",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 62,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING M/C (Unitek 9410) RR",
+                "machine_code": "UNITEK-9410 [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 63,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING M/C (Unitek 9450) RR",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 64,
+                "machine_name": "DUEL COLUMN BALL SCREW TESTING M/C [UNITEK 94100]",
+                "machine_code": "UNITEK-94100",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 65,
+                "machine_name": "DYNAMIC BALANCING MACHINE (HDCM-10)",
+                "machine_code": "HDCM-10",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Belt Driven Balancing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 66,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDCM-100)",
+                "machine_code": "HDCM-100",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Belt Driven Balancing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 67,
+                "machine_name": "DYNAMIC BALANCING MACHINE (HDCM-1000)",
+                "machine_code": "HDCM-1000",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Belt Driven Balancing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 68,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDCM-100) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 69,
+                "machine_name": "DYNAMIC BALANCING MACHINE (HDCM-1500)",
+                "machine_code": "HDCM-1500",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Belt Driven Balancing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 70,
+                "machine_name": "DYNAMIC BALANCING MACHINE (HDCM-300)",
+                "machine_code": "HDCM-300",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Belt Driven Balancing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 71,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDCM-50)",
+                "machine_code": "HDCM-50",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Belt Driven Balancing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 72,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDCM-650)",
+                "machine_code": "HDCM-650",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Belt Driven Balancing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 73,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDM-10)",
+                "machine_code": "HDM-10",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 74,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDM-100)",
+                "machine_code": "HDM-100",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 75,
+                "machine_name": "DYNAMIC BALANCING MACHINE (HDM-100 / HDCM-50)",
+                "machine_code": "HDM-100 / HDCM-50",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 76,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDM-30)",
+                "machine_code": "HDM-30",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 77,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDM-300)",
+                "machine_code": "HDM-300",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 78,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDM-3000)",
+                "machine_code": "HDM-3000",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 79,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDM-30) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 80,
+                "machine_name": "DYNAMIC BALANCING MACHINE(HDM-50)",
+                "machine_code": "HDM-50",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 81,
+                "machine_name": "DYNAMIC BALANCING MACHINE [HDM-650]",
+                "machine_code": "HDM-650",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 82,
+                "machine_name": "Electomechanical Universal Testing Machine",
+                "machine_code": "UNITEK-97050 TS",
+                "stock_group": "OTHER M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 83,
+                "machine_name": "Electomechanical Universal Testing Machine Model",
+                "machine_code": "UNITEK-1650 TS",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 84,
+                "machine_name": "Electomechanical Universal Testing Machine Model:",
+                "machine_code": "UNITEK-1610 TS",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 85,
+                "machine_name": "Electomechanical Universal Testing M/C Model",
+                "machine_code": "UNITEK 16100-STS",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 86,
+                "machine_name": "Electomechanical Universal Testing M/C Model:",
+                "machine_code": "UNITEK-1605 TS",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 87,
+                "machine_name": "Electromechanical Universal Testing Machine Model",
+                "machine_code": "UNITEK-16100 TS",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 88,
+                "machine_name": "Electromechanical Universal Testing M/C Model",
+                "machine_code": "UNITEK-16200 TS",
+                "stock_group": "UTN M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 89,
+                "machine_name": "Electronic Compression Testing Machine Model : CTE 200 ECO",
+                "machine_code": "CTE-200 ECO",
+                "stock_group": "OTHER M/C",
+                "category": "CTE PRO",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 90,
+                "machine_name": "Electronic Spring Testing Machine Model:STE 97050",
+                "machine_code": "STE-97050",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 91,
+                "machine_name": "ELECTRONIC TORSION TESTING MACHINE(TTE-10)",
+                "machine_code": "TTE-10",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 92,
+                "machine_name": "ELECTRONIC TORSION TESTING MACHINE(TTE-100)",
+                "machine_code": "TTE-100",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 93,
+                "machine_name": "ELECTRONIC TORSION TESTING MACHINE(TTE-20)",
+                "machine_code": "TTE-20",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 94,
+                "machine_name": "ELECTRONIC TORSION TESTING MACHINE(TTE-50)",
+                "machine_code": "TTE-50",
+                "stock_group": "UTN M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 95,
+                "machine_name": "ELECTRONIC TORSION TESTING MACHINE ( TTE-6 )",
+                "machine_code": "TTE-6",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 96,
+                "machine_name": "ERICHSION TESTING MACHINE-(ET20)",
+                "machine_code": "ET-20",
+                "stock_group": "UTN M/C",
+                "category": "Erichsen Cupping Machine",
+                "base_units": "No.",
+                "fg_quantity": 9
+            },
+            {
+                "sr_no": 97,
+                "machine_name": "Fatigue testing Machine Model : FATIGUE PRO 200",
+                "machine_code": "FATIGUE PRO 200",
+                "stock_group": "OTHER M/C",
+                "category": "Fatigue Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 98,
+                "machine_name": "FERMAT SPINDLE FACE PLATE ( FIBER )",
+                "stock_group": "Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 99,
+                "machine_name": "Floor Mounted Electro Hydraulic Electronic",
+                "machine_code": "UTE-60 HGFL-SA",
+                "stock_group": "UTN M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 100,
+                "machine_name": "Fully Automatic Computerised Inline Brinell",
+                "machine_code": "IB-3000 RC",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 101,
+                "machine_name": "Fully Automatic Computerised Touch Screen Brinell",
+                "machine_code": "B-3000 TSFA",
+                "stock_group": "HTD M/C",
+                "category": "Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 102,
+                "machine_name": "Fully Automatic Digital Rockwell Hardness Tester",
+                "machine_code": "RASNEB-TSFA",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 103,
+                "machine_name": "Fully Automatic Rockwel Cum Brinell Hardness Tester",
+                "machine_code": "RASNB-TSFA",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 104,
+                "machine_name": "Fully Automatic Rockwell Cum Superficial Hardness",
+                "machine_code": "RASNT-TSFA",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 105,
+                "machine_name": "Fully Automatic Rockwell Cum Super (RASNT-TSFA)[RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 106,
+                "machine_name": "Fully Automatic Rockwell Hardness Tester RASN-TSFA",
+                "machine_code": "RASN-TSFA",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 107,
+                "machine_name": "Fully Automatic Rockwell Hardness Tester RASN-TSFA [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 5
+            },
+            {
+                "sr_no": 108,
+                "machine_name": "Gauge Length Marking Machine Model : MARK 1000",
+                "machine_code": "MARK-1000",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 109,
+                "machine_name": "HARDNESS TESTER MACHINE RAB-1",
+                "machine_code": "RAB-1",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 110,
+                "machine_name": "HARDNESS TESTER M/C RAB 250",
+                "machine_code": "RAB-250",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 111,
+                "machine_name": "HARDNESS TESTER M/C RAS",
+                "machine_code": "RAS",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 112,
+                "machine_name": "HARDNESS TESTER M/C RAS [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 5
+            },
+            {
+                "sr_no": 113,
+                "machine_name": "HARDNESS TESTER M/C TWIN",
+                "machine_code": "TWIN",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 114,
+                "machine_name": "Horizantal Dynamic Balancing Machine (Hdm-1500)",
+                "machine_code": "HDM-1500",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 115,
+                "machine_name": "HORIZONTAL DYNAMIC BALANCING MACHINE [HDM-1000]",
+                "machine_code": "HDM-1000",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 116,
+                "machine_name": "HORIZONTAL DYNAMIC BALANCING MACHINE [HDM-10T]",
+                "machine_code": "HDM-10T",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 117,
+                "machine_name": "HORIZONTAL DYNAMIC BALANCING MACHINE [HDM-7000]",
+                "machine_code": "HDM-7000",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 118,
+                "machine_name": "IMAGE PROCESSING UNIT (IPU)",
+                "stock_group": "BMD M/C",
+                "category": "Horizontal Balancing Machines",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 119,
+                "machine_name": "IMPACT TESTING MACHINE DIGITAL (IT-10 D)",
+                "machine_code": "IT-10 D",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 120,
+                "machine_name": "IMPACT TESTING MACHINE DIGITAL IT-30 D",
+                "machine_code": "IT-30 D",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 121,
+                "machine_name": "IMPACT TESTING MACHINE (IT-0.5)",
+                "stock_group": "IMPACT M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 122,
+                "machine_name": "IMPACT TESTING MACHINE (IT 10-STD)",
+                "machine_code": "IT-10 STD",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 123,
+                "machine_name": "IMPACT TESTING MACHINE (IT-1.5)",
+                "machine_code": "IT-1.5",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 124,
+                "machine_name": "IMPACT TESTING MACHINE (IT-2.5 D)",
+                "machine_code": "IT-2.5 D",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 125,
+                "machine_name": "IMPACT TESTING MACHINE (IT-30 ASTM)",
+                "machine_code": "IT-30 ASTM",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 126,
+                "machine_name": "IMPACT TESTING MACHINE (IT-30 L.W)",
+                "machine_code": "IT-30 LW",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 127,
+                "machine_name": "IMPACT TESTING MACHINE (IT 30-STD)",
+                "machine_code": "IT-30 STD",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 128,
+                "machine_name": "IMPACT TESTING MACHINE (IT-40 ASTM)",
+                "machine_code": "IT-40 ASTM",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 129,
+                "machine_name": "IMPACT TESTING MACHINE (IT-5)",
+                "machine_code": "IT-5",
+                "stock_group": "IMPACT M/C",
+                "category": "Izod and Charpy Impact Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 130,
+                "machine_name": "Manual Broaching Machine Model:PRO-BROACH",
+                "machine_code": "PRO-BROACH",
+                "stock_group": "IMPACT M/C",
+                "category": "Broaching Machine",
+                "base_units": "No.",
+                "fg_quantity": 3
+            },
+            {
+                "sr_no": 131,
+                "machine_name": "Microvickers Hardness Tester Model:MV1-TS",
+                "machine_code": "MV-1 TS",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 132,
+                "machine_name": "Microvickers Hardness Tester (MV1-PC)",
+                "machine_code": "MV-1 PC",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 133,
+                "machine_name": "Microvickers Hardness Tester (MV1-PC) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 4
+            },
+            {
+                "sr_no": 134,
+                "machine_name": "Motorised Rockwell Hardness Tester Model:MOBI-ROCK",
+                "machine_code": "MOBI-ROCK",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 135,
+                "machine_name": "Motorized X-Y Stage Computerized Micro Vickers Hardness",
+                "machine_code": "MV1 PRO",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 136,
+                "machine_name": "Moving Head Brinell Machine Brinmax 3000 ( MOD)",
+                "machine_code": "BRINMAX-3000 MOD",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 137,
+                "machine_name": "Moving Head Load Cell Based Rockwell Cum Brinell",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 138,
+                "machine_name": "Moving Head Rockwell Hardness Machine:RASN-TSFA-MH",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "RASN-TSFA-MH",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 139,
+                "machine_name": "Multi Axis Computerized Brinell Hardness Testing Machine",
+                "machine_code": "BRINMAX B3000 V",
+                "stock_group": "HTD M/C",
+                "category": "Multi Axis Computerized Brinell Hardness Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 140,
+                "machine_name": "Optical Vickers Cum Brinell Hardness Testing Machine",
+                "machine_code": "VCB-250",
+                "stock_group": "HTD M/C",
+                "category": "Vickers cum Brinell Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 141,
+                "machine_name": "Optical Vickers Cum Brinell Hardness Testing Machine [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 142,
+                "machine_name": "ROCKWELL CUM BRINELL HARDNESS TESTER (RASNB)",
+                "machine_code": "RASNB",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 143,
+                "machine_name": "ROCKWELL CUM BRINELL HARDNESS TESTER (RASNB-62.5)",
+                "machine_code": "RASNB-62.5",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 144,
+                "machine_name": "ROCKWELL CUM BRINELL HARDNESS TESTER (RASNB) SPL",
+                "machine_code": "RASNB-SPL",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 145,
+                "machine_name": "ROCKWELL CUM BRINELL HARDNESS TESTER (RASNMB)",
+                "machine_code": "RASNMB",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 146,
+                "machine_name": "ROCKWELL CUM SUPERFICIAL HARDNESS TESTER (RASNMT)",
+                "machine_code": "RASNMT",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 147,
+                "machine_name": "ROCKWELL HARDNESS TESTER(RASN)",
+                "machine_code": "RASN",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 3
+            },
+            {
+                "sr_no": 148,
+                "machine_name": "ROCKWELL HARDNESS TESTER(RASNM)",
+                "machine_code": "RASNM",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 149,
+                "machine_name": "ROCKWELL HARDNESS TESTER (RASN) SPL",
+                "machine_code": "RASN-SPL",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 150,
+                "machine_name": "ROCKWELL HARDNESS TESTER (RASN) SPL (TWIN COLUMN)",
+                "machine_code": "RASN TWIN COLUMN",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 151,
+                "machine_name": "ROCKWELL SUPERFICIAL HARDNESS TESTER(RASNT)",
+                "machine_code": "RASNT",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 152,
+                "machine_name": "Semi Automatic Rockwell Cum Brinell Hardness",
+                "machine_code": "RASNB-TS",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 153,
+                "machine_name": "Semi Automatic Rockwell Cum Superficial Hardness",
+                "machine_code": "RASNT-TS",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 154,
+                "machine_name": "Semi Automatic Rockwell Hardness Tester",
+                "machine_code": "RASN-TS",
+                "stock_group": "HTD M/C",
+                "category": "Rockwell and Combined Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 155,
+                "machine_name": "Semi Automatic Rockwell Hardness Tester Model",
+                "machine_code": "RASNE-TS",
+                "stock_group": "HTD M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 156,
+                "machine_name": "Semi Automatic Rockwell Hardness Tester [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 157,
+                "machine_name": "SINGLE COLUMN BALL SCREW M/C (Unitek-97050) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 158,
+                "machine_name": "SINGLE COLUMN BALL SCREW TESTING M/C (Unitek-9701)",
+                "machine_code": "UNITEK-9701",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 159,
+                "machine_name": "SINGLE COLUMN BALL SCREW TESTING M/C (Unitek-97025)",
+                "machine_code": "UNITEK-97025",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 160,
+                "machine_name": "SINGLE COLUMN BALL SCREW TESTING M/C (Unitek-97050)",
+                "machine_code": "UNITEK-97050",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 161,
+                "machine_name": "SUB ZERO BATH",
+                "stock_group": "OTHER M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 162,
+                "machine_name": "TEST_U4",
+                "machine_code": "TEST-4",
+                "stock_group": "Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 163,
+                "machine_name": "TORSION TESTING MACHINE(TT-10)",
+                "machine_code": "TT-10",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 164,
+                "machine_name": "TORSION TESTING MACHINE(TT-20)",
+                "machine_code": "TT-20",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 165,
+                "machine_name": "TORSION TESTING MACHINE(TT-50)",
+                "machine_code": "TT-50",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 166,
+                "machine_name": "TORSION TESTING MACHINE(TT-6)",
+                "machine_code": "TT-6",
+                "stock_group": "OTHER M/C",
+                "category": "Torsion Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 167,
+                "machine_name": "Touch Screen Computerized Chain & Rope Testing Machine",
+                "machine_code": "CRE-20 TS",
+                "stock_group": "UTN M/C",
+                "category": "Chain and Rope Testing Machine",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 168,
+                "machine_name": "Universal Load Cell Based Hardness Testing Machine",
+                "machine_code": "UNI-INDENT",
+                "stock_group": "UTN M/C",
+                "category": "Universal Load-cell Based Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 169,
+                "machine_name": "Universal Testing Machine Hydraulic Griping",
+                "machine_code": "UTE-20 HGFL UNIPRO",
+                "stock_group": "UTN M/C",
+                "category": "Electro Mechanical UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 170,
+                "machine_name": "Universal Testing Machine Hydraulic Griping Front",
+                "machine_code": "UTE HGFL-TS \u03b1 40",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 171,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRO MECHANICAL MODEL",
+                "machine_code": "UTNE-100 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 172,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN/E 10)",
+                "machine_code": "UTNE-10",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 173,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN /E100)",
+                "machine_code": "UTNE-100",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 174,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN/E 20)",
+                "machine_code": "UTNE-20",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 175,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN/E 40)",
+                "machine_code": "UTNE-40",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 176,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN/E-60)",
+                "machine_code": "UTNE-60",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 177,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN/ES-10]",
+                "machine_code": "UTN/ES-10",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 178,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN/ES-40]",
+                "machine_code": "UTN/ES-40",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 179,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTROMECHANICAL(UTN/ES-60]",
+                "machine_code": "UTN/ES-60",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 180,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO(UTES-10)",
+                "machine_code": "UTES-10",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 181,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO(UTES-100)",
+                "machine_code": "UTES-100",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 182,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO UTES-100 T.S",
+                "machine_code": "UTES-100 TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 183,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO UTES-10 T.S",
+                "machine_code": "UTES-10 TS",
+                "stock_group": "UTN M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 184,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO(UTES-120)",
+                "machine_code": "UTES-120",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 185,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO(UTES-150)",
+                "machine_code": "UTES-150",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 186,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO(UTES-20)",
+                "machine_code": "UTES-20",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 187,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO UTES-20 T.S",
+                "machine_code": "UTES-20 TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 188,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO(UTES-40)",
+                "machine_code": "UTES-40",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 189,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO(UTES-60)",
+                "machine_code": "UTES-60",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 190,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC SERVO UTES-60 T.S",
+                "machine_code": "UTES-60 TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 191,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-10)",
+                "machine_code": "UTE-10",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 192,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-100)",
+                "machine_code": "UTE-100",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 193,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-100 HGFL)",
+                "machine_code": "UTE-100 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 194,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-100 HGFL TS",
+                "machine_code": "UTE-100 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 195,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-100 TS",
+                "machine_code": "UTE-100 TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 196,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-10 HGFL",
+                "machine_code": "UTE-10 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 197,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-120)",
+                "machine_code": "UTE-120",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 198,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-120 HGFL)",
+                "machine_code": "UTE-120 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 199,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE120HGFLTS)",
+                "machine_code": "UTE-120 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 200,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE120-TS)",
+                "machine_code": "UTE-120 TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 201,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-150)",
+                "machine_code": "UTE-150",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 202,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-20)",
+                "machine_code": "UTE-20",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 203,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-200)",
+                "machine_code": "UTE-200",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 204,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-20 HGFL",
+                "machine_code": "UTE-20 HGFL",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 205,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-20 HGFL TS",
+                "machine_code": "UTE-20 HGFL TS",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 206,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-20 T.S)",
+                "machine_code": "UTE-20 TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 207,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-20 UNIPRO)",
+                "machine_code": "UTE-20 UNIPRO",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 208,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-40)",
+                "machine_code": "UTE-40",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 209,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-40 HGFL)",
+                "machine_code": "UTE-40 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No.",
+                "fg_quantity": 2
+            },
+            {
+                "sr_no": 210,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-40 HGFL) (OTC)",
+                "machine_code": "UTE-40 HGFL OTC",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 211,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-40 HGFL TS",
+                "machine_code": "UTE-40 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 212,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-40 HGFL UNIPRO",
+                "machine_code": "UTE-40 HGFL UNIPRO",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 213,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-40 UNIPRO)",
+                "machine_code": "UTE-40 UNIPRO",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 214,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-60)",
+                "machine_code": "UTE-60",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 3
+            },
+            {
+                "sr_no": 215,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC(UTE-60 HGFL)",
+                "machine_code": "UTE-60 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 216,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-60 HGFL-TS)",
+                "machine_code": "UTE-60 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 217,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTE-60 TS",
+                "machine_code": "UTE-60 TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 218,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTE-60 UNIPRO)",
+                "machine_code": "UTE-60 UNIPRO",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 219,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-100 HGFL",
+                "machine_code": "UTES-100 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 220,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-100 HGFL TS",
+                "machine_code": "UTES-100 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 221,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-10 HGFL",
+                "machine_code": "UTES-10 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 222,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-10 HGFL TS",
+                "machine_code": "UTES-10 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 223,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-120 HGFL",
+                "machine_code": "UTES-120 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 224,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTES-120 HGFL TS)",
+                "machine_code": "UTES-120 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 225,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-150 HGFL TS",
+                "machine_code": "UTES-150 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 226,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-200 HGFL",
+                "machine_code": "UTES-200 HGFL",
+                "stock_group": "UTN M/C",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 227,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-20 HGFL",
+                "machine_code": "UTES-20 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 228,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-20 HGFL TS",
+                "machine_code": "UTES-20 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 229,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC (UTES-30 HGFL)",
+                "machine_code": "UTES-30 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 230,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-40 HGFL",
+                "machine_code": "UTES-40 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 231,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-40 HGFL TS",
+                "machine_code": "UTES-40 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 232,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-60 HGFL",
+                "machine_code": "UTES-60 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Electronic UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 233,
+                "machine_name": "UNIVERSAL TESTING M/C ELECTRONIC UTES-60 HGFL TS",
+                "machine_code": "UTES-60 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Computerized Touch - Screen Control UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 234,
+                "machine_name": "UNIVERSAL TESTING M/C ELE.MECHANICAL-UTN/E-100 HGFL",
+                "machine_code": "UTNE-100 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 235,
+                "machine_name": "UNIVERSAL TESTING M/C ELE.MECHANICAL(UTN/E-40 HGFL)",
+                "machine_code": "UTNE-40 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 236,
+                "machine_name": "UNIVERSAL TESTING M/C ELE.MECHANICAL UTNE-60HGFL TS",
+                "machine_code": "UTN/E-60 HGFL TS",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 237,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL(UTN-10)",
+                "machine_code": "UTN-10",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 238,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL(UTN-100)",
+                "machine_code": "UTN-100",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 239,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL UTN-100 HGFL",
+                "machine_code": "UTN-100 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 240,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL(UTN-20)",
+                "machine_code": "UTN-20",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 241,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL(UTN-40)",
+                "machine_code": "UTN-40",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 242,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL UTN-40 HGFL",
+                "machine_code": "UTN-40 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 243,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL(UTN-60)",
+                "machine_code": "UTN-60",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 244,
+                "machine_name": "UNIVERSAL TESTING M/C MECHANICAL UTN-60 HGFL",
+                "machine_code": "UTN-60 HGFL",
+                "stock_group": "UTN M/C",
+                "category": "Analog UTM",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 245,
+                "machine_name": "VERTICAL DYNAMIC BALANCING MACHINE(HDVM-10)",
+                "machine_code": "HDVM-10",
+                "stock_group": "BMD M/C",
+                "category": "Vertical Balancing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 246,
+                "machine_name": "VERTICAL DYNAMIC BALANCING MACHINE(HDVM-100)",
+                "machine_code": "HDVM-100",
+                "stock_group": "BMD M/C",
+                "category": "Vertical Balancing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 247,
+                "machine_name": "VERTICAL DYNAMIC BALANCING MACHINE(HDVM-100) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 248,
+                "machine_name": "VERTICAL DYNAMIC BALANCING MACHINE(HDVM-10) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 249,
+                "machine_name": "VERTICAL DYNAMIC BALANCING MACHINE(HDVM-30)",
+                "machine_code": "HDVM-30",
+                "stock_group": "BMD M/C",
+                "category": "Vertical Balancing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 250,
+                "machine_name": "VERTICAL DYNAMIC BALANCING MACHINE(HDVM-50)",
+                "machine_code": "HDVM-50",
+                "stock_group": "BMD M/C",
+                "category": "Vertical Balancing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 251,
+                "machine_name": "VERTICAL DYNAMIC BALANCING MACHINE(HDVM-50) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 252,
+                "machine_name": "VERTICAL DYNAMIC BALANCING M/C (HDVTM-5)",
+                "machine_code": "HDVTM-5",
+                "stock_group": "BMD M/C",
+                "category": "Vertical Balancing Machine",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 253,
+                "machine_name": "VERTICAL DYNAMIC BALANCING M/C (HDVTM-5) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 254,
+                "machine_name": "VICKER / BRINELL HARDNESS TESTER MACHINE (VBM-62.5)",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 255,
+                "machine_name": "Vickers Hardness Tester Model:VM-50 PRO",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 256,
+                "machine_name": "VICKERS HARDNESS TESTER P.C. (VM-10)",
+                "machine_code": "VM-10 PC",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 257,
+                "machine_name": "VICKERS HARDNESS TESTER P.C.(VM-30)",
+                "machine_code": "VM-30 PC",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 258,
+                "machine_name": "VICKERS HARDNESS TESTER P.C.(Vm-50)",
+                "machine_code": "VM-50 PC",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 3
+            },
+            {
+                "sr_no": 259,
+                "machine_name": "VICKERS HARDNESS TESTER P.C.(Vm-50) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 1
+            },
+            {
+                "sr_no": 260,
+                "machine_name": "VICKERS HARDNESS TESTER(VM-10)",
+                "machine_code": "VM-10",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 261,
+                "machine_name": "VICKERS HARDNESS TESTER(VM-30)",
+                "machine_code": "VM-30",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No."
+            },
+            {
+                "sr_no": 262,
+                "machine_name": "VICKERS HARDNESS TESTER(VM-50)",
+                "machine_code": "VM-50",
+                "stock_group": "HTD M/C",
+                "category": "Vickers Hardness Tester",
+                "base_units": "No.",
+                "fg_quantity": 5
+            },
+            {
+                "sr_no": 263,
+                "machine_name": "VICKERS HARDNESS TESTER(VM-50) [RR]",
+                "stock_group": "Other Repair & Reconditioning M/cs",
+                "base_units": "No.",
+                "fg_quantity": 3
+            }
+        ]
+    }
+}

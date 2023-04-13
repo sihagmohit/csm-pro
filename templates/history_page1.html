@@ -1,0 +1,240 @@
+{% extends "template.html" %}
+{% block content %}
+
+
+
+
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   }
+</style>
+<div class="p-3">
+ <div class="p-1 mb-3">
+      <div class="tx-dark tx-15 tx-bold">HISTORY</div>
+   </div>
+
+
+            <div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+              <div id="table_button">
+              </div>
+              <!-- <input type="text" class="form-control" placeholder="Search" id="search_table"> -->
+              <div class="input-group">
+                 <input type="text" id="datatable1_search" class="form-control" placeholder="Search" >
+              </div>
+            </div>
+
+
+   <table id="datatable1" class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" >
+      <thead class="bg-dark tx-white">
+         <tr>
+            <th>Sr.NO.</th>
+            <th>Database NAME</th>
+            <th>TIME STAMP</th>
+            <th>VIEW</th>
+            
+         </tr>
+
+       </thead>
+      <tbody id="tablebody">
+
+       </tbody>
+   </table>
+</div>
+   <script type="text/javascript"> 
+
+
+       $.fn.dataTable.ext.errMode = 'none';
+      var socket = io.connect('http://'+document.domain+':'+location.port);
+      
+      database_name ="{{record}}"
+      console.log("new name",database_name)
+
+      $.ajax({
+        type: 'POST',
+        url: '/view_history_data',
+        data: JSON.stringify(database_name),
+        contentType: 'application/json',
+        success: function (data) {
+            console.log(data);
+            var str ='';
+
+      for(var i=0;i<data.length;i++){
+      	console.log(data)
+            str +='<tr>'
+            str +='<td>'+String(i+1)+'</td>';
+            str +='<td>'+ data[i]['database_name'] +'</td>';
+            // str +='<td>'+ data[i]['docs_count']+'</td>';
+            str +='<td>'+ data[i]['timestamp']+'</td>';
+            
+            str +='<td style="text-align:center"><button type="button" class="btn btn-sm btn-info Rectangle_without_color" onclick="view_full_database(\' '+data[i]['docs_count']+'\')">VIEW</button> </td>'
+
+            str +='</tr>' 
+
+          // str +='<td>'+ data[i]['live_sales'] +'</td>';
+
+          }
+
+      document.getElementById("tablebody").innerHTML = str;
+
+
+
+      var table2 = $('#datatable1').DataTable( {
+              //"scrollX": true,
+              lengthChange: false,
+              "dom": 'lrtip',
+              "deferRender": true,
+                    "initComplete": function (settings, json) {
+          $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+              
+      
+      buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+              ]
+      
+      
+          } );
+      table2.buttons( 0, null ).containers().appendTo( '#table_button' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable1_search').on( 'keyup', function () {
+          table2.search( this.value ).draw();
+          console.log("working")
+      } );
+            
+        }
+    });
+
+      
+      
+      function view_full_database(data_count){
+
+        console.log(database_name)
+
+        
+
+        if(database_name == "sales_order" ){
+            window.location.href = "/backup_sales_order/"+data_count;
+        }
+
+        else if(database_name == "wip"){
+             window.location.href = "/wip_backup_page/"+data_count;
+        }
+
+        else if(database_name == "machinery_components" ){
+             window.location.href = "/machinery_components_backup_page/"+data_count;
+            
+        }
+
+        else if(database_name == "stock" ){
+             window.location.href = "/stock_backup_page/"+data_count;
+            
+        }
+
+        if(database_name == "vendor_details"){
+            window.location.href = "/vendor_backup_page/"+data_count;
+        }
+
+      	
+      }
+      
+  
+      
+   </script>
+
+
+{% endblock %}

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+    <!-- Twitter -->
+    
+    
+    <meta name="twitter:title" content="Quinnect Technologies">
+    
+    
+
+   
+    <meta property="og:title" content="Quinnect Technologies">
+   <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+	
+
+
+    <!-- Meta -->
+    
+    <meta name="author" content="Cyronics">
+
+   <title>Cyronics IOT</title>
+
+    
+	<link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bracket.css')}}">
+	
+	
+	
+	
+	<style>
+:root {
+  --windows-blue: #365ec8;
+  --bluish: #3091c9;
+  --warm-blue: #5460dc;
+  --white: #ffffff;
+  --dusk-blue: #28499f;
+  --bluey-grey: #85a5c2;
+  --light-sky-blue: #FFFFFF;
+  --lipstick: #bb166b;
+  --bluish-grey-20: rgba(115, 137, 156, 0.2);
+  --topaz: #16b8bb;
+  --aquamarine: #00d7af;
+  --metallic-blue: #546593;
+  --bluish-grey: #73899c;
+  --very-light-pink: #d7d7d7;
+  --gray-medium: rgba(205, 205, 210, 0.5);
+  --text: #77777a;
+  ---style: #002251;
+}	
+
+	
+.Rectangle {
+  
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+  
+   font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--white);
+  
+}
+	
+.transparent-input {
+   background-color: rgba(0, 0, 0, 0);
+   border:none;
+   
+   font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--light-sky-blue);
+   
+   }
+   
+   
+.div_bottom_border{
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	border:none;
+	border-bottom: 2px solid white;
+}   
+      
+input[readonly].transparent-input{
+	background-color:transparent;
+	border:none;
+	
+	 font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--light-sky-blue);
+	
+}
+.form-control:focus {
+	background-color:transparent;
+	color: white;
+	
+	 font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--light-sky-blue);
+}
+
+.transparent-input.EDIT {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: var(--light-sky-blue);
+}
+
+
+.Forgot-Password {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-align: center;
+  color: white;
+}
+
+.Your-account-is-pend {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}
+
+
+
+
+	</style>
+	
+	
+	</head>
+
+  <body>
+
+    <div class="d-flex align-items-center justify-content-center ht-100v bg-dark" >
+      <div class="login-wrapper wd-300 wd-xs-350 pd-15 pd-xs-40 ">
+
+     <div class="signin-logo tx-center tx-28 tx-bold tx-inverse pd-10 "><span class="tx-normal"><img src="{{ url_for('static', filename='img/fie.png')}}" width="80%"></span></div>
+     
+
+       
+	  <!-- <div class="signin-logo tx-center tx-28 tx-bold tx-inverse pd-t-20 pd-b-20 "><span class="tx-normal"><img src="/static/img/cyronics_iot_logo_white.png" width="80%"></span></div> -->
+       <!-- <div class="tx-center mg-b-30">Ensuring Workplace Safety</div> -->
+	
+		
+		<div class="pt-2 pb-2 Your-account-is-pend" id="Message" >
+		
+		
+		</div>
+		
+		<!-- <div  id ="error" class="tx-16 tx-white tx-centet">{{ phone }} </div> -->
+		<!-- <div  id ="success" class="tx-16 tx-white tx-center">{{ password }}</div> -->
+		
+	
+	    <!--<div class="form-group">
+		
+		 
+		 <input type="text" id="phone" class="form-control transparent-input tx-white" placeholder="Enter your Phone Number" value={{ phone }} readonly>
+		 
+		
+		</div><!-- form-group -->
+        
+		
+		<div class="input-group mb-3 pl-2 pr-2 div_bottom_border pt-3">
+		  <div class="input-group-prepend">
+			<button class="btn transparent-input" type="button">+91</button>
+		  </div>
+		  <input type="text" id="phone" class="form-control transparent-input"  value={{ phone }}  >
+			  <div class="input-group-append">
+				
+			  </div>
+		</div>
+		
+		<!--<script type="text/javascript">
+		document.getElementById('phone').readOnly = true;
+		  function toggle_input() {
+			document.getElementById('phone').readOnly = false;
+		  } 
+		  
+		  
+		</script>-->
+		
+		
+		<div class="input-group mb-3 pl-2 pr-2 div_bottom_border">
+		  <input type="password" id="password" class="form-control transparent-input" value={{ password }}>
+			  <div class="input-group-append">
+				<button class="btn transparent-input EDIT" onclick="toggle_password()" type="button">VIEW</button>
+			  </div>
+		</div>
+		
+		
+		<script type="text/javascript">
+		 function toggle_password() {
+			  var x = document.getElementById("password");
+			  if (x.type === "password") {
+				x.type = "text";
+			  } else {
+				x.type = "password";
+			  }
+			}
+		  
+		</script>
+		
+		
+		<!--<div class="form-group">
+          <input type="password" id="password" class="form-control" placeholder="Enter your password" value={{ password }}>
+         
+        </div><!-- form-group -->
+		
+		
+		<div class="form-group">    
+		 <!-- <select class="form-control"  id="role">
+			   <option value={{ role }} selected disabled> {{ role }} </option>
+				<option value="Employee">Employee</option>
+				  <option value="Security">Security</option>
+				  <option value="Admin" >Admin</option>
+		</select> -->
+		
+		</div><!-- form-group -->
+		
+		
+		
+        <button onclick="relocate_signup()" class="btn btn-block mg-t-10 Rectangle" >LOG IN</button>
+
+        
+
+
+		
+		 <a href="/createaccount" class="tx-12 d-block mg-t-10 pt-5 tx-center Forgot-Password tx-white"><u>Create Account?</u></a> 
+		
+		
+		 <a href="/forgotpassword" class="tx-12 d-block mg-t-40 tx-center Forgot-Password tx-white "><u>Forgot password?</u></a> 
+
+		 <!-- <a href="/supportandfaq" class="tx-12 d-block mg-t-50 tx-center Forgot-Password "><u>Support and FAQ</u></a>
+		
+		<a href="/terms_and_conditions" class="tx-12 d-block mg-t-20 tx-center Forgot-Password "><u>Terms and Conditions</u></a>  -->
+		 <!-- <a href="/" class="tx-12 d-block mg-t-50 tx-center Forgot-Password "><u>Support and FAQ</u></a>  -->
+		
+		 <!-- <a href="/" class="tx-12 d-block mg-t-20 tx-center Forgot-Password "><u>Terms and Conditions</u></a>  -->
+		
+		
+		
+		
+	 <!--<div class="signin-logo tx-center tx-15 tx-bold tx-inverse pd-b-20"><span class="tx-normal"><img src="/static/img/Logo_C4i4.png" width="55%"></span></div> -->
+      
+	 
+	 
+	 
+	 
+	 </div><!-- login-wrapper -->
+	 
+	 
+    </div><!-- d-flex -->
+
+	
+
+	<div class="modal" tabindex="-1" role="dialog" id="forgotpassword">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content round-0">
+        
+		
+		
+    </div>
+  </div>
+</div>
+	
+	
+	
+	
+   
+	<script src="{{ url_for('static', filename='lib/jquery/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/popper.js/popper.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/moment/moment.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-switchbutton/jquery.switchButton.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/peity/jquery.peity.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{url_for('static',filename='socket.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bracket.js')}}"></script>
+	<script>
+function relocate_signup()
+{
+	data={
+	"phone":document.getElementById("phone").value,
+	"password":document.getElementById("password").value,
+	// "o_id":document.getElementById("o_id").innerHTML,
+	//"role": document.getElementById("role").value,
+	}
+	console.log(data);
+	socket.emit("login_cred",data);
+    Android.showToast(data['phone'],data['password']);
+} 
+
+</script>
+
+<script>
+var socket=io.connect('http://'+document.domain+":"+location.port);
+//socket.emit("Log In")
+ 
+ data={
+	"phone":document.getElementById("phone").value,
+	"password":document.getElementById("password").value,
+	}
+	console.log(data);
+	socket.emit("login_cred_check",data);
+ 
+ 
+ 
+ socket.on("login_status",function(data){
+ console.log(data);
+ if (data == "2"){
+	document.getElementById("Message").innerHTML = "Login Successful ! Redirecting . . .";	
+	location.href = "/gap_calculator";
+ } 
+ if (data == "1"){
+	document.getElementById("Message").innerHTML = "Your account is pending verification by your Admin. Please contact your Admin in case of any delays.";
+}		
+ if(data == "0"){
+	document.getElementById("Message").innerHTML = "Please check credentials.";
+ } 
+ 
+ //  location.href = "/epass";
+ 
+ });
+
+ socket.on("login_status_check",function(data){
+ console.log(data);
+ if (data == "2"){
+	document.getElementById("reset_password_button")
+	document.getElementById("Message").classList.add("Your-account-is-pend");
+	document.getElementById("Message").classList.add("pb-2");
+	document.getElementById("Message").classList.add("pt-2");
+	document.getElementById("Message").innerHTML = "Congratulations, your account has been verified!";	
+	//location.href = "/epass";
+ } 
+ if (data == "1"){
+	document.getElementById("Message").classList.add("Your-account-is-pend");
+	document.getElementById("Message").classList.add("pb-2");
+	document.getElementById("Message").classList.add("pt-2");
+	document.getElementById("Message").innerHTML = "Your account is pending verification by your Admin. Please contact your Admin in case of any delays.";
+}		
+ 
+ //  location.href = "/epass";
+ 
+ });
+ </script>
+
+<script type="text/javascript">
+    function showAndroidToast(toast) {
+        Android.showToast(toast);
+    }
+</script>
+
+
+  </body>
+</html>

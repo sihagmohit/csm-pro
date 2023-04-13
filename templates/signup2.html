@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bracket">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/bracket">
+    <meta property="og:title" content="Bracket">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+	<!--	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --> 
+    <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+   <title>Twin 4.0</title>
+
+    
+	<link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bracket.css')}}"> 
+	
+	<style>
+
+
+:root {
+  --windows-blue: #365ec8;
+  --bluish: #3091c9;
+  --warm-blue: #5460dc;
+  --white: #ffffff;
+  --dusk-blue: #28499f;
+  --bluey-grey: #85a5c2;
+  --light-sky-blue: #d4e3f0;
+  --lipstick: #bb166b;
+  --bluish-grey-20: rgba(115, 137, 156, 0.2);
+  --topaz: #16b8bb;
+  --aquamarine: #00d7af;
+  --metallic-blue: #546593;
+  --bluish-grey: #73899c;
+  --very-light-pink: #d7d7d7;
+  --gray-medium: rgba(205, 205, 210, 0.5);
+  --text: #77777a;
+  ---style: #002251;
+}
+
+.Rectangle {
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--white);
+}
+
+.Rectangle-dark {
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var( --metallic-blue );
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--white);
+}
+	
+.dark_backgorund {
+
+  opacity: 0.89;
+  background-image: linear-gradient(to bottom, #3b76ef 0%, #211b4e 100%);
+  mix-blend-mode: multiply;
+ background-color: #6e6e6e;
+ 
+}
+
+.FORGOT-YOUR-PASSWORD {
+  width: 160px;
+  height: 36px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.87px;
+  text-align: center;
+  color:#365ec8 ;
+  margin: auto;
+  
+}
+
+.Message_Text{
+
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+
+}
+
+
+
+.transparent-input {
+   background-color: rgba(0, 0, 0, 0);
+   border:none;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+
+   }
+   
+   
+.div_bottom_border{
+	background-color: rgba(0, 0, 0, 0);
+	border:none;
+	border-bottom: 2px solid  var(--windows-blue);
+	font-family: Manrope;
+	  font-size: 12px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: 1.5px;
+	  color: var(--windows-blue);
+		
+}   
+      
+input[readonly].transparent-input{
+	background-color:transparent;
+	border:none;
+	font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+	
+	
+}
+.form-control:focus {
+	background-color:transparent;
+ font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+	
+}
+
+.transparent-input-bottom {
+  
+  background-color: rgba(0, 0, 0, 0);
+   border:none;
+   border-bottom: 2px solid  var(--windows-blue);
+	  font-family: Manrope;
+	  font-size: 12px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: 1;
+	  color: var(--windows-blue);
+
+   }
+   
+
+
+
+.Please-confirm-your {
+  width: 197px;
+  height: 34px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+   margin: auto;
+}
+
+
+.Placeholder-Copy-2 {
+  
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.45px;
+  text-align: center;
+  color: var(--windows-blue);
+}
+
+.Still-having-trouble {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+}
+.Still-having-trouble-1 {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--windows-blue);
+  margin:auto;
+}
+
+  .Please-provide-the-r {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+  
+  
+  
+  }
+
+.Placeholder-Copy {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.3px;
+  color: var(--windows-blue);
+}
+.form-control.base {
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  background-color: #fbfbfb;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--windows-blue)
+  
+  }
+
+.form-control.base::-webkit-input-placeholder {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+   border:none;
+}
+ 
+.form-control.base1 {
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  background-color: #fbfbfb;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--windows-blue);
+   border:none;
+  
+  }
+
+.form-control.base1::-webkit-input-placeholder {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  border:none;
+}
+
+ .Placeholder-Copy-2 {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.3px;
+  color: var(--windows-blue);
+}
+ 
+ 
+ .Have-you-experien {
+ 
+  font-family: Manrope;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.82;
+  letter-spacing: 0.3px;
+  color: var(--dusk-blue);
+}
+
+.WEAK {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #ff60ac;
+  background-color:#FFF;
+}
+.strong {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: var(--aquamarine);
+  background-color:#FFF;
+}
+	.Forgot-Password {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--white);
+}
+
+	
+ 
+	</style>
+	
+	
+	
+
+	</head>
+
+  <body class="bg-dark" >
+
+    <div class="d-flex align-items-center justify-content-center ht-100v ">
+
+      <div class="login-wrapper wd-300 wd-xs-350">
+        
+		<div class="signin-logo tx-center tx-28 tx-bold tx-inverse pd-b-20"><span class="tx-normal"><img src="{{ url_for('static', filename='img/fie.png')}}" width="40%"></span></div> 
+      
+		<div class="Please-provide-the-r pb-20 mg-b-10 "> Please provide the required information to sign up. </div> 
+      
+	  
+		
+		<div  id="questions" style="height: 300px; overflow-y: auto;">
+			<!--<div class="form-group">
+			  <input type="number"  id="o_id" class="form-control" placeholder="Organisation ID ">
+			</div> <!-- form-group -->
+		  
+		<div class="pd-25 pd-xs-40 bg-white">
+		  
+			<div class="form-group">
+				<label for="name" class="Placeholder-Copy"> Name </label>
+			  <input type="text" id="name" class="form-control base1" placeholder="Enter your Name" data-toggle="popover"  data-placement="top"  title="Enter your full name" data-content="Sample Name - Aditya Joshi">
+			  <!-- <a href="#" > <i class="fa fa-info-circle" aria-hidden="true"></i>  </a> -->
+			</div><!-- form-group -->
+		  
+		   <div class="form-group">
+			  <label for="password" class="Placeholder-Copy"> Password </label>
+			  <input type="password" id="password" class="form-control base1" 
+			  placeholder="Enter your password"
+			  data-toggle="popover"  data-placement="top"
+			data-html="true" 			  
+			  title="Password Requirement" 
+			  data-content="Must be  between 7 to 15 characters which contain at least one numeric digit and a special character. 
+			<span class = 'tx-primary'> Sample Password - newdelhi1! </span>">         
+			<button class="btn btn-small WEAK"  id="password_status" type="button">WEAK</button>
+			</div><!-- form-group -->
+			
+		
+		
+			<div class="form-group">
+			  <label for="password" class="Placeholder-Copy"> Verify Password </label>
+			  <input type="password" id ="verify_password" class="form-control base1" placeholder="Verify your password"    
+			  data-toggle="popover"  data-placement="top"  
+			  title="Verify Password" 
+			  data-content="Password must match the password entered before.">   
+			<button class="btn btn-small WEAK" id="verify_password_status" type="button">WRONG</button>			  
+			</div><!-- form-group -->
+			
+			
+			
+			<!--<div class="input-group mb-3 pl-2 pr-2 div_bottom_border-blue pt-5">
+			<input type="text" id="password" class="form-control transparent-input-blue"  placeholder="Your New Password">
+			  <div class="input-group-append">
+				<button class="btn btn-block  WEAK"  id="password_status" type="button"></button>
+			  </div>
+			</div>
+			
+			
+			<div class="input-group mb-3 pl-2 pr-2 div_bottom_border-blue ">
+			<input type="password" id="verify_password" class="form-control transparent-input-blue"  placeholder="Confirm Password">
+			 <div class="input-group-append">
+				<button class="btn transparent-input-blue" id="verify_password_status" type="button"></button>
+			  </div>
+			</div>-->
+			
+			<script>
+
+var original_password = document.getElementById("password");
+var original_verify_password = document.getElementById("verify_password");
+ 
+var password_Status = "WEAK";
+original_password.onkeyup = function() {
+
+var original_password_check = CheckPassword(original_password.value) ; 
+if( original_password_check == false){
+	document.getElementById("password_status").classList.remove("strong");
+	document.getElementById("password_status").classList.add("WEAK");
+	document.getElementById("password_status").classList.add("p-2");
+ 	document.getElementById("password_status").innerHTML = "WEAK";
+ }
+ else{
+	document.getElementById("password_status").classList.remove("WEAK");
+ 	document.getElementById("password_status").classList.add("strong");
+	document.getElementById("password_status").classList.add("p-2");
+ 	document.getElementById("password_status").innerHTML = "STRONG";
+	password_Status = "STRONG";
+ 
+ }
+}
+var verify_password_Status = "WRONG";
+original_verify_password.onkeyup = function() {
+
+if (original_verify_password.value != original_password.value) {
+	document.getElementById("verify_password_status").classList.remove("strong");
+	document.getElementById("verify_password_status").classList.add("WEAK");
+	document.getElementById("verify_password_status").classList.add("p-2");
+ 	document.getElementById("verify_password_status").innerHTML = "WRONG";
+ }
+ else{
+	document.getElementById("verify_password_status").classList.remove("WEAK");
+ 	document.getElementById("verify_password_status").classList.add("strong");
+	document.getElementById("verify_password_status").classList.add("p-2");
+ 	document.getElementById("verify_password_status").innerHTML = "MATCHED";
+	verify_password_Status = "MATCHED";
+ }
+ 
+ console.log(verify_password_Status); 
+ if ( verify_password_Status == "MATCHED" && password_Status == "STRONG" ) {
+	console.log("Correct Loop");
+	document.getElementById("reset_password_button").classList.remove("Rectangle-disabled");
+ 	document.getElementById("reset_password_button").classList.add("Rectangle");
+	document.getElementById("reset_password_button").disabled = false;
+ 
+ }
+ 
+ 
+}
+
+
+
+</script>
+
+			
+			
+			<div class="form-group">
+			 <label for="employee_id" class="Placeholder-Copy"> Employee ID </label>
+			  <input type="text" id="employee_id"  class="form-control base1" placeholder="Enter your employee ID"
+			  data-toggle="popover"  data-placement="top"  
+			  title="Valid Employee ID" 
+			  data-html="true" 
+			  data-content="Please enter a valid employee ID. ">      			  
+			</div><!-- form-group -->
+			
+			<div class="form-group">
+			   <label for="age" class="Placeholder-Copy"> Date of Birth </label>
+			  <input type="date" id="age" class="form-control base1" placeholder="" value="1990-01-01" >      			  			  
+			</div><!-- form-group -->
+			
+				<form >
+			<div class="pt-1 pb-1 Have-you-experien">
+				Select one of the following
+				</div>
+			  <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="employee_type">
+				<label class="form-check-label Have-you-experien" for="employee_type">Full-time Employee </label>
+			  </div>
+			   <div class="form-check pl-4 ">
+				<input  class="form-check-input" type="radio" name="exampleRadios" id="employee_type_labour">
+				<label class="form-check-label Have-you-experien" for="employee_type_labour"> Contract</label>
+				 </div>
+				
+				</form>
+				
+				<div class="form-group">
+				 <label for="contract_organisation" class="Placeholder-Copy"> Contract Organisation </label>
+			  <input type="text" id="contract_organisation" class="form-control base1" placeholder="Enter contract organisation" 
+			  data-toggle="popover"  data-placement="top" 
+			   data-html="true" 
+			  title="Contract Organisation" data-content="Please enter your contract organisation. <span class='tx-danger'>Please do not fill this field if you are a full-time employee.</span> ">
+			  <!-- <a href="#" > <i class="fa fa-info-circle" aria-hidden="true"></i>  </a> -->
+			</div><!-- form-group -->
+		  
+			
+			<hr>
+			
+			<div  id="card_body_html">
+			
+			
+			
+			  
+			
+			</div>
+			
+			
+			
+			
+
+		</div>
+		
+		</div>
+		
+        <button onclick=" relocate_signup()"  class="btn btn-block mg-t-10 p-2 Rectangle">SIGN UP</button>
+
+		<div  id ="error" class="tx-white Please-provide-the-r"></div>
+		<div  id ="success" class="tx-white Please-provide-the-r"></div>
+		
+<a href="/login" class="tx-12 d-block mg-t-20 tx-center Forgot-Password "><u> Back </u></a> 
+    
+
+<script>
+//var socket=io.connect('http://'+document.domain+":"+location.port)
+
+ //======================================
+function CheckPassword(password) 
+{ 
+var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+if(password.match(paswd)) 
+{ 
+//alert('Correct, try another...')
+return true;
+}
+else
+{ 
+//alert('Wrong...!')
+return false;
+}
+}  
+
+
+//=========================================== 
+ 
+
+</script>	
+	
+		
+		<script>
+function relocate_signup()
+{
+ // form filters 
+ var password = document.getElementById("password").value;
+ var verify_password = document.getElementById("verify_password").value;
+ var age = document.getElementById("age").value;
+ var name = document.getElementById("name").value;
+ var employee_id = document.getElementById("employee_id").value;
+
+  var employee_type = 0;
+  if (document.getElementById('employee_type').checked ){
+	 employee_type = "Full Time"
+  }
+  else {
+	employee_type = "Contract"
+  }
+ 
+ 
+ var contract_organisation = document.getElementById("contract_organisation").value;
+ 
+ var error = document.getElementById("error");
+ var success =  document.getElementById("success");
+ 
+ password_flag = CheckPassword(password)
+if (name == ""){
+
+error.innerHTML = "Name cannot be empty. "
+
+}
+else if( password_flag == false ){
+error.innerHTML = "Password must be  between 7 to 15 characters which contain at least one numeric digit and a special character. "
+}
+else if (password != verify_password){
+	error.innerHTML = "Passwords do not match"
+}
+else {
+
+// Selectable Questions 
+console.log(data);
+   
+  
+  for(var question_counter=0 ; question_counter < ( global_dataset.length ) ; question_counter++){
+    
+	var data = global_dataset[question_counter]['question'];
+	global_dataset[question_counter]['question']["correct/better_option"] = "";
+    console.log(data);
+   
+	if(data['type']=='Options'){
+	
+	var options = document.getElementsByClassName(data['q_id']);
+	//console.log(options);
+	
+	for(var i = 0; i < options.length; i++) {
+	if(options[i].checked){
+       global_dataset[question_counter]['question']["correct/better_option"] = options[i].value;
+	   //console.log(global_dataset[question_counter]['question']["correct/better_option"]);
+	
+	   }
+	}
+	
+	
+   }
+   
+   if(data['type']=='Multiple_Options'){
+	
+	console.log("--------------------")
+	var options = document.getElementsByClassName(data['q_id']);
+	
+	
+	temp=[]
+	for(var i = 0; i < options.length; i++) {
+	if(options[i].checked){
+		//console.log(options[i]);
+		//console.log(options[i].value);
+		temp.push(options[i].value);
+		}
+	
+	}
+	
+	global_dataset[question_counter]['question']["correct/better_option"] = temp;
+	
+	
+   }
+   
+   if(data['type']=='Single Entry'){
+   
+   var element = document.getElementById(data['q_id']);
+   console.log(data['q_id']);
+   global_dataset[question_counter]['question']["correct/better_option"]  = element.value ;
+   
+    console.log("------------------------------------------------------")
+	console.log(global_dataset[question_counter]['question']["correct/better_option"]);
+	console.log("------------------------------------------------------")
+	
+   
+   }
+   
+   
+
+
+   
+  }
+ console.log(global_dataset);
+ 
+ // ==================== Check if all questions are answered =======================
+ 
+	 flag = 1
+	 for(var question_counter=0 ; question_counter < ( global_dataset.length ) ; question_counter++){
+	 
+		
+		if (global_dataset[question_counter]['question']["correct/better_option"] == ""){
+			var number = question_counter + 1 ;
+			document.getElementById("master_console").innerHTML = "Question " + number+ " is not answered. Please answer the question to continue."  ;
+			flag = 0;
+			break ;
+		}
+	 }
+	if (flag == 1 ){
+		//socket.emit("save_question_changes", global_dataset );
+		//document.getElementById("master_console").innerHTML = "Generating Epass . . ."
+		//socket.emit("declaration_data_new",global_dataset);
+		
+		
+		error.innerHTML = "";
+		success.innerHTML = "Signing Up ... ";
+ 
+		//--------------------------------------
+ 
+		 data = {
+			 "name":name,
+			 "password":password,
+			 "employee_id": employee_id,
+			 "age":age,
+			 "role" : "",
+			 "respiratory":"",
+			 "diabetes":"",
+			 "heart":"",
+			 "bp":"",
+			 "none":"",
+			 "yes_age":"",
+			 "employee_type":employee_type,
+			 "contract_organisation" : contract_organisation,
+			 "General_Questions" : global_dataset,
+			 }
+			socket.emit("Sign_Up_Request" ,data)
+	}
+	else{
+		error.innerHTML = "Please check if you have answered all questions.";
+		success.innerHTML = ""; 
+	}
+ }
+} 
+</script>
+
+     	 
+	 </div><!-- login-wrapper -->
+	 
+    </div><!-- d-flex -->
+
+   
+	<script src="{{ url_for('static', filename='lib/jquery/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/popper.js/popper.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/moment/moment.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/jquery-switchbutton/jquery.switchButton.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/peity/jquery.peity.js')}}"></script>
+    <script src="{{ url_for('static', filename='lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{url_for('static',filename='socket.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bracket.js')}}"></script>
+	
+	
+  </body>
+</html>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();   
+});
+</script>
+
+
+<script>
+var socket=io.connect('http://'+document.domain+":"+location.port)
+socket.emit("Sign Up")
+
+var global_dataset = [];
+
+ 
+ socket.on("signup_questions",function(questions){
+ console.log(questions);
+ inner_html = ""
+ 
+ for(var i = 0 ;i < questions.length ;i++){
+ console.log(i);
+
+ }
+
+});
+ socket.on("sign_up_status",function(msg){
+ console.log(msg);
+ if (msg == "Redirecting ..."){
+ 
+	location.href = "/login";
+ 
+ }
+ else{
+ success.innerHTML = "";
+ error.innerHTML = msg; 
+ }
+ 
+ 
+ });
+ 
+ </script>
+
+
+<script>
+
+socket.emit("get_signup_declaration_questions");
+socket.on("sent_signup_declaration_questions",function(dataSet){
+
+  console.log("data here");
+  
+	global_dataset = dataSet;
+    inner_html = ' <div class="Have-you-experien pd-2" > General Questions </div> '; 
+
+	for(var question_counter=0 ; question_counter < dataSet.length ; question_counter++){
+	  
+	  var data = dataSet[question_counter]['question'];
+	  console.log(data);
+	
+	  
+	  if(data['type']=='Options'){
+		
+		number = question_counter +1 ;
+		inner_html += '<div class="form-group ">' ; 
+		inner_html += '<label for="scan_unit" class="Have-you-experien">'+ number  + ". " + data['que'] + '</label>' ;
+		
+		for (var i= 0;i<data['options'].length ; i++){
+		
+		inner_html += '<div class="form-check pl-5">' ;
+		
+		
+		inner_html += '<input class="form-check-input '+data['q_id'] +'" type="radio" name="'+data['q_id'] +'" value="'+data['options'][i] +'" > ';
+		
+		inner_html += '<label class="form-check-label Have-you-experien"> '+ data['options'][i]  ; 
+		inner_html += '</label>' ; 
+		inner_html += '</div>' ;
+		
+		}
+		inner_html += '<hr >' ;
+		inner_html += '</div>'; 
+		
+		}
+	  
+	  else if(data['type']=='Single Entry'){
+		
+		number = question_counter +1 ;
+		inner_html += '<div class="form-group ">' ; 
+		inner_html += '<label for="scan_unit" class="Have-you-experien">'+ number  + ". " + data['que'] + '</label>' ;
+		
+		inner_html += '<div class="form-group">' ;
+		inner_html += '<input type="text" class="form-control" id="'+ data['q_id']+'">' ; 
+		inner_html += '</div>';
+		
+		inner_html += '<hr >' ;
+		inner_html += '</div>'; 
+		
+		
+		}
+	
+	  else if(data['type']=='Multiple_Options'){
+		
+		//console.log(data);
+		
+		number = question_counter + 1 ;
+		inner_html += '<div class="form-group ">' ; 
+		inner_html += '<label for="scan_unit" class="Have-you-experien">'+ number  + ". " + data['que'] + '</label>' ;
+		
+		for (var i= 0;i<data['options'].length ; i++){
+		
+		inner_html += '<div class="form-check pl-5">' ;
+		
+		
+		inner_html += '<input class="form-check-input '+data['q_id'] +'" type="checkbox" name="'+data['q_id'] +'" value="'+data['options'][i] +'" > ';
+		
+		
+		inner_html += '<label class="form-check-label Have-you-experien"> '+ data['options'][i]  ; 
+		inner_html += '</label>' ; 
+		inner_html += '</div>' ;
+		
+		}
+		inner_html += '<hr >' ;
+		inner_html += '</div>'; 
+		
+		
+		}
+	
+}
+
+inner_html += ' <div class="Have-you-experien pd-2" id="master_console" ></div> '; 
+
+//console.log(inner_html);
+//inner_html += ' <button type="button" onclick=get_changes() class="btn btn-secondary  btn-block"> Save </button>' ;   
+document.getElementById("card_body_html").innerHTML = inner_html ;
+  
+});
+
+</script>		

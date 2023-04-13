@@ -1,0 +1,328 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   }
+  
+
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+</style>
+<div class="p-3">
+      <div class="p-1 mb-3">
+          <div class="tx-dark tx-15 tx-bold">GAP ANALYSIS</div>
+       </div>
+
+
+
+<div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div id="table_button"></div>
+
+      <div class="input-group">
+         <input type="text" id="datatable1_search" class="form-control" placeholder="Search" >
+      </div>
+</div>
+
+
+   <table id="datatable1" class="table table-sm table-striped table-bordered " style="width:100%" >
+      <thead class="bg-dark tx-white">
+         <tr>
+            <th>SR.NO.</th>
+            <th>PART DESCRIPTION</th>
+            <th>LIVE SALES ORDER QUANTITY</th>
+            <th>PRODUCTION PLAN QTY. CONSIDERING BUFFER STOCK</th>
+            <th>ACTUAL REQUIRED QUANTITY</th>
+            <th>WIP QTY</th>
+            <th>FINISH STORE STOCK AS ON DATE</th>
+            <th>ISSUED QTY. FOR THE ASSLY</th>
+            <th>FINAL ORDER QUANTITY</th>
+            <th>SUPPLIER DETAILS</th>
+         </tr>
+      </thead>
+      <tbody id="tablebody">
+
+      </tbody>
+   </table>
+</div>
+
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal" id="reset_modal"  aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-body">
+              <div class="d-flex justify-content-center">
+                <div id = "loading" class="loader row"> </div>
+              </div>
+              <div style="color: #ffff">Please wait till auto refresh........
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+   <script type="text/javascript"> 
+
+
+       $.fn.dataTable.ext.errMode = 'none';
+      var socket = io.connect('http://'+document.domain+':'+location.port);
+
+      $('#reset_modal').modal('show');
+      document.getElementById("loading").style.display = "block";
+      
+      socket.on('connect', function() {
+      console.log('connected');
+         
+      });
+
+
+      socket.emit('gap_analysis_data');
+        
+      socket.on('send_gap_analysis_data',function(data){
+      
+      $('#reset_modal').modal('hide');
+      document.getElementById("loading").style.display = "none";       
+      
+      console.log(data)
+
+      var str ='';
+
+      for(var i=0;i<data.length;i++){
+            str +='<tr>'
+            str +='<td>'+String(i+1)+'</td>';
+            str +='<td>'+ data[i]['parts']+'</td>';
+            str +='<td>'+ data[i]['live_sales'] +'</td>';
+
+            str +='<td>'+ data[i]['production_plan']+'</td>';
+            str +='<td>'+ data[i]['actual_required']+'</td>';
+            if(data[i]['wip_qty'] == undefined ){
+                str +='<td>'+'0'+'</td>';
+            }
+            else{
+                str +='<td>'+ data[i]['wip_qty']+'</td>';
+            }
+
+             if(data[i]['finish_stock'] == undefined ){
+                   str +='<td>'+'0'+'</td>';
+            }
+            else{
+                str +='<td>'+ data[i]['finish_stock']+'</td>';
+            }
+
+            
+            // str +='<td>'+ data[i]['wip_qty_details']+'</td>';
+            // str +='<td>'+ data[i]['finish_stock']+'</td>';
+             if(data[i]['issued_qty'] == undefined ){
+                   str +='<td>'+'0'+'</td>';
+            }
+            else{
+                str +='<td>'+ data[i]['issued_qty']+'</td>';
+            }
+              
+
+            // str +='<td>'+ data[i]['issued_qty']+'</td>';
+            str +='<td>'+ data[i]['final_order']+'</td>';
+            // str +='<td>'+ data[i]['actual_order']+'</td>';
+
+            var supplier_data = data[i]['supplier_list']
+             str +='<td>'
+            for(j=0;j<=supplier_data.length;j++)
+            {
+              if(supplier_data[j] == undefined){
+                str +='' 
+                str +='<br>'
+              }
+              else{
+
+
+              str += supplier_data[j]
+               str +='<br>'
+           }
+              
+            }
+            str +='</td>';
+            
+          }
+            
+
+      document.getElementById("tablebody").innerHTML = str;
+
+
+
+      var table2 = $('#datatable1').DataTable( {
+              //"scrollX": true,
+              lengthChange: false,
+              "dom": 'lrtip',
+              "deferRender": true,
+                    "initComplete": function (settings, json) {
+          $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+              
+      
+      buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+              ]
+      
+      
+          } );
+      table2.buttons( 0, null ).containers().appendTo( '#table_button' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable1_search').on( 'keyup', function () {
+          table2.search( this.value ).draw();
+          console.log("working")
+      } );
+
+  });
+      
+      
+      
+  
+
+//    socket.emit('get_drop_down_machinelist')
+//    socket.on('send_drop_down_machinelist',function(data){
+//    console.log("gsdhaudhasdh")
+//    console.log(data)
+
+//     var str1="";
+     
+//       for(i=0;i<  data.length ;i++){
+
+//         console.log(data[i]["_id"])
+
+//         str1 += '<option value="'+data[i]["_id"]+'">'+data[i]["_id"]+'</option>';
+//       }
+     
+//       document.getElementById("prod").innerHTML = str1
+//    })
+
+//  // str1 = '<select  class="form-control select2" onchange="year_prod(this)" data-placeholder="Choose Browser">'
+
+//  // str1 += '</select>'
+      
+// function machinequantity_data(){
+    
+    
+
+
+// }
+
+
+   </script>
+</div>
+{% endblock %}

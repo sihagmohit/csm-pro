@@ -1,0 +1,94 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+.borderline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  transition: width 2s;
+  margin-right: 10px;
+  box-shadow: 10px 10px 5px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  border-radius: 8px;
+  max-width: 100%;
+
+}
+
+.button_1{
+
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+
+<div class="p-3">
+ <div class="p-1 mb-3">
+    <center>
+      <div class="tx-dark tx-15 tx-bold"><h1 style="margin-right:20px">DATABASE</h1></div>
+      </center>
+   </div>
+         <div class="container">
+            <div class="row">
+            <div class="col borderline">
+               <button class="btn btn-lg btn-info Rectangle_without_color button_1" id ="sales_order" onclick="view_backup(this)" >SALES ORDER</button>
+            </div>
+            <div class="col borderline">
+                      <button class="btn btn-lg btn-info Rectangle_without_color button_1" id ="stock" onclick="view_backup(this)">STOCK</button>
+            </div>
+            </div>
+
+                <div class="row" style="margin-bottom: 50px;margin-top: 50px;">
+                    <div class="col borderline">
+                        <button class="btn btn-lg btn-info Rectangle_without_color button_1" id ="vendor_details" onclick="view_backup(this)">VENDORS DETAILS</button>
+                    </div>
+                    <div class="col borderline">
+                        <button class="btn btn-lg btn-info Rectangle_without_color button_1" id ="wip" onclick="view_backup(this)">WIP</button>
+                    </div>
+                 </div>
+
+             <div class="row borderline" style="margin-bottom: 50px;">
+                <!-- <div class="col"> -->
+            
+                    <button class="btn btn-lg btn-info Rectangle_without_color button_1" id ="machinery_components" onclick="view_backup(this)">MACHINERY COMPONENTS</button>
+                <!-- </div> -->
+                </div>
+              </div>
+          </div>
+</div>
+ <script type="text/javascript"> 
+
+
+       $.fn.dataTable.ext.errMode = 'none';
+      var socket = io.connect('http://'+document.domain+':'+location.port);
+
+      function view_backup(element){
+
+
+           database = element.id
+
+           console.log(database)
+        if (database == "sales_order" ){
+            window.location.href = "/history_page1/"+database;
+        }
+        else if(database == "vendor_details"){
+            window.location.href = "/history_page1/"+database;
+
+        }
+        else if(database == "wip"){
+             window.location.href = "/history_page1/"+database;
+        }
+        else if(database == "machinery_components" ){
+             window.location.href = "/history_page1/"+database;
+            
+        }
+        else if(database == "stock" ){
+             window.location.href = "/history_page1/"+database;
+            
+        }
+        else{
+            console.log("nothing there")
+        }
+        
+      }
+</script>
+
+{% endblock %} 

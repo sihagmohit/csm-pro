@@ -1,0 +1,642 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   }
+</style>
+<div class="row mg-b-1 mg-l-5">
+   <button type="button" class="btn btn-light" onclick="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+</div>
+<script type="text/javascript">
+   function back(){
+         window.history.back();
+       }
+</script>
+<div class="card mg-t-20 ">
+   <div class="card-header">
+      <div class="tx-dark tx-15 tx-bold">EDIT RPO
+      </div>
+      <!-- card-header -->
+   </div>
+   <div class="card-body ">
+      <!-- ====================== Row Start ================================== -->
+      <h6> RPO Details </h6>
+      <br>
+      <div class='row '>
+         <div class='col-lg-6 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">RPO Number</label>
+               <input type="text" class="form-control form-control-sm" id="rpo" readonly>
+            </div>
+         </div>
+         <div class='col-lg-6 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Delivery Date</label>
+               <input type="date" style="height:31px;" class="form-control base" id="delivery_date" placeholder="dd/MM/YYYY" required>
+            </div>
+         </div>
+      </div>
+      <hr>
+      <h6> Client Details </h6>
+      <br>
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Client Name</label>
+               <input type="text" class="form-control form-control-sm" id="client_name" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Point of Contact</label>
+               <input type="text" class="form-control form-control-sm" id="poc" required>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Machine Category</label>
+               <select class="form-control form-control-sm" id="client_type">
+                  <option value="Standard">Standard</option>
+                  <option value="Non-standard">Non-standard</option>
+               </select>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <hr>
+      <h6> Machine Details </h6>
+      <br>
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Machine Type</label>
+               <select class="form-control form-control-sm" id="machine_type" onclick="get_subtypes()" disabled>
+               </select>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Machine Sub-Type</label>
+               <select class="form-control form-control-sm" id="machine_subtype" disabled>
+               </select>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <br>
+      <!-- ====================== Row End ================================== -->
+      <hr>
+      <h6>Milestone Weightage </h6>
+      <br>
+      <div class="row">
+         <div class="col-lg-4">
+            <div class="form-group">
+               <label class="tx-black">Design Weightage</label>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <form class="form-inline">
+               <div class="form-group mb-2">
+                  <input type="range" id="design_weightage" name="Design" min="0" max="10" onclick="show_design_weightage()">
+               </div>
+               <div class="form-group mx-sm-3 ">
+                  <h6 id="des_weightage">5</h6>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- row -->
+      <div class="row">
+         <div class="col-lg-4">
+            <div class="form-group">
+               <label class="tx-black">Purchase Weightage</label>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <form class="form-inline">
+               <div class="form-group mb-2">
+                  <input type="range" id="purchase_weightage" name="purchase_weightage" min="0" max="10" onclick="show_purchase_weightage()">
+               </div>
+               <div class="form-group mx-sm-3 ">
+                  <h6 id="pur_weightage">5</h6>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- row -->
+      <div class="row">
+         <div class="col-lg-4">
+            <div class="form-group">
+               <label class="tx-black">Production Weightage</label>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <form class="form-inline">
+               <div class="form-group mb-2">
+                  <input type="range" id="production_weightage" name="production_weightage" min="0" max="10" onclick="show_production_weightage()">
+               </div>
+               <div class="form-group mx-sm-3 ">
+                  <h6 id="prod_weightage">5</h6>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- row -->
+      <div class="row">
+         <div class="col-lg-4">
+            <div class="form-group">
+               <label class="tx-black">Testing Weightage</label>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <form class="form-inline">
+               <div class="form-group mb-2">
+                  <input type="range" id="testing_weightage" name="testing" min="0" max="10" onclick="show_testing_weightage()">
+               </div>
+               <div class="form-group mx-sm-3 ">
+                  <h6 id="tes_weightage">5</h6>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- row -->
+      <div class="row">
+         <div class="col-lg-4">
+            <div class="form-group">
+               <label class="tx-black">Dispatch Weightage</label>
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <form class="form-inline">
+               <div class="form-group mb-2">
+                  <input type="range" id="dispatch_weightage" name="dipatch" min="0" max="10" onclick="show_dispatch_weightage()">
+               </div>
+               <div class="form-group mx-sm-3 ">
+                  <h6 id="disp_weightage">5</h6>
+               </div>
+            </form>
+         </div>
+      </div>
+      <hr>
+      <h6> Machine Image </h6>
+      <br>
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="p-2 btn btn-primary Rectangle_without_color" type="button" data-toggle="modal" data-target="#exampleModal1" > + ADD IMAGE</div>
+            <br>
+            <button class="p-2 mt-2 btn btn-danger Rectangle_without_color" type="button" id="remove_button" onclick="remove_image()">REMOVE</button>
+         </div>
+         <div class='col-lg-8 col-md-12'>
+            <img id="rpo_image" src="{{ url_for('display_image', fname='No_image_available.png') }}" height="200px" width="300px">
+            <!-- <img src="{{ url_for('display_image', fname='abc123&&1.png') }}" height="150px" width="300px"> -->
+         </div>
+      </div>
+      <hr>
+      <!-- ====================== Row End ================================== -->
+      <div class="row mb-2 ml-2">
+         <small id ="console_status"></small>
+      </div>
+      <br><br>
+      <div class='row  pb-2 '>
+         <div class='col-lg-4 col-md-12'>
+            <button id="save" class="btn  btn-primary Rectangle_without_color" onclick="save_details()">UPDATE</button>
+            <button id="save" class="btn btn-danger Rectangle_without_color" onclick="delete_confirmation_modal()"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>&nbsp;DELETE RPO</button>
+            <small id="button_help"> </small>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <small id="button_help"> </small>
+         </div>
+      </div>
+   </div>
+   <!-- card-body -->
+</div>
+<!-- card -->
+<footer class="br-footer">
+   <div class="footer-left">
+      <div class="mg-b-2">Copyright &copy; 2021.C4i4. All Rights Reserved.</div>
+   </div>
+</footer>
+<!-- ########## END: MAIN PANEL ########## -->
+<!-- ---------------------------- modal for image upload ------------------------- -->
+<div class="modal fade" id="exampleModal1" >
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content tx-size-lg">
+         <div class="modal-header pd-x-20">
+            <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold " id="heading">UPLOAD IMAGE</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <!-- <form action="http://192.168.1.61/file_upload" method="POST" enctype="multipart/form-data"> -->
+         <div class="modal-body">
+            <div class="p-2" >
+               <form enctype="multipart/form-data" method="post" name="fileinfo" id ="form_element_id">
+                  <!-- <label class="tx-black">Report Name </label>
+                     <input type="text" class="form-control" id="report_name" readonly>
+                     -->
+                  <br>
+                  <input id="file_name" type="file" name="file" required />
+                  <br>
+                  <br>
+                  <input class="btn btn-primary btn-block Rectangle_without_color" value="Upload file" type="submit"/>
+                  <small id="upload_help" class="form-text text-muted">Choose the file to upload.</small>
+               </form>
+               <!-- <div class="form-group pt-2">
+                  <label class="tx-black">Note</label>
+                  <input type="text" class="form-control" id="note" readonly>
+                  </div>
+                  -->
+            </div>
+            <div class="modal-footer">
+               <!-- <button class="btn btn-primary Rectangle_without_color" onclick="save_details();"> ADD </button> -->
+               <button type="button" class="btn btn-secondary Rectangle_without_color" data-dismiss="modal">CLOSE</button>
+            </div>
+            <!-- </form> -->
+         </div>
+      </div>
+   </div>
+</div>
+<div id="delete_confirmation_modal" class="modal fade">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content tx-size-lg">
+         <div class="modal-header">
+         </div>
+         <div class="modal-body" id="modal_body">
+            <div class="row">
+               <div class="col-lg-12">
+                  <h6 id="delete_header">
+                  </h6>
+                  <h6>Do you want to continue?</h6>
+               </div>
+            </div>
+         </div>
+         <!-- modal-body -->
+         <div class="modal-footer d-flex justify-content-end" id="modal_button">
+            <button type="button" class="btn btn-danger  Rectangle_without_color  px-4" onclick="delete_rpo()" >YES</button>
+            <button type="button" class="btn  btn-primary Rectangle_without_color px-4" onclick=""  class="close" data-dismiss="modal">NO</button>
+         </div>
+      </div>
+   </div>
+   <!-- modal-dialog -->
+</div>
+<!-- modal ends-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script>
+   var socket=io.connect('http://'+document.domain+":"+location.port)
+   
+   // setting delivery date min to today
+   
+   
+   var filepath_to_save = "No_image_available.png";
+   
+   
+   var today = new Date();
+   var dd = today.getDate();
+   var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+   var yyyy = today.getFullYear();
+   if(dd<10){
+     dd='0'+dd
+   } 
+   if(mm<10){
+     mm='0'+mm
+   } 
+   
+   today = yyyy+'-'+mm+'-'+dd;
+   document.getElementById("delivery_date").setAttribute("min", today);
+   
+   socket.emit("get_machine_types_from_activity_preset");
+   
+   socket.on('sent_machine_types_from_activity_preset', function(data) {
+      var inner_html ="";
+   console.log(data);
+   
+   
+   for(var j=0; j< data.length;j++){
+   
+   inner_html += '<option value="'+data[j]+'"> '+data[j]+'</option>';
+   
+   }
+   document.getElementById("machine_type").innerHTML = inner_html;
+   
+   })
+   
+   var rpo_data = "";
+   get_rpo();
+   
+   
+   function delete_confirmation_modal(){
+   
+   
+   document.getElementById("delete_header").innerHTML = document.getElementById("rpo").value + " will be permanently deleted."
+   
+   
+   $('#delete_confirmation_modal').modal('show');
+   
+   
+   
+   }
+   
+
+   
+   function get_rpo(){
+   var rpo_id = '{{rpo_id}}';
+   console.log(rpo_id)
+   
+   socket.emit("get_specific_rpo", rpo_id);
+   
+   socket.on('sent_specific_rpo', function(data) {
+   
+   
+     console.log(data);
+     rpo_data = data;
+   
+     document.getElementById("rpo").value = data["RPO"];
+     document.getElementById("client_name").value  = data["Client Name"];
+     document.getElementById("poc").value  = data["POC"];
+     document.getElementById("machine_type").value   = data["Machine Type"];
+     get_subtypes();
+     document.getElementById("delivery_date").value = data["Delivery Date"];
+     document.getElementById("design_weightage").value = data["Design Weightage"];
+     document.getElementById("production_weightage").value  = data["Production Weightage"];
+     document.getElementById("purchase_weightage").value = data["Purchase Weightage"];
+     document.getElementById("dispatch_weightage").value  = data["Dispatch Weightage"];
+     document.getElementById("testing_weightage").value = data["Testing Weightage"];
+     document.getElementById("client_type").value = data["Client Type"];
+   
+     show_purchase_weightage();
+     show_design_weightage();
+     show_production_weightage();
+     show_dispatch_weightage();
+     show_testing_weightage();
+     
+     if("image_path" in data){
+   
+       var a = document.getElementById("rpo_image").src;
+        console.log(a);
+   
+   
+        
+        var temp = a.split("/");
+        var address = temp[0] + "//" + temp[2] + "/" + temp[3] + "/"
+        console.log(address);
+        var url = address + data["image_path"];
+        document.getElementById("rpo_image").src = url;
+        document.getElementById("remove_button").disabled = false;
+        filepath_to_save = data["image_path"];
+   
+   
+     }else{
+    console.log("image not found");
+   
+     }
+ 
+   
+   }); // socket close
+   }
+   
+     function save_details(){
+       var rpo_id = "{{rpo_id}}";
+   
+     var rpo = document.getElementById("rpo").value;
+     var client_name = document.getElementById("client_name").value;
+     var machine_type = document.getElementById("machine_type").value;
+     var delivery_date = document.getElementById("delivery_date").value;
+     var poc = document.getElementById("poc").value;
+     var design_weightage = document.getElementById("design_weightage").value;
+     var production_weightage = document.getElementById("production_weightage").value;
+     var purchase_weightage = document.getElementById("purchase_weightage").value;
+   
+     if(rpo.length > 0 && client_name.length > 0 && machine_type.length > 0 &&
+           delivery_date.length > 0 && poc.length > 0){
+   
+       var client_details = {};
+       client_details["_id"] = rpo_id;
+       client_details["RPO"] = rpo;
+       client_details["Client Name"] = client_name;
+       //client_details["Machine Type"] = machine_type;
+       //client_details["Machine Subtype"] = document.getElementById("machine_subtype").value;
+       client_details["Delivery Date"] = delivery_date;
+       client_details["POC"] = poc;
+       client_details["Design Weightage"] = design_weightage;
+       client_details["Production Weightage"] = production_weightage;
+       client_details["Purchase Weightage"] = purchase_weightage;
+       client_details["Dispatch Weightage"] = document.getElementById("dispatch_weightage").value;
+       client_details["Testing Weightage"] = document.getElementById("testing_weightage").value;
+       client_details["Client Type"] = document.getElementById("client_type").value;
+       client_details["image_path"] = filepath_to_save;
+   
+       socket.emit("edit_rpo_details",client_details);
+   
+       document.getElementById("console_status").innerHTML = "Data saved successfully!";
+   
+     }
+   
+     else{
+   
+       document.getElementById("console_status").innerHTML = "Please fill all the fields to save the data.";
+     }
+   
+     }
+   
+   function show_purchase_weightage(){
+   
+      document.getElementById("pur_weightage").innerHTML =   document.getElementById("purchase_weightage").value;
+   }
+   
+   function show_production_weightage(){
+   
+      document.getElementById("prod_weightage").innerHTML =   document.getElementById("production_weightage").value;
+   }
+   
+   function show_design_weightage(){
+   
+      document.getElementById("des_weightage").innerHTML =   document.getElementById("design_weightage").value;
+   }
+   
+   function show_dispatch_weightage(){
+   
+      document.getElementById("disp_weightage").innerHTML =   document.getElementById("dispatch_weightage").value;
+   }
+   function show_testing_weightage(){
+   
+      document.getElementById("tes_weightage").innerHTML =   document.getElementById("testing_weightage").value;
+   }
+
+   function reset_form(){
+   $('html, body').animate({ scrollTop: 0 }, 'fast');
+     document.getElementById("rpo").value = "";
+     document.getElementById("client_name").value= "";
+     document.getElementById("delivery_date").value= "";
+     document.getElementById("poc").value= "";  
+   }
+   
+   function get_subtypes(){
+   
+     var type = document.getElementById("machine_type").value;
+   
+     socket.emit("get_subtypes_for_machine_type",type);
+   
+     socket.on('sent_subtypes_for_machine_type', function(data) {
+   
+       console.log(data);
+       var inner_html ="";
+   
+       for(var j=0; j< data.length;j++){
+   
+           inner_html += '<option value="'+data[j]+'"> '+data[j]+'</option>';
+   
+          }
+     document.getElementById("machine_subtype").innerHTML = inner_html;
+     document.getElementById("machine_subtype").value = rpo_data["Machine Subtype"];
+   
+   }); //socket
+    
+   }
+   
+
+   
+   function delete_rpo(){
+   
+   
+   
+   
+   var rpo = "{{rpo_id}}";
+   
+   
+   to_send = {};
+   to_send["_id"] = rpo;
+   to_send["RPO"] = document.getElementById("rpo").value;
+   
+   
+   
+   socket.emit("delete_rpo",to_send);
+   
+   
+   socket.on('delete_rpo_response', function(data) {
+      
+   
+   window.location.href ="/twin_home";
+   
+   });
+   }
+   
+   
+   
+   function remove_image(){
+   
+       var a = document.getElementById("rpo_image").src;
+     var temp = a.split("/")
+       var address = temp[0] + "//" + temp[2] + "/" + temp[3] + "/"
+       console.log(address);
+       document.getElementById("rpo_image").src= address + "No_image_available.png";
+       filepath_to_save = "No_image_available.png";
+       document.getElementById("remove_button").disabled = true;
+   
+   }
+   
+   var filename_global = "";
+   var path_global = "";
+   var form = document.forms.namedItem("fileinfo");
+   form.addEventListener('submit', function(ev) {
+     var oData = new FormData(form);
+     var oReq = new XMLHttpRequest();
+     var rpo = document.getElementById("rpo").value;
+     oReq.open("POST", "/upload_image/"+rpo, true);
+     oReq.onload = function(oEvent) {
+       if (oReq.status == 200) {
+         
+         console.log("Uploaded!")
+         
+   
+         document.getElementById("upload_help").innerHTML = "File Uploaded Successfully ! "
+   
+         filename_global = JSON.parse(oReq.responseText).file_upload_successful ;
+         path_global = JSON.parse(oReq.responseText).file_path ;
+         console.log(path_global);
+         console.log(filename_global);
+   
+        
+         
+         
+        console.log(typeof path_global);
+   
+        var a = document.getElementById("rpo_image").src;
+        console.log(a);
+   
+   
+        // http://0.0.0.0:8080/display_image/kjbvcvbhjklbvgh&&wikas_logo1.png
+        var temp = a.split("/")
+        var address = temp[0] + "//" + temp[2] + "/" + temp[3] + "/"
+        console.log(address);
+   
+         
+   
+        var temp1 = path_global.replace('rpo_images/',"");
+        var only_file_path = temp1.replace("/","&&");
+   
+        filepath_to_save = only_file_path;
+   
+   
+        console.log(only_file_path);
+        var url = address + only_file_path;
+       
+        
+        document.getElementById("rpo_image").src = url;
+        document.getElementById("remove_button").disabled = false;
+   
+       } else {
+         //alert("Error " + oReq.status + " occurred when trying to upload your file")
+         document.getElementById("upload_help").innerHTML = "Error occurred in uploading file! "
+       }
+     };
+     oReq.send(oData);
+     ev.preventDefault();
+   }, false);
+   
+   
+   
+</script>
+{% endblock %}

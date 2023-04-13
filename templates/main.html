@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Main Page</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Script for socketio -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+<!--header-->
+     <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+     	<div class="container-fluid">
+
+     		<a href="#" class="navbar-brand text-warning font-weight-bold">
+				Tester App	
+			</a>
+			<button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#collapsenavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse text-center" id="collapsenavbar">
+     			<ul class="navbar-nav ml-auto">
+				<!--<button type="button"  onclick="myFunction()" class="btn btn-info btn-sm">Confirm details</button>-->
+				
+     				<li class="nav-item"><a href="#"><i class="fa fa-home fa-2x" aria-hidden="true"></i><div class="name" data-text="Home">Home</div></a></li>
+     				<li class="nav-item"><a href="#"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i><div class="name" data-text="Settings">Settings</div></a></li>
+     				<li class="nav-item"><a href="#"><i class="fa fa-user fa-2x" aria-hidden="true"></i><div class="name" data-text="Profile">Profile</div></a></li>
+     				<li class="nav-item"><a href="#"><i class="fa fa-lock fa-2x" aria-hidden="true"></i><div class="name" data-text="Log Out">Log Out</div></a></li>
+     			</ul>
+     		</div>
+		</div>
+     </nav>
+ <!--header-->
+
+
+
+<!-- login form -->
+<div class="wrapper">
+	<div class="form-signin">
+		<form >       
+			<h2 class="form-signin-heading">Start /Stop </h2>
+		
+			
+			<a class="" href="/login.html"> Full App </a>
+			<button type="button"  onclick="start()" class="btn btn-success btn-sm">Start</button>
+			<a   id="begin_job" onclick="stop()" class="btn btn-danger btn-sm">Stop</a>
+			
+			<hr class="style3">
+			<br>
+		</form>	
+		<p id='incoming_data'>Incoming Data</p>  
+	</div><!-- form signin-->
+			
+  </div>
+<!-- login form -->
+
+
+		
+<!-- modal-->
+<script type="text/javascript">
+
+var socket = io.connect('http://127.0.0.1:5000');
+
+socket.on('connect', function() {
+	 console.log('connected');
+	 socket.emit('serverside','Connected')
+});
+socket.on('message', function(data) {
+	 console.log(data);
+	 if ("AOS Tank Temp" in data ){	
+	 console.log("Found !")
+	 }
+	 
+});
+
+function start() {
+socket.emit('serverside','start');
+}
+function stop() {
+socket.emit('serverside','stop');
+}
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+ {% extends "template.html" %}
+
+{% block content %}
+
+
+<style>
+  :root {
+    --windows-blue: #365ec8;
+    --bluish: #3091c9;
+    --warm-blue: #5460dc;
+    --white: #ffffff;
+    --dusk-blue: #28499f;
+    --bluey-grey: #85a5c2;
+    --light-sky-blue: #d4e3f0;
+    --lipstick: #bb166b;
+    --bluish-grey-20: rgba(115, 137, 156, 0.2);
+    --topaz: #16b8bb;
+    --aquamarine: #00d7af;
+    --metallic-blue: #546593;
+    --bluish-grey: #73899c;
+    --very-light-pink: #d7d7d7;
+    --gray-medium: rgba(205, 205, 210, 0.5);
+    --text: #77777a;
+    ---style: #002251;
+  }
+
+  .Rectangle {
+  
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+
+  }
+   .Rectangle_without_color {
+  
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  
+  }
+
+.dataTables_scrollHeadInner{  width:100% !important; }
+.dataTables_scrollHeadInner table{  width:100% !important; }
+
+
+</style>
+<div class="row mg-b-1 mg-l-5">
+                <button type="button" class="btn btn-light" onclick="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                </div>
+                <script type="text/javascript">
+                  function back(){
+                        window.history.back();
+                      }
+                </script>
+
+ <div class="card mg-t-20 ">
+          
+          <div class="card-header">
+             <div class="tx-dark tx-15 tx-bold">PROJECT UPDATES
+        </div>
+          </div><!-- card-header -->
+
+          <div class="card-body ">
+           
+            <!-- ====================== Row Start ================================== -->
+			    <div class='row '>
+
+
+
+				  <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">RPO</label>
+				        <input type="text" class="form-control form-control-sm" id="rpo" readonly>
+				       </div>
+
+				  </div>
+
+				   <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Client Name</label>
+				        <input type="text" class="form-control form-control-sm" id="client_name" readonly>
+				       </div>
+
+				  </div>
+
+				  <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Machine Type</label>
+				      	<input type="text" class="form-control form-control-sm" id="machine_type" readonly>
+				       </div>
+
+				  </div>
+
+
+			    </div>
+ 			<!-- ====================== Row End ================================== -->
+
+ 			    <div class='row '>
+
+			      <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Delivery Date</label>
+				        <input type="date" style="height:31px;" class="form-control base" id="delivery_date" placeholder="dd/MM/YYYY" readonly>
+				       </div>
+
+				  </div>
+
+				  <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Point of Contact</label>
+				        <input type="text" class="form-control form-control-sm" id="poc" readonly>
+				       </div>
+
+				  </div>
+
+			    </div>
+				 <!-- ====================== Row End ================================== -->
+
+              <div class='row '>
+
+			      <div class='col-lg-12 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Current Status</label>
+				        <div class="progress" style="height: 50px;" id="total_status"></div>
+				       </div>
+
+				  </div>
+
+			    </div>
+				 <!-- ====================== Row End ================================== -->
+
+          </div>
+	<hr>
+
+ </div>
+
+
+
+
+    <div class="row">
+    <div class="col-md-6">
+        <!-- COLUMN 1 -->
+        <div class="row mb-4">
+          <div class="col-md-12 ">
+
+            <a href="/updates_design/{{ rpo }}">
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); padding-top: 30px;padding-bottom: 30px;">
+
+
+            <center>
+              <img src="{{ url_for('static', filename='twin_icons/graphic-design.png')}}" style="padding-bottom: 10px">
+                <h4>Design</h4>
+            </center>
+            </div>
+            </a>
+
+
+          </div>
+
+
+
+        </div>
+        <div class="row mb-4">
+           <div class="col-md-12">
+
+            <a href="/updates_purchase/{{ rpo }}">
+
+                <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey);padding-top: 30px;padding-bottom: 30px;">
+
+
+            <center>
+                <img src="{{ url_for('static', filename='twin_icons/inventory.png')}}" style="padding-bottom: 10px">
+                <h4>Available Inventory</h4>
+            </center>
+            </div>
+            </a>
+
+
+
+          </div>
+
+          
+        </div>
+        <div class="row mb-4">
+           <div class="col-md-12">
+
+            <a href="/updates_production/{{ rpo }}">
+
+           <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); padding-top: 30px;padding-bottom: 30px;">
+
+
+            <center>
+                <img src="{{ url_for('static', filename='twin_icons/gear.png')}}" style="padding-bottom: 10px">
+                <h4>Production Assembly</h4>
+            </center>
+            </div>
+            </a>
+
+
+
+          </div>
+
+          
+        </div>
+
+
+        <div class="row mb-4">
+           <div class="col-md-12">
+
+            <a href="/updates_testing/{{ rpo }}">
+
+           <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); padding-top: 30px;padding-bottom: 30px;">
+
+
+            <center>
+                <img src="{{ url_for('static', filename='twin_icons/checklist.png')}}" style="padding-bottom: 10px">
+                <h4>Testing</h4>
+            </center>
+            </div>
+            </a>
+
+
+
+          </div>
+
+          
+        </div>
+
+
+
+
+    </div>
+    <div class="col-md-6">
+        <!-- COLUMN 2 -->
+
+         <div class="row mb-4">
+           <div class="col-md-12">
+
+            <a href="/updates_dispatch/{{ rpo }}">
+
+           <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); padding-top: 30px;padding-bottom: 30px;">
+
+
+            <center>
+                <img src="{{ url_for('static', filename='twin_icons/delivery-truck.png')}}" style="padding-bottom: 10px">
+                <h4>Dispatch</h4>
+            </center>
+            </div>
+            </a>
+
+
+
+          </div>
+
+          
+        </div>
+
+
+
+
+
+        <div class="row mb-4">
+           <div class="col-md-12">
+
+            <a href="/dispatch_details_input/{{ rpo }}">
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey);  padding-top: 30px;padding-bottom: 30px;">
+
+
+            <center>
+                <img src="{{ url_for('static', filename='twin_icons/delivery-note.png')}}" style="padding-bottom: 10px">
+                <h4>Dispatch Details</h4>
+            </center>
+
+            </div>
+            </a>
+
+
+          </div>
+
+
+          
+        </div>
+        <div class="row mb-4">
+           <div class="col-md-12">
+
+            <a href="/twin_reports_upload/{{ rpo }}">
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); padding-top: 30px;padding-bottom: 30px;">
+
+            <center>
+                <img src="{{ url_for('static', filename='twin_icons/business-report.png')}}" style="padding-bottom: 10px">   
+                <h4>Trials/Reports</h4>
+            </center>
+            </div>
+            </a>
+
+
+
+          </div>
+
+
+          
+        </div>
+        <div class="row mb-4">
+           <div class="col-md-12">
+
+            <a href="/additional_notes_input/{{ rpo }}">
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); padding-top: 30px;padding-bottom: 30px;">
+
+
+            <center>
+                <img src="{{ url_for('static', filename='twin_icons/notebook.png')}}" style="padding-bottom: 10px">
+                <h4>Additional Notes</h4>
+            </center>
+
+            </div>
+            </a>
+
+          </div>
+
+
+          
+        </div>
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <footer class="br-footer">
+      <div class="footer-left">
+        <div class="mg-b-2">Copyright &copy; 2021.C4i4. All Rights Reserved.</div>
+       
+      </div>
+      
+     
+    </footer>
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+<script>
+
+  var socket=io.connect('http://'+document.domain+":"+location.port)
+
+  var rpo = '{{rpo}}';
+
+  socket.emit("get_client_info",rpo);
+
+  socket.on('sent_client_info', function(data) {
+
+    document.getElementById("rpo").value = data["RPO"];
+    document.getElementById("client_name").value = data["Client Name"];
+    document.getElementById("machine_type").value = data["Machine Type"];
+    document.getElementById("delivery_date").value = data["Delivery Date"];
+    document.getElementById("poc").value = data["POC"];
+
+    var num = data["Total Status %"];
+    num1 = num.replace("%","");
+	var num2 = parseFloat(num1);
+	var n = num2.toFixed(2);
+	var n_str = n.toString();
+
+	var total_status = n_str + "%";
+
+    inner_html = "";
+    inner_html += '<div class="progress-bar progress-bar-striped bg-success rounded" role="progressbar" style="width: '+n+'%;height: 50px;" >';
+    inner_html += '<center><b><label style="padding-top:18px;font-size: 20px;">'+total_status+'</label></b></center></div>';
+    document.getElementById("total_status").innerHTML = inner_html;
+
+  });
+
+ </script>
+
+
+
+
+{% endblock %}
+  

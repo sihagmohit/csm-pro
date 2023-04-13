@@ -1,0 +1,369 @@
+	<style>
+
+
+:root {
+  --windows-blue: #365ec8;
+  --bluish: #3091c9;
+  --warm-blue: #5460dc;
+  --white: #ffffff;
+  --dusk-blue: #28499f;
+  --bluey-grey: #85a5c2;
+  --light-sky-blue: #d4e3f0;
+  --lipstick: #bb166b;
+  --bluish-grey-20: rgba(115, 137, 156, 0.2);
+  --topaz: #16b8bb;
+  --aquamarine: #00d7af;
+  --metallic-blue: #546593;
+  --bluish-grey: #73899c;
+  --very-light-pink: #d7d7d7;
+  --gray-medium: rgba(205, 205, 210, 0.5);
+  --text: #77777a;
+  ---style: #002251;
+}
+
+.Rectangle {
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--white);
+}
+
+.Rectangle-disabled {
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--metallic-blue);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--white);
+}
+	
+.dark_backgorund {
+
+  opacity: 0.89;
+  background-image: linear-gradient(to bottom, #3b76ef 0%, #211b4e 100%);
+  mix-blend-mode: multiply;
+ background-color: #6e6e6e;
+ 
+}
+
+.FORGOT-YOUR-PASSWORD {
+  width: 160px;
+  height: 36px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.87px;
+  text-align: center;
+  color:#365ec8 ;
+  margin: auto;
+  
+}
+
+.Message_Text{
+
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+
+}
+
+
+.transparent-input-blue {
+   background-color: rgba(0, 0, 0, 0);
+   border:none;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--white);
+
+   }
+   
+   
+.div_bottom_border-blue{
+	background-color: rgba(0, 0, 0, 0);
+	border:none;
+	border-bottom: 2px solid  var(--white);
+	font-family: Manrope;
+	  font-size: 12px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: 1.5px;
+	  color: var(--white);
+		
+}   
+      
+input[readonly].transparent-input-blue{
+	background-color:transparent;
+	border:none;
+	font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--white);
+	
+	
+}
+.form-control.transparent-input-blue:focus {
+	background-color:transparent;
+ font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--white);
+	
+}
+
+
+.form-control.transparent-input-blue::-webkit-input-placeholder {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--light-sky-blue);
+}
+
+
+
+
+.transparent-input {
+   background-color: rgba(0, 0, 0, 0);
+   border:none;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+
+   }
+   
+   
+.div_bottom_border{
+	background-color: rgba(0, 0, 0, 0);
+	border:none;
+	border-bottom: 2px solid  var(--windows-blue);
+	font-family: Manrope;
+	  font-size: 12px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: 1.5px;
+	  color: var(--windows-blue);
+		
+}   
+      
+input[readonly].transparent-input{
+	background-color:transparent;
+	border:none;
+	font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+	
+	
+}
+.form-control:focus {
+	background-color:transparent;
+ font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color: var(--windows-blue);
+	
+}
+
+.transparent-input-bottom {
+  
+  background-color: rgba(0, 0, 0, 0);
+   border:none;
+   border-bottom: 2px solid  var(--windows-blue);
+	  font-family: Manrope;
+	  font-size: 12px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: 1;
+	  color: var(--windows-blue);
+
+   }
+   
+
+
+
+.Please-confirm-your {
+  width: 197px;
+  height: 34px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+   margin: auto;
+}
+
+
+.Placeholder-Copy-2 {
+  
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.45px;
+  text-align: center;
+  color: var(--windows-blue);
+}
+
+.Still-having-trouble {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--metallic-blue);
+}
+.Still-having-trouble-1 {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--windows-blue);
+  margin:auto;
+
+  }
+
+.RESET-YOUR-PASSWORD {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.87px;
+  text-align: center;
+  color: var(--white);
+}
+
+.Please-use-a-minimum {
+  font-family: Manrope;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--white);
+}
+
+
+.Support-FAQ {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--white);
+}
+
+
+.Terms-Conditions {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--white);
+}
+
+
+
+.WEAK {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #ff60ac;
+}
+.strong {
+  font-family: Manrope;
+  font-size: 8px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: var(--aquamarine);
+}
+	</style>
+	

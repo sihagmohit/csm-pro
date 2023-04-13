@@ -1,0 +1,453 @@
+ {% extends "template.html" %}
+
+{% block content %}
+
+
+<style>
+  :root {
+    --windows-blue: #365ec8;
+    --bluish: #3091c9;
+    --warm-blue: #5460dc;
+    --white: #ffffff;
+    --dusk-blue: #28499f;
+    --bluey-grey: #85a5c2;
+    --light-sky-blue: #d4e3f0;
+    --lipstick: #bb166b;
+    --bluish-grey-20: rgba(115, 137, 156, 0.2);
+    --topaz: #16b8bb;
+    --aquamarine: #00d7af;
+    --metallic-blue: #546593;
+    --bluish-grey: #73899c;
+    --very-light-pink: #d7d7d7;
+    --gray-medium: rgba(205, 205, 210, 0.5);
+    --text: #77777a;
+    ---style: #002251;
+  }
+
+  .Rectangle {
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+
+  }
+
+   .Rectangle_without_color {
+  
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  
+  }
+
+.dataTables_scrollHeadInner{  width:100% !important; }
+.dataTables_scrollHeadInner table{  width:100% !important; }
+
+
+</style>
+
+ <div class="card mg-t-20 ">
+          
+          <div class="card-header">
+             <div class="tx-dark tx-15 tx-bold">RPO STATUS
+        </div>
+          </div><!-- card-header -->
+
+          <div class="card-body ">
+           
+            <!-- ====================== Row Start ================================== -->
+			    <div class='row '>
+
+				  <div class='col-lg-6 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Enter RPO:</label>
+				        <input type="text" class="form-control form-control-sm" id="rpo">
+
+				       </div>
+
+				  </div>
+
+                    <div class='col-lg-6 col-md-12'>
+
+			          <div class="form-group">
+                          <button class="btn btn-lg Rectangle mt-4" onclick="get_weightage()">SEARCH</button>
+				       </div>
+
+				  </div>
+			    </div>
+ 			<!-- ====================== Row End ================================= -->
+
+			  <div class="row mb-2">
+	 <!-- <div class="col-2"><label>Console Message:</label></div> -->
+	 <div class="col-6"><small id="console_status"></small></div>
+			  </div>
+
+         <!-- ====================== Row End ================================= -->
+
+              <div class='row '>
+
+			      <div class='col-lg-12 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Current Status</label>
+				        <div class="progress" style="height: 50px;" id="total_status"> </div>
+				       </div>
+
+				  </div>
+
+			    </div>
+				 <!-- ====================== Row End ================================== -->
+
+
+
+          </div>
+	<hr>
+
+ </div>
+
+
+<div id="status_panel">
+
+<div class="row">
+    <div class="col-md-6" id="col_non_standard">
+        <div class="row mg-b-5">
+          <div class="col-md-12" id="design_card">
+
+
+                <div class = "card shadow-base bd-1" style="border-radius: 5px; border: 2px; height: 100px; padding-top: 30px;" >
+
+                <center>
+                    <h4>Design Completion Status</h4>
+                </center>
+                <center>
+                    <b><label id="design_status" style="font-size: 24px;color:#383838"></label></b>
+                </center>
+
+                </div>
+
+          </div>
+        </div>
+
+        <div class="row mg-b-5">
+          <div class="col-md-12" id="purchase_card">
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; border: 2px; height: 100px; padding-top: 30px;">
+
+              <center>
+
+                  <h4>Purchase/Stores Completion Status</h4>
+              </center>
+              <center>
+                  <b><label id="purchase_status" style="font-size: 24px;color:#383838"></label></b>
+              </center>
+
+              </div>
+
+          </div>
+        </div>
+
+        <div class="row mg-b-5">
+          <div class="col-md-12" id="production_card">
+
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; border: 2px; height: 100px; padding-top: 30px;">
+
+            <center>
+
+                <h4>Production Completion Status</h4>
+
+            </center>
+                <center>
+                    <b><label id="production_status" style="font-size: 24px;color:#383838"></label></b>
+            </center>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+
+
+    </div>
+    <div class="col-md-6" id="col_standard">
+
+        <div class="row mg-b-5">
+          <div class="col-md-12" id="reports_card">
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); height: 100px; padding-top: 30px;" onclick='reports();' onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='#868ba1'">
+
+            <center>
+
+                <h4>Reports</h4>
+            </center>
+
+
+            </div>
+
+
+          </div>
+        </div>
+
+        <div class="row mg-b-5">
+          <div class="col-md-12" id="dispatch_card">
+
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); height: 100px; padding-top: 30px;" onclick='dispatch_details();' onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='#868ba1'">
+
+              <center>
+
+                  <h4>Dispatch Details</h4>
+              </center>
+
+
+    </div>
+
+
+
+          </div>
+        </div>
+
+        <div class="row mg-b-5">
+          <div class="col-lg-12" id="adn_card">
+
+
+            <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); height: 100px; padding-top: 30px;" onclick='additional_notes();' onMouseOver="this.style.color='blue'" onMouseOut="this.style.color='#868ba1'">
+
+              <center>
+
+                  <h4>Additional Notes</h4>
+              </center>
+
+
+              </div>
+            </div>
+        </div>
+
+
+</div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer class="br-footer">
+      <div class="footer-left">
+        <div class="mg-b-2">Copyright &copy; 2021.C4i4. All Rights Reserved.</div>
+       
+      </div>
+      
+     
+    </footer>
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+<script>
+
+  var socket=io.connect('http://'+document.domain+":"+location.port)
+$('#status_panel').hide();
+
+
+
+
+  function get_weightage(){
+
+    var rpo = document.getElementById("rpo").value;
+
+    socket.emit("get_rpo_weightage",rpo);
+
+
+
+
+    socket.emit("get_client_info",rpo);
+
+  socket.on('sent_client_info', function(data) {
+
+    if(data["Client Type"] == "Non-standard"){
+
+$('#col_non_standard').show('slow');
+document.getElementById("col_standard").classList.remove("col-lg-12");
+document.getElementById("col_standard").classList.add("col-md-6");
+
+$('#status_panel').show('slow');
+
+    }
+    else if(data["Client Type"] == "Standard"){
+
+//document.getElementById("col_non_standard").remove()
+$('#col_non_standard').hide('slow');
+document.getElementById("col_standard").classList.remove("col-md-6");
+document.getElementById("col_standard").classList.add("col-lg-12");
+$('#status_panel').show('slow');
+    }
+
+
+
+
+  });
+
+
+
+
+}
+
+socket.on("rpo_not_found",function(data){
+
+    var message = data;
+
+    document.getElementById("console_status").value = message;
+    document.getElementById("design_status").innerHTML = "";
+    document.getElementById("production_status").innerHTML = "";
+    document.getElementById("purchase_status").innerHTML = "";
+
+    inner_html = "";
+    inner_html += '<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+0+'%;height: 50px;" >';
+    inner_html += '<center><b><label style="padding-top:18px;font-size: 15px;"></label></b></center></div>';
+    document.getElementById("total_status").innerHTML = inner_html;
+});
+
+socket.on("sent_design_status",function(data){
+
+    var num = data;
+	var n = num.toFixed(2);
+	var n_str = n.toString();
+
+	var design_status = n_str + "%";
+
+    document.getElementById("design_status").innerHTML = design_status;
+    document.getElementById("console_status").value = "";
+});
+
+socket.on("sent_production_status",function(data){
+
+    var num = data;
+	var n = num.toFixed(2);
+	var n_str = n.toString();
+
+	var production_status = n_str + "%";
+
+    document.getElementById("production_status").innerHTML = production_status;
+    document.getElementById("console_status").value = "";
+});
+
+socket.on("sent_purchase_status",function(data){
+
+    var num = data;
+	var n = num.toFixed(2);
+	var n_str = n.toString();
+
+	var purchase_status = n_str + "%";
+
+    document.getElementById("purchase_status").innerHTML = purchase_status;
+    document.getElementById("console_status").value = "";
+});
+
+socket.on("sent_total_status",function(data){
+
+    var num = data;
+    num1 = num.replace("%","");
+	var num2 = parseFloat(num1);
+	var n = num2.toFixed(2);
+	var n_str = n.toString();
+
+	var total_status = n_str + "%";
+
+    inner_html = "";
+    inner_html += '<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+n+'%;height: 50px;" >';
+    inner_html += '<center><b><label style="padding-top:18px;font-size: 15px;">'+total_status+'</label></b></center></div>';
+    document.getElementById("total_status").innerHTML = inner_html;
+});
+
+
+function dispatch_details(){
+
+    var rpo = document.getElementById("rpo").value;
+
+    socket.emit("validate_rpo_for_dispatch_details",rpo);
+
+   socket.on("dispatch_rpo_found",function(data){
+
+        window.location.href = "/dispatch_details_display/"+rpo;
+ });
+
+}
+
+socket.on("dispatch_rpo_not_found",function(data){
+    document.getElementById("console_status").value = data;
+});
+
+
+
+function additional_notes(){
+
+    var rpo = document.getElementById("rpo").value;
+
+    socket.emit("validate_rpo_for_additional_notes",rpo);
+
+   socket.on("add_notes_rpo_found",function(data){
+
+        window.location.href = "/additional_notes_display/"+rpo;
+ });
+
+}
+
+socket.on("add_notes_rpo_not_found",function(data){
+    document.getElementById("console_status").value = data;
+});
+
+
+function reports(){
+
+    var rpo = document.getElementById("rpo").value;
+
+    socket.emit("validate_rpo_for_reports",rpo);
+
+   socket.on("reports_rpo_found",function(data){
+
+        window.location.href = "/twin_reports_display/"+rpo;
+ });
+
+}
+
+socket.on("reports_rpo_not_found",function(data){
+    document.getElementById("console_status").value = data;
+});
+
+
+ </script>
+
+{% endblock %}
+  

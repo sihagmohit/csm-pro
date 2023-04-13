@@ -1,0 +1,463 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   }
+   th, td { white-space: nowrap; }
+   div.dataTables_wrapper {
+   width:100%;
+   margin: 0 auto;
+   }
+   th {
+   background-color: #292b2c;
+   color: white;
+   }
+</style>
+<div class="row no-gutters  mg-t-10 justify-content-end">
+   <button class="btn btn-sm Rectangle" onclick="download_csv()">Export CSV</button>&nbsp;&nbsp;
+   <!-- onClick="showAndroidToast_download('Start Task!')" -->
+   <script type="text/javascript">
+      function showAndroidToast_download(toast) {
+          Download.showToast(toast);
+      }
+   </script>
+   <div class="col-sm-12 col-lg-12 mg-t-10">
+      <div class="card">
+         <div class="card-header CARD_HEADER_FONT">
+            APPLICATIONS
+         </div>
+         <!-- card-header -->
+         <div class="card-body">
+            <div class="row">
+               <div class="col-12">
+                  <table id="example" class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%"></table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+   aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body" id="card_body_html">
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-block Rectangle" data-dismiss="modal">CLOSE</button>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   var socket = io.connect('http://' + document.domain + ":" + location.port)
+   
+   
+   socket.on("filename",function(filename){
+   
+   console.log(filename);
+   showAndroidToast_download(filename);
+   
+   
+   });
+   
+   var main_array = []
+   socket.on("application", function (dataSet) {
+   
+     console.log("correct");
+   
+     console.log("data here");
+     console.log(dataSet);
+     for (var k = 0; k < dataSet.length; k++) {
+       sub_array = []
+       sub_array.push(dataSet[k][0])
+       sub_array.push(dataSet[k][1])
+       sub_array.push(dataSet[k][2])
+       sub_array.push(dataSet[k][3])
+       sub_array.push(dataSet[k][4])
+       full_string = dataSet[k][5]
+       /*if(full_string.includes("selected disabled> Admin </option>")){
+         console.log("Admin");
+       }*/
+       sub1 = full_string.split('disabled>')
+       sub2 = sub1[1].split('</option>');
+       sub_array.push(sub2[0]);
+   
+       sub_array.push(dataSet[k][6])
+       full_string = dataSet[k][7]
+       /*if(full_string.includes("selected disabled> Admin </option>")){
+         console.log("Admin");
+       }*/
+       sub1 = full_string.split('disabled>')
+       sub2 = sub1[1].split('</option>');
+       sub_array.push(sub2[0]);
+   
+   
+       full_string_button = dataSet[k][8]
+       full1 = full_string_button.split('</button')
+       full2 = full1[0].split('>')
+       sub_array.push(full2[1]);
+   
+   
+   
+       main_array.push(sub_array)
+   
+     }
+   
+     $('#example').DataTable({
+       responsive: true,
+       data: dataSet,
+       destroy: true,
+       "initComplete": function (settings, json) {
+     $("#example").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");},
+       columns: [
+         { title: "NAME" },
+         { title: "EMAIL ID" },
+         { title: "NUMBER" },
+         { title: "DATE" },
+         { title: "TIME" },
+         { title: "EMPLOYEE TYPE" },
+         { title: "CONTRACT ORGANIZATION" },
+         { title: "ROLE" },
+         { title: "DETAILS" },
+         { title: "ACCEPT/REJECT" }
+       ]
+     });
+   })
+   
+   
+   $(document).ready(function () {
+     socket.emit("application_data")
+   });
+   
+   $.fn.dataTableExt.sErrMode = 'throw' //this line of code to prevent warning dialog by datatable
+   
+   
+   
+   function acc_rej(x) {
+     if (x.innerText == "Accepted") {
+       x.setAttribute("class", "btn btn-sm btn-danger");
+       x.innerText = "Rejected"
+     } else {
+       x.setAttribute("class", "btn btn-sm btn-success");
+       x.innerText = "Accepted"
+     }
+   
+   
+     data = x.value
+     status = x.innerText
+   
+     socket.emit("change_status", [String(data), status])
+   }
+   
+   function modal_fun(x) {
+     socket.emit("modal_application", String(x.value))
+   }
+   
+   socket.on("modal_data_application", function (data) {
+     console.log("----------------")
+     console.log(data)
+     console.log("----------------")
+   
+   
+   
+   
+   
+   
+   
+     // Old Sign Ups
+     if ("respiratory" in data ){
+   
+   
+   
+   inner_html = "";
+   inner_html += '<form class="tx-black"> ';
+           inner_html += '<div class="pt-1 pb-1">';
+           inner_html += '  Do you have any of the following ?';
+        inner_html += '   </div>';
+          inner_html += ' <div class="form-check pl-4 ">';
+            inner_html += ' <input type="checkbox" class="form-check-input" id="heart" disabled="disabled">';
+             inner_html += '<label class="form-check-label" for="heart">Heart Problems</label>';
+           inner_html += '</div>';
+           inner_html += '<div class="form-check pl-4 ">';
+             inner_html += '<input type="checkbox" class="form-check-input" id="respiratory" disabled="disabled">';
+             inner_html += '<label class="form-check-label" for="respiratory">Respiratory Problems</label>';
+           inner_html += '</div>';
+          inner_html += ' <div class="form-check pl-4 ">';
+             inner_html += '<input type="checkbox" class="form-check-input" id="bp" disabled="disabled">';
+             inner_html += '<label class="form-check-label" for="bp">Blood Pressure</label>';
+           inner_html += '</div>';
+          inner_html += ' <div class="form-check pl-4 ">';
+           inner_html += '  <input type="checkbox" class="form-check-input" id="diabetes" disabled="disabled">';
+            inner_html += ' <label class="form-check-label" for="diabetes">Diabetes</label>';
+           inner_html += '</div>';
+           inner_html += '<div class="form-check pl-4 ">';
+            inner_html += ' <input type="checkbox" class="form-check-input" id="none" disabled="disabled">';
+            inner_html += ' <label class="form-check-label" for="none">None of the above</label>';
+           inner_html += '</div>';
+         inner_html += '</form>';
+   
+         inner_html += '<hr>';
+         inner_html += '<form class="tx-black">';
+          inner_html += ' <div class="pt-1 pb-1">';
+          inner_html += '   Do you have family members below 10 years of age or greater 65 years of age?';
+         inner_html += '  </div>';
+          inner_html += ' <div class="form-check pl-4 ">';
+          inner_html += '   <input class="form-check-input" type="radio" name="exampleRadios" id="yes_age" disabled="disabled">';
+           inner_html += '  <label class="form-check-label" for="yes_age">Yes </label>';
+           inner_html += '</div>';
+           inner_html += '<div class="form-check pl-4 ">';
+            inner_html += ' <input class="form-check-input" type="radio" name="exampleRadios" id="no_age" disabled="disabled">';
+            inner_html += ' <label class="form-check-label" for="no_age"> No</label>';
+          inner_html += ' </div>';
+   
+         inner_html += '</form>';
+   
+   
+   document.getElementById("card_body_html").innerHTML = inner_html ;
+   
+   
+       for (key in data) {
+       if (key != "yes_age") {
+         if (data[key] == "yes") {
+           document.getElementById(key).checked = true
+         }
+       } else {
+         if (data[key] == "yes") {
+           document.getElementById("yes_age").checked = true
+         } else {
+           document.getElementById("no_age").checked = true
+         }
+       }
+     }
+   }
+   
+   
+   // New Sign Ups
+   else {
+   
+   
+   dataSet = data ;
+   console.log(dataSet);
+   
+   //global_dataset = dataSet;
+     inner_html = "";
+   for(var question_counter=0 ; question_counter < dataSet.length ; question_counter++){
+     
+     var data = dataSet[question_counter]['question'];
+     //console.log(data);
+   
+     
+     if(data['type']=='Options'){
+     
+     number = question_counter +1 ;
+     inner_html += '<div class="form-group ">' ; 
+     inner_html += '<label for="scan_unit" class="Have-you-experien">'+ number  + ". " + data['que'] + '</label>' ;
+     
+     for (var i= 0;i<data['options'].length ; i++){
+     
+     inner_html += '<div class="form-check pl-5">' ;
+     if (data["correct/better_option"] == data['options'][i]){ 
+       inner_html += '<input class="form-check-input '+data['q_id'] +'" type="radio" name="'+data['q_id'] +'" value="'+data['options'][i] +'" checked disabled> ';  
+     }
+     else {
+       inner_html += '<input class="form-check-input '+data['q_id'] +'" type="radio" name="'+data['q_id'] +'" value="'+data['options'][i] +'"  disabled> ';
+     }
+     inner_html += '<label class="form-check-label Have-you-experien"> '+ data['options'][i]  ; 
+     inner_html += '</label>' ; 
+     inner_html += '</div>' ;
+     
+     }
+   
+     inner_html += '</div>'; 
+     
+     
+     inner_html += '</div>';
+     inner_html += '<hr class="hr_style" >' ;
+   
+     }
+     
+     else if(data['type']=='Single Entry'){
+     
+      number = question_counter +1 ;
+     inner_html += '<div class="form-group ">' ; 
+     inner_html += '<label for="scan_unit" class="Have-you-experien">'+ number  + ". " + data['que'] + '</label>' ;
+     
+     inner_html += '<div class="form-group">' ;
+     inner_html += '<input type="text" class="form-control" id="'+ data['q_id']+' " readonly>' ; 
+     inner_html += '</div>';
+     
+     
+     inner_html += '</div>'; 
+     
+    
+     
+     inner_html += '</div>';
+     inner_html += '<hr class="hr_style" >' ;
+     
+   
+     
+     }
+   
+     else if(data['type']=='Multiple_Options'){
+     
+     //console.log(data);
+     
+     number = question_counter + 1 ;
+     inner_html += '<div class="form-group ">' ; 
+     inner_html += '<label for="scan_unit" class="Have-you-experien">'+ number  + ". " + data['que'] + '</label>' ;
+     
+     for (var i= 0;i<data['options'].length ; i++){
+     
+     inner_html += '<div class="form-check pl-5">' ;
+     
+     
+     var flag = 0; 
+     for(var j=0 ; j < data["correct/better_option"].length ; j++ ) {
+       if (data["correct/better_option"][j] == data['options'][i]){  
+         flag = 1; 
+         console.log(data["correct/better_option"][j]);
+       }
+     }
+     
+       if (flag == 1 ){  
+         inner_html += '<input class="form-check-input '+data['q_id'] +'" type="checkbox" name="'+data['q_id'] +'" value="'+data['options'][i] +'" checked disabled> '; 
+         
+       }
+       else {
+         inner_html += '<input class="form-check-input '+data['q_id'] +'" type="checkbox" name="'+data['q_id'] +'" value="'+data['options'][i] +'" disabled> ';
+       }
+     
+     
+     inner_html += '<label class="form-check-label Have-you-experien"> '+ data['options'][i]  ; 
+     inner_html += '</label>' ; 
+     inner_html += '</div>' ;
+     
+     }
+     
+     inner_html += '</div>'; 
+     
+     
+   
+     }
+   
+   }
+   
+   //console.log(inner_html);
+   //inner_html += ' <button type="button" onclick=get_changes() class="btn btn-secondary  btn-block"> Save </button>' ;   
+   document.getElementById("card_body_html").innerHTML = inner_html ;
+   
+   
+   
+   
+   
+   } //else
+   
+     
+   
+   })
+   
+   function role_change(x) {
+     phone = x.getAttribute("data-phone");
+     role = x.value
+   
+     socket.emit("updated_role", [phone, role])
+   }
+   
+   function employee_type_change(x) {
+     console.log("employee_type_change");
+     phone = x.getAttribute("data-phone");
+     role = x.value
+     socket.emit("updated_employee_status", [phone, role])
+   }
+   
+   
+   console.log("main_array");
+   console.log(main_array);
+   
+   //fun create csv file
+   
+   
+   function download_csv() {
+   
+   var table = $('#example').DataTable();
+   
+   var plainArray = table.data().toArray();
+   
+   console.log(plainArray)
+   
+   socket.emit("application_data_csv");
+   
+   
+   }
+   
+   
+   
+   
+   
+</script>
+{% endblock %}

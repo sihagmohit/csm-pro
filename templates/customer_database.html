@@ -1,0 +1,457 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+
+<style>
+:root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+}
+.Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+}
+.Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+}
+.Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+}
+</style>
+
+<div class="p-3">
+    <div class="p-1">
+      <div class="tx-dark tx-15 tx-bold">GAP ANALYSIS</div>
+  </div>
+  <div class="d-flex justify-content-end mg-t-10">
+    <!-- <div class="btn btn-sm Rectangle active" onclick="open_modal()"> + ADD NEW CUSTOMER</div> -->
+    <div class="p-2 btn btn-sm Rectangle" onclick="open_modal()"> <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;NEW CUSTOMER</div>
+</div>
+</div>
+<!-- Modal 1 -->
+<div class="modal fade" id="customer_modal">
+    <div class="modal-dialog modal-lg" role="document" style="width: 300px;">
+        <div class="modal-content tx-size-lg">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold " id="heading"><div id="modal_title"></div></h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="customer_modal_form">
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+                            <label id="modal_customer_id_label"><b>Customer ID</b></label>
+                            <input type="text" class="form-control form-control-sm" id="modal_customer_id" onchange="check_customer_in_database(this)">
+                            <label id="customer_id_status" style="color:red;font-size:12px;font-weight:bold;"></label>
+                            <br>
+
+                            <label><b>Customer Name</b></label>
+                            <input type="text" class="form-control form-control-sm" id="modal_customer_name"><br>
+
+                            <label><b>Address</b></label>
+                            <textarea rows="6" id="modal_address" class="form-control form-control-sm"></textarea><br>
+
+                            <label><b>Location</b></label>
+                            <input type="text" class="form-control form-control-sm" id="modal_location"><br>
+
+                            <label><b>Customer Point of Contact</b></label>
+                            <input type="text" class="form-control form-control-sm" id="modal_poc"><br>
+
+                            <label><b>Phone Number</b></label>
+                            <input type="number" class="form-control form-control-sm" id="modal_phone"><br>
+
+                            <label><b>Email ID</b></label>
+                            <input type="text" class="form-control form-control-sm" id="modal_emailID"><br>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <label id="modal_status" class="ml-2"></label>
+            <hr>
+
+            <!-- Modal footer -->
+            <center><div class="modal-footer d-flex justify-content-center">
+                <div id="modal_button"></div>
+            </div></center>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="btn-toolbar justify-content-between pt-1" role="toolbar" aria-label="Toolbar with button groups">
+            <div id="table_button1">
+
+            </div>
+
+
+            <div class="input-group">
+                <input type="text" id="datatable1_search" class="form-control" placeholder="Search" >
+            </div>
+        </div>
+
+
+        <table id="datatable1" class="cell-border table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" >
+            <thead class="bg-dark tx-white">
+                <tr>
+                    <th>SR.NO.</th>
+                    <th>CUSTOMER ID</th>
+                    <th>CUSTOMER NAME</th>
+                    <th>ADDRESS</th>
+                    <th>LOCATION</th>
+                    <th>CUSTOMER POINT OF CONTACT</th>
+                    <th>PHONE NUMBER</th>
+                    <th>EMAIL ID</th>
+                    <th>EDIT</th>
+                    <th>CUSTOMER DETAILS</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody1" class="table_body">
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var socket=io.connect('http://'+document.domain+":"+location.port)
+
+    $.fn.dataTable.ext.errMode = 'none';
+
+    window.onload = update_table1;
+
+    function update_table1(){
+
+        $('#datatable1').DataTable().destroy();
+
+        var details = { "msg":"Get all customers data"};
+
+        $.ajax({
+            type: 'POST',
+            url: '/get_customers_table',
+            data: JSON.stringify(details),
+            contentType: 'application/json',
+            success: function (data) {
+               try{
+
+                inner_html="";
+
+                for(var j=0; j< data.length;j++){
+
+                    inner_html += '<tr>';
+                    inner_html += '<td>'+String(j+1)+'</td>';
+                    inner_html += '<td>'+String(data[j]['client_id'])+'</td>';
+                    inner_html += '<td>'+String(data[j]['client_name'])+'</td>';
+                    inner_html += '<td>'+String(data[j]['address'])+'</td>';
+                    inner_html += '<td>'+String(data[j]['location'])+'</td>';
+                    inner_html += '<td>'+String(data[j]['poc'])+'</td>';
+                    inner_html += '<td>'+String(data[j]['phone'])+'</td>';
+                    inner_html += '<td>'+String(data[j]['email'])+'</td>';
+                    inner_html += '<td> ';
+                    inner_html += '<center><button type="button" class="btn btn-sm btn-dark Rectangle_without_color    " id ="'+ data[j]["client_id"]+'" onclick="edit_customer_modal(this)"> EDIT </button> </center>';
+                    inner_html += '</td>';
+
+                    inner_html += '<td><center>';
+                    inner_html += '<button type="button" class="btn btn-sm btn-primary Rectangle_without_color" id="'+ data[j]["client_id"] +'" onclick="customer_details(this)"> DETAILS </button>';
+                    inner_html += '</center></td>';
+                    inner_html += '</tr>';
+
+                }
+
+                document.getElementById("tablebody1").innerHTML = inner_html;
+
+                var table1 = $('#datatable1').DataTable( {
+                    //"scrollX": true,
+                    lengthChange: false,
+                    "dom": 'lrtip',
+                    "deferRender": true,
+                    "initComplete": function (settings, json) {
+                        $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+                    },
+
+
+                    buttons: [
+                    {
+                        extend: 'collection',
+                        text: 'Export',
+                        autoClose: true,
+                        buttons: [
+                        {
+                            extend:    'copy',
+                            text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                            titleAttr: 'Copy'
+                        },
+                        {
+                            extend:    'excel',
+                            text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                            titleAttr: 'Excel'
+                        },
+                        {
+                            extend:    'pdf',
+                            text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                            titleAttr: 'PDF'
+                        },
+                        {
+                            extend:    'print',
+                            text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                            titleAttr: 'Print'
+                        },
+                        {
+                            extend:    'csv',
+                            text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                            titleAttr: 'CSV'
+                        },
+                        {
+                            extend:    'colvis',
+                            text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                            titleAttr: 'Columns'
+                        },
+                        ]
+                    }
+                    ]
+
+
+                } );
+
+                table1.buttons( 0, null ).containers().appendTo( '#table_button1' );
+
+
+                $('#datatable1_search').on( 'keyup', function () {
+                    table1.search( this.value ).draw();
+                    console.log("working")
+                } );
+
+
+            }
+            catch(e){
+
+            }
+
+        }
+
+    });
+}
+
+function open_modal(){
+
+    $('#customer_modal_form')[0].reset();
+    $('#customer_modal').modal('show');
+
+    document.getElementById("modal_title").innerHTML = "NEW CUSTOMER";
+    document.getElementById("modal_customer_id").removeAttribute("readonly");  
+    document.getElementById("modal_customer_name").removeAttribute("readonly");
+
+    document.getElementById("customer_id_status").innerHTML = "";
+    document.getElementById("modal_status").innerHTML = "";
+
+    var add_button = "";
+
+    add_button += '<button type="button" class="btn btn-success" onclick="save_new_customer()">SAVE</button>';
+
+    document.getElementById("modal_button").innerHTML = add_button;
+}
+
+function save_new_customer(){
+
+    var client_id = document.getElementById("modal_customer_id").value;
+    var client_name = document.getElementById("modal_customer_name").value;
+    var address = document.getElementById("modal_address").value;
+    var location = document.getElementById("modal_location").value;
+    var poc = document.getElementById("modal_poc").value;
+    var phone = document.getElementById("modal_phone").value;
+    var email = document.getElementById("modal_emailID").value;
+
+    if(client_id != "" && client_name != "" && address != "" && location != "" && poc != "" && phone != "" && email != ""){
+
+        document.getElementById("modal_status").innerHTML = "";
+    }
+    else{
+        document.getElementById("modal_status").innerHTML = "Please fill all details before saving!";
+    }
+
+    var modal_status = document.getElementById("modal_status").innerHTML;
+    var customer_id_status = document.getElementById("customer_id_status").innerHTML;
+
+    if(modal_status == "" && customer_id_status == ""){
+
+        var details = {
+           "client_id":client_id,
+           "client_name":client_name,
+           "address":address,
+           "location":location,
+           "poc":poc,
+           "phone":phone,
+           "email":email
+       }
+
+       $.ajax({
+        type: 'POST',
+        url: '/create_new_customer',
+        data: JSON.stringify(details),
+        contentType: 'application/json',
+        success: function (data) {
+          update_table1();
+          $('#customer_modal').modal('hide');
+      }
+  });
+   }
+}
+
+function edit_customer_modal(element){
+
+    $('#customer_modal_form')[0].reset();
+
+    $('#customer_modal').modal('show');
+
+    document.getElementById("modal_title").innerHTML = "EDIT CUSTOMER";
+    document.getElementById("modal_customer_id").setAttribute('readonly', true);
+    document.getElementById("modal_customer_name").setAttribute('readonly', true);
+    document.getElementById("customer_id_status").innerHTML = "";
+    document.getElementById("modal_status").innerHTML = "";
+
+    var edit_button = "";
+
+    edit_button += '<button type="button" class="btn btn-success" onclick="edit_customer()">SAVE CHANGES</button>';
+
+    document.getElementById("modal_button").innerHTML = edit_button;
+
+    var client_id = element.id;
+    var details = {"client_id":client_id}
+
+    $.ajax({
+        type: 'POST',
+        url: '/get_specific_customer',
+        data: JSON.stringify(details),
+        contentType: 'application/json',
+        success: function (data) {
+
+            document.getElementById("modal_customer_id").value = data["client_id"];
+            document.getElementById("modal_customer_name").value = data["client_name"];
+            document.getElementById("modal_address").value = data["address"];
+            document.getElementById("modal_location").value = data["location"];
+            document.getElementById("modal_poc").value = data["poc"];
+            document.getElementById("modal_phone").value = data["phone"];
+            document.getElementById("modal_emailID").value = data["email"];
+
+        }
+    });
+}
+
+function edit_customer(){
+
+    var details = {};
+
+    details["client_id"] = document.getElementById("modal_customer_id").value;
+    details["client_name"] = document.getElementById("modal_customer_name").value;
+    details["address"] = document.getElementById("modal_address").value;
+    details["location"] = document.getElementById("modal_location").value;
+    details["poc"] = document.getElementById("modal_poc").value;
+    details["phone"] = document.getElementById("modal_phone").value;
+    details["email"] = document.getElementById("modal_emailID").value;
+
+    $.ajax({
+        type: 'POST',
+        url: '/update_specific_customer',
+        data: JSON.stringify(details),
+        contentType: 'application/json',
+        success: function (data) {
+
+            update_table1();
+            $('#customer_modal').modal('hide');
+        }
+    });
+}
+
+
+function customer_details(element){
+
+    var client_id = element.id;
+    window.location.href = "/customer_details/" + client_id;
+}
+
+function check_customer_in_database(element){
+
+    var details = {}
+    details["client_id"] = element.value;
+
+    $.ajax({
+        type: 'POST',
+        url: '/check_customer_id_database',
+        data: JSON.stringify(details),
+        contentType: 'application/json',
+        success: function (data) {
+
+            if(data == 1){
+                document.getElementById("customer_id_status").innerHTML = "";
+            }
+            else{
+                document.getElementById("customer_id_status").innerHTML = "Please enter unique Customer ID!";
+            }
+        }
+    });
+}
+
+</script>
+
+{% endblock %}
+

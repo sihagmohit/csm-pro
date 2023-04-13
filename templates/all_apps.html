@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Twitter -->
+      <meta name="twitter:site" content="@themepixels">
+      <meta name="twitter:creator" content="@themepixels">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Bracket">
+      <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+      <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+      <!-- Facebook -->
+      <meta property="og:url" content="http://themepixels.me/bracket">
+      <meta property="og:title" content="Bracket">
+      <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+      <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+      <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+      <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
+      <meta property="og:image:type" content="image/png">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="600">
+      <!-- Meta -->
+      <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+      <meta name="author" content="Cyronics">
+      <title>Cyronics IOT</title>
+      <link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/bracket.css')}}">
+      <style>
+         :root {
+         --windows-blue: #365ec8;
+         --bluish: #3091c9;
+         --warm-blue: #5460dc;
+         --white: #ffffff;
+         --dusk-blue: #28499f;
+         --bluey-grey: #85a5c2;
+         --light-sky-blue: #FFFFFF;
+         --lipstick: #bb166b;
+         --bluish-grey-20: rgba(115, 137, 156, 0.2);
+         --topaz: #16b8bb;
+         --aquamarine: #00d7af;
+         --metallic-blue: #546593;
+         --bluish-grey: #73899c;
+         --very-light-pink: #d7d7d7;
+         --gray-medium: rgba(205, 205, 210, 0.5);
+         --text: #77777a;
+         ---style: #002251;
+         }  
+         .Rectangle {
+         border-radius: 5px;
+         box-shadow: 0 2px 6px 0 #b9b9b9;
+         background-color: var(--windows-blue);
+         font-family: Montserrat;
+         font-size: 12px;
+         font-weight: 300;
+         font-stretch: normal;
+         font-style: normal;
+         line-height: normal;
+         letter-spacing: 1.5px;
+         text-align: center;
+         color: var(--white);
+         }
+         .transparent-input {
+         background-color: rgba(0, 0, 0, 0);
+         border:none;
+         font-family: Manrope;
+         font-size: 12px;
+         font-weight: normal;
+         font-stretch: normal;
+         font-style: normal;
+         line-height: normal;
+         letter-spacing: 1.5px;
+         color: var(--light-sky-blue);
+         }
+         .div_bottom_border{
+         background-color: rgba(0, 0, 0, 0);
+         color: white;
+         border:none;
+         border-bottom: 2px solid white;
+         }   
+         input[readonly].transparent-input{
+         background-color:transparent;
+         border:none;
+         font-family: Manrope;
+         font-size: 12px;
+         font-weight: normal;
+         font-stretch: normal;
+         font-style: normal;
+         line-height: normal;
+         letter-spacing: 1.5px;
+         color: var(--light-sky-blue);
+         }
+         .form-control:focus {
+         background-color:transparent;
+         color: white;
+         font-family: Manrope;
+         font-size: 12px;
+         font-weight: normal;
+         font-stretch: normal;
+         font-style: normal;
+         line-height: normal;
+         letter-spacing: 1.5px;
+         color: var(--light-sky-blue);
+         }
+         .transparent-input.EDIT {
+         font-family: Manrope;
+         font-size: 8px;
+         font-weight: normal;
+         font-stretch: normal;
+         font-style: normal;
+         line-height: normal;
+         letter-spacing: 1px;
+         color: var(--light-sky-blue);
+         }
+         .Forgot-Password {
+         font-family: Manrope;
+         font-size: 12px;
+         font-weight: normal;
+         font-stretch: normal;
+         font-style: normal;
+         line-height: normal;
+         letter-spacing: 1px;
+         text-align: center;
+         color: white;
+         }
+         .Your-account-is-pend {
+         font-family: Manrope;
+         font-size: 12px;
+         font-weight: normal;
+         font-stretch: normal;
+         font-style: normal;
+         line-height: 1.4;
+         letter-spacing: normal;
+         text-align: center;
+         color: var(--white);
+         }
+      </style>
+   </head>
+   <body>
+      <div class="d-flex align-items-center justify-content-center ht-100v bg-dark" >
+         <div class="login-wrapper wd-600 wd-xs-650 pd-15 pd-xs-40 ">
+            <div class="signin-logo tx-center tx-28 tx-bold tx-inverse pd-10 "><span class="tx-normal"><img src="/static/img/logo.png" width="40%"></span></div>
+            <div class="signin-logo tx-center tx-28 tx-bold tx-inverse pd-t-20 pd-b-20 "><span class="tx-normal"><img src="/static/img/cyronics_iot_logo_white.png" width="40%"></span></div>
+            <!-- <div class="tx-center mg-b-30">Ensuring Workplace Safety</div> -->
+            <div class="pt-2 pb-2 Your-account-is-pend" id="Message" >
+            </div>
+            <hr>
+            <div class="row mg-b-30-10 pd-b-20 pd-r-0 pd-l-0 justify-content-center">
+               <div class="card text-center col-3 mg-2 " >
+                  <a href="/production_plan">
+                     <div class="card-body pd-2 mg-2">
+                        <img src="/static/img/oee_logo.png" width="90%"></span>
+                     </div>
+                     <div class="card-footer text-muted pd-1 ">
+                        <span class="btn btn-block stretched-link">OEE</span>
+                     </div>
+                  </a>
+               </div>
+               <div class="card text-center col-3 mg-2">
+                  <a href="http://cbm.ppapco.in/external_login/{{phone}}">
+                     <div class="card-body pd-2 mg-2">
+                        <img src="/static/img/cbm_logo.png" width="90%"></span>
+                     </div>
+                     <div class="card-footer text-muted pd-1 ">
+                        <span href="#" class="btn btn-block">CBM</span>
+                     </div>
+                  </a>
+               </div>
+               <div class="card text-center col-3 mg-2">
+                  <a href="http://trace.ppapco.in/external_login/{{phone}}">
+                     <div class="card-body pd-2 mg-2">
+                        <img src="/static/img/trace_logo.png" width="90%"></span>
+                     </div>
+                     <div class="card-footer text-muted pd-1 ">
+                        <span href="#" class="btn btn-block">TRACE</span>
+                     </div>
+                  </a>
+               </div>
+               <div class="card text-center col-3 mg-2">
+                  <a href="http://fleet.ppapco.in/external_login/{{phone}}">
+                     <div class="card-body pd-2 mg-2">
+                        <img src="/static/img/fleet_logo.png" width="90%"></span>
+                     </div>
+                     <div class="card-footer text-muted pd-1  ">
+                        <span href="#" class="btn btn-block tx-center">FLEET</span>
+                     </div>
+                  </a>
+               </div>
+            </div>
+            <!--<script type="text/javascript">
+               document.getElementById('phone').readOnly = true;
+                 function toggle_input() {
+                document.getElementById('phone').readOnly = false;
+                 } 
+                 
+                 
+               </script>-->
+         </div>
+         <!-- login-wrapper -->
+      </div>
+      <!-- d-flex -->
+      <div class="modal" tabindex="-1" role="dialog" id="forgotpassword">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content round-0">
+            </div>
+         </div>
+      </div>
+      <script src="{{ url_for('static', filename='lib/jquery/jquery.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/popper.js/popper.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/moment/moment.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/jquery-ui/jquery-ui.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/jquery-switchbutton/jquery.switchButton.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/peity/jquery.peity.js')}}"></script>
+      <script src="{{ url_for('static', filename='lib/highlightjs/highlight.pack.js')}}"></script>
+      <script src="{{url_for('static',filename='socket.js')}}"></script>
+      <script src="{{ url_for('static', filename='js/bracket.js')}}"></script>

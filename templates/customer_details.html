@@ -1,0 +1,536 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+
+<style>
+:root {
+  --windows-blue: #365ec8;
+  --bluish: #3091c9;
+  --warm-blue: #5460dc;
+  --white: #ffffff;
+  --dusk-blue: #28499f;
+  --bluey-grey: #85a5c2;
+  --light-sky-blue: #d4e3f0;
+  --lipstick: #bb166b;
+  --bluish-grey-20: rgba(115, 137, 156, 0.2);
+  --topaz: #16b8bb;
+  --aquamarine: #00d7af;
+  --metallic-blue: #546593;
+  --bluish-grey: #73899c;
+  --very-light-pink: #d7d7d7;
+  --gray-medium: rgba(205, 205, 210, 0.5);
+  --text: #77777a;
+  ---style: #002251;
+}
+
+.Rectangle {
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+
+}
+
+.Rectangle_dark {
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--bluish-grey);
+
+}
+
+
+.Rectangle_without_color {
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+
+}
+
+th, td { white-space: nowrap; }
+div.dataTables_wrapper {
+  width:100%;
+  margin: 0 auto;
+}
+
+</style>
+
+
+<div class="modal" id="edit_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 320px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold " id="heading"><div id="modal_title">EDIT CUSTOMER DETAILS</div></h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="edit_modal_form">
+        <div class="p-2">
+
+          <div class="form-group pt-2">
+            <label><b>RPO</b></label>
+            <input type="text" class="form-control form-control-sm" id='modal_rpo'>
+            <small id="help" class="form-text text-muted"></small>
+        </div>
+
+        <div class="form-group pt-2">
+            <label><b>MACHINE TYPE</b></label>
+            <select class="form-control form-control-sm" id="modal_machine_type" onclick="get_subtypes()">
+            </select>
+        </div>
+
+        <div class="form-group pt-2">
+            <label><b>MACHINE SUBTYPE</b></label>
+            <select class="form-control form-control-sm" id="modal_machine_subtype" disabled>
+            </select>
+        </div>
+
+        <div class="form-group pt-2">
+            <label><b>INVOICE DATE</b></label>
+            <input type="date" style="height:31px;" class="form-control base" id="modal_invoice_date" placeholder="dd/MM/YYYY">
+        </div>
+
+        <div class="form-group pt-2">
+            <label><b>WARRANTY</b></label>
+            <select class="form-control form-control-sm" id="modal_warranty">
+              <option value = "Yes">Yes</option>
+              <option value = "No">No</option>
+          </select>
+      </div>
+
+      <div class="form-group pt-2">
+        <label><b>WARRANTY DATE</b></label>
+        <input type="date" style="height:31px;" class="form-control base" id="modal_warranty_date" placeholder="dd/MM/YYYY">
+    </div>
+
+    <div class="form-group pt-2">
+        <label><b>EXPIRY DATE</b></label>
+        <input type="date" style="height:31px;" class="form-control base" id="modal_expiry_date" placeholder="dd/MM/YYYY">
+    </div>
+
+</div>
+</form>
+</div>
+<div class="modal-footer d-flex justify-content-center">
+  <div id="modal_button"><button type="button" class="btn btn-success" onclick="update_customer_details()">SAVE CHANGES</button></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="card mg-t-20 ">
+   
+   <div class="card-body ">
+
+      <!-- ====================== Row Start ================================== -->
+      <div class="tx-dark tx-15 tx-bold">CUSTOMER DETAILS</div>
+
+      <br>
+      <div class='row '>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Customer ID</label>
+               <input type="text" class="form-control form-control-sm" id="customer_id" readonly>
+               <label id="customer_id_status" style="color: red; font-size: 12px; font-weight: bold;"></label>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Customer Name</label>
+               <input type="text" class="form-control form-control-sm" id="customer_name" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Email ID</label>
+               <input type="text" class="form-control form-control-sm" id="email" readonly>
+            </div>
+         </div>
+         
+      </div>
+
+      <div class='row '>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Location</label>
+               <input type="text" class="form-control form-control-sm" id="location" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Customer Point of Contact</label>
+               <input type="text" class="form-control form-control-sm" id="customer_poc" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Phone Number</label>
+               <input type="number" class="form-control form-control-sm" id="phone" readonly>
+            </div>
+         </div>
+      </div>
+
+      <div class='row '>
+
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Address</label>
+               <!-- <input type="text" class="form-control form-control-sm" > -->
+               <textarea rows="4" class="form-control form-control-sm" id="address" readonly></textarea>
+            </div>
+         </div>
+
+         
+
+
+
+      </div>
+     
+      <!-- ====================== Row End ================================== -->
+
+     
+
+    <hr>
+    
+   
+   </div>
+   <!-- card-body -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card m-3">
+    <div class="pt-3">
+        <div class="tx-dark tx-15 tx-bold">ALL RPO(S)</div>
+
+
+        <div class="d-flex justify-content-end mg-t-10">
+            <div class="p-2 btn btn-sm Rectangle" type="button" data-toggle="modal" onclick="create_new_rpo()"> <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;<b>NEW RPO</b></div>
+      </div>
+
+
+      <div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div id="table_button">
+
+        </div>
+
+        <!-- <input type="text" class="form-control" placeholder="Search" id="search_table"> -->
+        <div class="input-group">
+          <input type="text" id="table_search" class="form-control" placeholder="Search" >
+      </div>
+  </div>
+  <table class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" id="table">
+    <thead class="bg-dark tx-white">
+      <tr>
+        <th>SR.NO.</th>
+        <th>RPO</th>
+        <th>MACHINE TYPE</th>
+        <th>MACHINE SUBTYPE</th>
+        <th>INVOICE DATE</th>
+        <th>WARRANTY</th>
+        <th>WARRANTY DATE</th>
+        <th>EXPIRY DATE</th>
+        <th>EDIT</th>
+    </tr>
+</thead>
+<tbody id="tablebody">
+
+</tbody>
+</table>
+</div>
+</div>
+
+<!--container-->
+<script type="text/javascript">
+    var socket = io.connect('http://'+document.domain+':'+location.port);
+
+    
+    socket.emit("get_machine_types_from_activity_preset");
+
+    socket.on('sent_machine_types_from_activity_preset', function(data) {
+        var inner_html ="";
+
+        for(var j=0; j< data.length;j++){
+
+          inner_html += '<option value="'+data[j]+'"> '+data[j]+'</option>';
+      }
+
+      document.getElementById("modal_machine_type").innerHTML = inner_html;
+      get_subtypes();
+
+  });
+
+    function get_subtypes(){
+
+      var type = document.getElementById("modal_machine_type").value;
+
+      socket.emit("get_subtypes_for_machine_type",type);
+
+      socket.on('sent_subtypes_for_machine_type', function(data) {
+
+        console.log(data);
+        var inner_html ="";
+
+        for(var j=0; j< data.length;j++){
+
+          inner_html += '<option value="'+data[j]+'"> '+data[j]+'</option>';
+
+
+      }
+      document.getElementById("modal_machine_subtype").innerHTML = inner_html;
+
+      document.getElementById("modal_machine_subtype").removeAttribute("disabled");
+
+
+    }); //socket
+
+
+  }
+
+
+  window.onload = initial_load;
+
+  function initial_load(){
+      update_table();
+  }  
+
+  
+
+  // =============================== Material Details table ========================================//
+
+  function update_table(){
+
+    $('#table').DataTable().destroy();
+
+    var client_id = '{{client_id}}';
+
+    var details = {"client_id":client_id};
+
+    $.ajax({
+      type: 'POST',
+      url: '/get_customer_details_table',
+      data: JSON.stringify(details),
+      contentType: 'application/json',
+      success: function (data) {
+         try{
+
+            inner_html="";
+
+            for(var j=0; j< data.length;j++){
+
+              inner_html += '<tr>';
+              inner_html += '<td>'+String(j+1)+'</td>';
+              inner_html += '<td>'+String(data[j]["RPO"])+'</td>';
+              inner_html += '<td>'+String(data[j]["Machine Type"])+'</td>';
+              inner_html += '<td>'+String(data[j]["Machine Subtype"])+'</td>';
+              inner_html += '<td>'+String(data[j]["invoice_date"])+'</td>';
+              inner_html += '<td>'+String(data[j]["warranty"])+'</td>';
+              inner_html += '<td>'+String(data[j]["warranty_date"])+'</td>';
+              inner_html += '<td>'+String(data[j]["expiry_date"])+'</td>';
+
+              inner_html += '<td>';
+              inner_html += '<center><button type="button" class="btn btn-sm btn-dark Rectangle_without_color" id ="'+ data[j]["RPO"]+'" onclick="open_edit_modal(this)"> EDIT </button> </center>';
+              inner_html += '</td>';
+
+              inner_html += '</tr>';
+
+          }
+
+          document.getElementById("tablebody").innerHTML = inner_html;
+
+          var table = $('#table').DataTable( {
+                    //"scrollX": true,
+                    lengthChange: false,
+                    "dom": 'lrtip',
+                    "deferRender": true,
+                    "initComplete": function (settings, json) {
+                      $("#table").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+                  },
+
+                  buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                        extend:    'copy',
+                        text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                        titleAttr: 'Copy'
+                    },
+                    {
+                        extend:    'excel',
+                        text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                        titleAttr: 'Excel'
+                    },
+                    {
+                        extend:    'pdf',
+                        text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                        titleAttr: 'PDF'
+                    },
+                    {
+                        extend:    'print',
+                        text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                        titleAttr: 'Print'
+                    },
+                    {
+                        extend:    'csv',
+                        text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                        titleAttr: 'CSV'
+                    },
+                    {
+                        extend:    'colvis',
+                        text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                        titleAttr: 'Columns'
+                    },
+                    ]
+                }
+                ]
+            } );
+
+          table.buttons( 0, null ).containers().appendTo( '#table_button' );
+
+          $('#table_search').on( 'keyup', function () {
+              table.search( this.value ).draw();
+              console.log("working")
+          } );
+      }
+      catch(e){
+      }
+  }
+});
+}
+
+function open_edit_modal(element){
+
+    $('#edit_modal').modal('show');
+    $('#edit_modal_form')[0].reset();
+    document.getElementById("modal_rpo").setAttribute('readonly', true);
+
+    var rpo = element.id;
+    var details = {"RPO":rpo};
+
+    $.ajax({
+        type: 'POST',
+        url: '/get_specific_customer_details_data',
+        data: JSON.stringify(details),
+        contentType: 'application/json',
+        success: function (data) {
+
+          document.getElementById("modal_rpo").value = rpo;
+          document.getElementById("modal_machine_type").value = data["Machine Type"];
+          document.getElementById("modal_machine_subtype").value = data["Machine Subtype"];
+          document.getElementById("modal_invoice_date").value = data["invoice_date"];
+          document.getElementById("modal_warranty").value = data["warranty"];
+          document.getElementById("modal_warranty_date").value = data["warranty_date"];
+          document.getElementById("modal_expiry_date").value = data["expiry_date"];
+      }
+  });
+}
+
+
+function update_customer_details(){
+
+  var details = {};
+
+  details["RPO"] = document.getElementById("modal_rpo").value;
+  details["Machine Type"] = document.getElementById("modal_machine_type").value;
+  details["Machine Subtype"] = document.getElementById("modal_machine_subtype").value;
+  details["invoice_date"] = document.getElementById("modal_invoice_date").value;
+  details["warranty"] = document.getElementById("modal_warranty").value;
+  details["warranty_date"] = document.getElementById("modal_warranty_date").value;
+  details["expiry_date"] = document.getElementById("modal_expiry_date").value;
+  
+  $.ajax({
+    type: 'POST',
+    url: '/update_specific_customer_detail',
+    data: JSON.stringify(details),
+    contentType: 'application/json',
+    success: function (data) {
+      update_table();
+  }
+});
+
+  $('#edit_modal').modal('hide');
+}
+
+
+function create_new_rpo(){
+
+    var client_id = '{{client_id}}';
+    window.location.href = "/new_client/" + client_id;
+}
+
+
+
+var client_id = '{{client_id}}';
+
+$.get("/get_specific_customer_details_for_rpo/"+ client_id, function(data) {
+
+    console.log("Success",data);
+    document.getElementById("customer_id").value = data["client_id"];
+    document.getElementById("customer_name").value = data["client_name"];
+    document.getElementById("address").value =  data["address"];
+    document.getElementById("location").value = data["location"];
+    document.getElementById("customer_poc").value = data["poc"];
+    document.getElementById("phone").value = data["phone"];
+    document.getElementById("email").value = data["email"];
+});
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,211 @@
+
+{% extends "template.html" %}
+
+{% block content %}
+
+<style>
+
+:root {
+  --windows-blue: #365ec8;
+  --bluish: #3091c9;
+  --warm-blue: #5460dc;
+  --white: #ffffff;
+  --dusk-blue: #28499f;
+  --bluey-grey: #85a5c2;
+  --light-sky-blue: #d4e3f0;
+  --lipstick: #bb166b;
+  --bluish-grey-20: rgba(115, 137, 156, 0.2);
+  --topaz: #16b8bb;
+  --aquamarine: #00d7af;
+  --metallic-blue: #546593;
+  --bluish-grey: #73899c;
+  --very-light-pink: #d7d7d7;
+  --gray-medium: rgba(205, 205, 210, 0.5);
+  --text: #77777a;
+  ---style: #002251;
+}
+	
+	
+.CARD_HEADER_FONT {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 2.93px;
+  text-align: center;
+  color: #292b2c;
+}
+.Rectangle {
+  
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--windows-blue);
+
+  }
+  .Alert-font {
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.61;
+  letter-spacing: 0.38px;
+  color: #292b2c;
+}
+
+.Have-you-experien {
+
+	font-family: Manrope;
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 2.14;
+	letter-spacing: 0.38px;
+	color: #28499f;
+
+}
+
+.YES {
+								
+								font-family: Manrope;
+								font-size: 12px;
+								font-weight: normal;
+								font-stretch: normal;
+								font-style: normal;
+								line-height: 0.92;
+								letter-spacing: 0.5px;
+								color: #546593;
+								background-color: ;
+								}
+
+.Oval-Copy {
+  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: var(--bluish-grey-20);
+}
+
+.I-have-read-the-term {
+  font-family: Manrope;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+  color: var(--dusk-blue);
+}
+.form-control.base {
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  background-color: #fbfbfb;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #292b2c;
+  
+  }
+
+.form-control.base::-webkit-input-placeholder {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #292b2c;
+   border:none;
+}
+
+	</style>
+
+
+       
+	<div class="row no-gutters  mg-t-10">
+		<div class="col-sm-12 col-lg-12">
+          <div class="card">
+              <div class="card-header CARD_HEADER_FONT">
+                CONTACT US
+              </div><!-- card-header -->
+              <div class="card-body" >
+				
+					
+						<!--<img src="/static/img/contact.jpg" width="100%">-->
+						<img src="/static/img/contact.jpg" height="200px" class="rounded mx-auto d-block" alt="...">
+			
+					
+					
+					
+				<form>
+				<div class="form-group pt-2 ">
+					<label for="question" class="Alert-font">Please Enter message </label>
+					<textarea class="form-control base" id="question" rows="2"></textarea>
+				  </div>
+				  <hr>
+			  </form>
+						
+					
+					
+				
+		
+			 
+			<div class="row pt-10">
+				<div class="col-12">
+					<button onclick="show()" class="btn btn-block Rectangle"> Submit </button>	
+				</div>
+
+				
+			</div>
+				<div  id ="divinfo" class="Alert-font">
+			 
+		</div>
+		
+		<div class="row p-3 Alert-font">
+		
+		Contact Details :
+		
+		<br>
+		<br>
+		Cyronics Instruments Pvt. Ltd. ,<br>
+		Mail : info_iot@cyronics.com<br>
+		Phone : +91 9922998224 <br>
+		
+		</div>
+
+<script>
+var socket=io.connect('http://'+document.domain+":"+location.port)
+socket.emit("Contact Us");		
+</script>
+		
+<script>     
+function show()
+{
+	 document.getElementById("divinfo").innerHTML = " ";
+	var question = document.getElementById('question').value;
+	socket.emit("question",question);
+	 document.getElementById("divinfo").innerHTML = "Submmitted successfully. We will contact you shortly.";
+     //location.href = "/manualsecurity";
+} 
+
+
+</script>
+		
+		</div>
+		</div>
+		</div>
+	</div>
+        
+{% endblock %}

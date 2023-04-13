@@ -1,0 +1,558 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   }
+</style>
+<!-- <div class="pt-3 pl-4">
+   <div class="tx-dark tx-15 tx-bold">DASHBOARD</div>
+   </div>
+   -->
+<div class="p-3">
+   <div class="p-1">
+      <div class="tx-dark tx-15 tx-bold">ACTIVITY PRESETS</div>
+   </div>
+   <div class="d-flex justify-content-end mg-t-10">
+      <div class="p-2 btn btn-sm Rectangle" onclick="open_modal_new_activity()"> <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;NEW PRESET</div>
+   </div>
+   <!-- Add new preset modal -->
+   <div id="new_update_modal" class="modal fade">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content tx-size-lg">
+            <div class="modal-header pd-x-20">
+               <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold " id="heading">New Activity</h6>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form id="modal_form">
+               <div class="row">
+                  <div class="col-lg-12">
+                     <div class="p-2 px-3" >
+                        <div class="form-group pt-2">
+                           <label><b>Milestone:</b></label>
+                           <select class="form-control form-control-sm" id="domain">
+                              <option>Production</option>
+                              <option>Purchase</option>
+                              <option>Design</option>
+                              <option>Testing</option>
+                              <option>Dispatch</option>
+                           </select>
+                        </div>
+                        <div class="form-group pt-2">
+                           <label><b>Machine Type:</b></label>
+                           <select class="form-control form-control-sm" id="machine_type_drop" onclick="get_subtypes()">
+                           </select>
+                        </div>
+                        <div class="form-check form-check-inline pl-4">
+                           <input class="form-check-input" type="checkbox" id="machine_type_check" onchange="use_new_machine_type()">
+                           <label class="form-check-label" for="inlineCheckbox1">Use a different Machine type</label>
+                        </div>
+                        <div class="form-group pt-2">
+                           <input type="text" class="form-control form-control-sm" id="machine_type_text" placeholder="" required>
+                        </div>
+                        <hr>
+                        <div class="form-group pt-2">
+                           <label><b>Machine Subtype:</b></label>
+                           <select class="form-control form-control-sm" id="machine_subtype_drop">
+                           </select>
+                        </div>
+                        <div class="form-check form-check-inline pl-4">
+                           <input class="form-check-input" type="checkbox" id="machine_subtype_check" onchange="use_new_machine_subtype()">
+                           <label class="form-check-label" for="inlineCheckbox1">Use a different Machine Subtype</label>
+                        </div>
+                        <div class="form-group pt-2">
+                           <input type="text" class="form-control form-control-sm" id="machine_subtype_text" placeholder="" required>
+                        </div>
+                        <hr>
+                        <div class="form-group pt-2">
+                           <label><b>Activity Type:</b></label>
+                           <select class="form-control form-control-sm" id="activity_type_drop">
+                           </select>
+                        </div>
+                        <div class="form-check form-check-inline pl-4">
+                           <input class="form-check-input" type="checkbox" id="activity_type_check" onchange="use_new_activity_type()">
+                           <label class="form-check-label" for="inlineCheckbox1">Use a different Activty Type.</label>
+                        </div>
+                        <div class="form-group pt-2">
+                           <input type="text" class="form-control form-control-sm" id="activity_type_text" placeholder="" required>
+                        </div>
+                        <hr>
+                        <div class="form-group pt-2">
+                           <label><b>Activity Subtype:</b></label>
+                           <input type="text" class="form-control form-control-sm" id="activity_subtype" placeholder="" required>
+                        </div>
+                        <div class="form-group pt-2">
+                           <label><b>Time Taken (Days):</b></label>
+                           <input type="number" class="form-control form-control-sm" id="time_taken" placeholder="" required>
+                        </div>
+                        <div class="form-group pt-2">
+                           <small id="new_activity_console"></small>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- modal-body -->
+            <div class="modal-footer d-flex justify-content-center" id="modal_button">
+            </div>
+         </div>
+      </div>
+      <!-- modal-dialog -->
+   </div>
+   <!-- modal ends-->
+   <div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div id="table_button">
+      </div>
+      <!-- <input type="text" class="form-control" placeholder="Search" id="search_table"> -->
+      <div class="input-group">
+         <input type="text" id="datatable1_search" class="form-control" placeholder="Search" >
+      </div>
+   </div>
+   <table id="datatable1" class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" >
+      <thead class="bg-dark tx-white">
+         <tr>
+            <th>SR.NO.</th>
+            <th>MILESTONE</th>
+            <th>MACHINE TYPE</th>
+            <th>MACHINE SUBTYPE</th>
+            <th>ACTIVITY TYPE</th>
+            <th>ACTIVITY SUBTYPE</th>
+            <th>DAYS</th>
+            <th>ACTION</th>
+         </tr>
+      </thead>
+      <tbody id="tablebody">
+      </tbody>
+   </table>
+   <script type="text/javascript">
+      $.fn.dataTable.ext.errMode = 'none';
+      var socket = io.connect('http://'+document.domain+':'+location.port);
+      
+      socket.on('connect', function() {
+         console.log('connected');
+         
+      });
+      
+      socket.emit('get_activity_presets');
+      
+      socket.on('sent_activity_presets', function(data) {
+      
+      console.log(data);
+      $('#datatable1').dataTable().fnDestroy();
+      
+      inner_html="";
+      
+      
+      console.log("i am here")
+      
+      for(var j=0; j< data.length;j++){
+      
+        /*inner_html += '<tr>';
+        inner_html += '<td>'+String(j+1)+'</td>';
+        var counter = 0;
+        for(var key=0 ; key < keys.length; key++){
+          var k = keys[key];
+      
+          inner_html += '<td>'+String(data[j][k])+'</td>';
+        }*/
+        
+        inner_html += '<tr>'
+        inner_html += '<td>'+String(j+1)+'</td>';
+        inner_html += '<td>'+data[j]["Domain"]+'</td>';
+        inner_html += '<td>'+data[j]["Machine Type"]+'</td>';
+        inner_html += '<td>'+data[j]["Machine sub_type"]+'</td>';
+        inner_html += '<td>'+data[j]["Activity Type"]+'</td>';
+        inner_html += '<td>'+data[j]["sub_type"]+'</td>';
+        inner_html += '<td>'+data[j]["man_days"]+'</td>';
+        inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-dark Rectangle_without_color" id="'+data[j]["_id"]+'" onclick="delete_preset(this)">DELETE</button> </td>'
+        inner_html += '</tr>';
+        
+      
+      }
+      
+      document.getElementById("tablebody").innerHTML = inner_html;
+      
+      
+      if (j > 0)
+      
+      {
+        console.log("tableeeee");
+      
+      
+       var table1 = $('#datatable1').DataTable( {
+              //"scrollX": true,
+              lengthChange: false,
+              "dom": 'lrtip',
+              "deferRender": true,
+              "initComplete": function (settings, json) {
+          $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+      
+      
+      buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+              ]
+      
+      
+          } );
+          table1.buttons( 0, null ).containers().appendTo( '#table_button' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable1_search').on( 'keyup', function () {
+          table1.search( this.value ).draw();
+          console.log("working")
+      } );
+      
+      }
+      });
+      
+      function updates_function(element){
+      
+        var rpo = ($(element).closest("div").attr("id"));
+      
+        window.location.href = "/updates/"+rpo;
+      
+      }
+      
+      
+      function open_modal_new_activity(){
+      
+      // Reset form
+      $('#modal_form')[0].reset();
+      
+      document.getElementById("machine_type_text").setAttribute('disabled', true);
+      document.getElementById("machine_subtype_text").setAttribute('disabled', true);
+      document.getElementById("activity_type_text").setAttribute('disabled', true);
+      socket.emit("get_machine_types_from_activity_preset");
+      
+      socket.on('sent_machine_types_from_activity_preset', function(data) {
+         var inner_html ="";
+      console.log(data);
+      
+      
+      for(var j=0; j< data.length;j++){
+      
+      inner_html += '<option value="'+data[j]+'"> '+data[j]+'</option>';
+      
+      
+      }
+      document.getElementById("machine_type_drop").innerHTML = inner_html;
+      get_subtypes();
+      
+      });
+      
+      
+      
+      
+      socket.emit("get_activity_types_for_new_activity_preset");
+      
+      socket.on('sent_activity_types_for_new_activity_preset', function(data) {
+         var inner_html ="";
+      console.log(data);
+      
+      
+      for(var j=0; j< data.length;j++){
+      
+      inner_html += '<option value="'+data[j]+'"> '+data[j]+'</option>';
+      
+      
+      }
+      document.getElementById("activity_type_drop").innerHTML = inner_html;
+      
+      
+      });
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      document.getElementById("heading").innerText = "New Activity";
+      
+      button = '<button type="button" class="btn btn-primary Rectangle_without_color" onclick="add_new_preset()" >SAVE</button>'
+      
+      document.getElementById("modal_button").innerHTML = button;
+      
+      $('#new_update_modal').modal('show');
+      
+      }
+      
+      
+      function get_subtypes(){
+      
+        var type = document.getElementById("machine_type_drop").value;
+      
+        socket.emit("get_subtypes_for_machine_type",type);
+      
+        socket.on('sent_subtypes_for_machine_type', function(data) {
+      
+          console.log(data);
+          var inner_html ="";
+          for(var j=0; j< data.length;j++){
+      
+      inner_html += '<option value="'+data[j]+'"> '+data[j]+'</option>';
+      
+              }
+      document.getElementById("machine_subtype_drop").innerHTML = inner_html;
+      
+      
+      
+        }); //socket 
+      
+      
+      }
+      
+      
+      
+      
+      
+      
+      function use_new_machine_type(){
+      
+      console.log(document.getElementById("machine_type_check").checked);
+      if(document.getElementById("machine_type_check").checked == true){
+      
+      document.getElementById("machine_type_drop").setAttribute('disabled', true);
+      document.getElementById("machine_type_text").removeAttribute("disabled");
+      
+      
+      document.getElementById("machine_subtype_drop").setAttribute('disabled', true);
+      document.getElementById("machine_subtype_text").removeAttribute("disabled");
+      document.getElementById("machine_subtype_check").checked = true ;
+      
+      }
+      
+      else{
+      document.getElementById("machine_type_drop").removeAttribute("disabled");
+      document.getElementById("machine_type_text").value = "";
+      document.getElementById("machine_type_text").setAttribute('disabled', true);
+      
+      
+      document.getElementById("machine_subtype_check").checked = false ;
+      document.getElementById("machine_subtype_drop").removeAttribute("disabled");
+      document.getElementById("machine_subtype_text").value = "";
+      document.getElementById("machine_subtype_text").setAttribute('disabled', true);
+      }
+      
+      
+      }
+      
+      function use_new_machine_subtype(){
+      
+      console.log(document.getElementById("machine_subtype_check").checked);
+      if(document.getElementById("machine_subtype_check").checked == true){
+      
+      document.getElementById("machine_subtype_drop").setAttribute('disabled', true);
+      document.getElementById("machine_subtype_text").removeAttribute("disabled");
+      }
+      else{
+      
+      document.getElementById("machine_subtype_drop").removeAttribute("disabled");
+      document.getElementById("machine_subtype_text").value = "";
+      document.getElementById("machine_subtype_text").setAttribute('disabled', true);
+      }
+      
+      
+      }
+      
+      function use_new_activity_type(){
+      
+      console.log(document.getElementById("activity_type_check").checked);
+      if(document.getElementById("activity_type_check").checked == true){
+      
+      document.getElementById("activity_type_drop").setAttribute('disabled', true);
+      document.getElementById("activity_type_text").removeAttribute("disabled");
+      }
+      else{
+      document.getElementById("activity_type_drop").removeAttribute("disabled");
+      document.getElementById("activity_type_text").value = "";
+      document.getElementById("activity_type_text").setAttribute('disabled', true);
+      }
+      
+      
+      }
+      
+      function add_new_preset(){
+      console.log("saving");
+      var to_send = {};
+      
+      
+      // Activity Type
+      if(document.getElementById("activity_type_check").checked == true){
+      
+      to_send["Activity Type"] = document.getElementById("activity_type_text").value;
+      }
+      else{
+      to_send["Activity Type"] = document.getElementById("activity_type_drop").value;
+      }
+      
+      
+      
+      //Machine type
+      if(document.getElementById("machine_type_check").checked == true){
+      
+      to_send["Machine Type"] = document.getElementById("machine_type_text").value;
+      }
+      else{
+      to_send["Machine Type"] = document.getElementById("machine_type_drop").value;
+      }
+      
+      
+      //Machine Subtype
+      if(document.getElementById("machine_subtype_check").checked == true){
+      
+      to_send["Machine sub_type"] = document.getElementById("machine_subtype_text").value;
+      }
+      else{
+      to_send["Machine sub_type"] = document.getElementById("machine_subtype_drop").value;
+      }
+      
+      
+      to_send["Domain"] = document.getElementById("domain").value
+      
+      to_send["man_days"] = document.getElementById("time_taken").value
+      to_send["sub_type"] = document.getElementById("activity_subtype").value
+      console.log(to_send)
+      
+      socket.emit("add_new_preset", to_send);
+      
+      socket.on('add_new_preset_response', function(data) {
+      
+      
+      if(data == 1){
+      document.getElementById("new_activity_console").innerHTML = "SAVED SUCCESSFULLY!"
+      
+      socket.emit('get_activity_presets');
+      
+      }
+      else{
+      
+      document.getElementById("new_activity_console").innerHTML = "ALREADY EXISTS!"
+      
+      }
+      
+      });
+      
+      }
+      
+      function delete_preset(element){
+      
+        var id = element.id;
+        
+        a = confirm("Are you Sure?");
+        if(a==true){ 
+        socket.emit("delete_preset",id);
+      
+        socket.emit('get_activity_presets');
+      }
+        else{
+          alert("OK");
+        }
+        
+      }
+      
+      
+      
+   </script>
+</div>
+{% endblock %}

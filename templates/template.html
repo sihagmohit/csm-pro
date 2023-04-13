@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Quinnect Technologies</title>
+   <!-- vendor css -->
+   <link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+   <link href="{{ url_for('static', filename='lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
+   <link href="{{ url_for('static', filename='lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
+   <link href="{{ url_for('static', filename='lib/jquery-switchbutton/jquery.switchButton.css')}}" rel="stylesheet">
+   <!-- Bracket CSS -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/bracket_epass.css')}}">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.bootstrap4.min.css">
+   <style>
+   .LOGO-Header {
+      width: 200px;
+      height: 45px;
+      object-fit: contain;
+   }
+   .images {
+      width: 90px;
+      height: 80%;
+      object-fit: contain;
+   }
+   .header {
+      width: 1440px;
+      height: 60px;
+   }
+   .Hello-Firstname {
+      width: 258.5px;
+      height: 26.4px;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.2px;
+      text-align: right;
+      color: white;
+   }
+   .My-Pass {
+      width: 83px;
+      height: 19px;
+      font-family: Manrope;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 0.7px;
+      color: white;
+   }
+   .My-Pass-Icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .Created-By {
+      width: 92px;
+      height: 11px;
+      font-family: Montserrat;
+      font-size: 10px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.2px;
+      color: blue;
+   }
+   .Cyronics-Logo-Web {
+      width: 122px;
+      height: 18px;
+      object-fit: contain;
+      opacity: 0.9;
+      font-family: Montserrat;
+      font-size: 14.4px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.8px;
+      color: blue;
+   }
+   .Cyronics-Logo-Web .text-style-1 {
+      font-size: 8.4px;
+      letter-spacing: 1.2px;
+   }
+   .My-Pass-Icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .Scan {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      background-color: #000000;
+   }
+   .Admin-Dashboard-Icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .Notifications-Icon {
+      width: 21px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .My-History-Icon {
+      width: 28px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .Social-Distancing-Icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .Contact-Tracing-Icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .My-Account-Icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      border: solid 0.2px var(--white);
+   }
+   .Help-FAQ-Icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .Log-Out-Icon {
+      width: 29px;
+      height: 24px;
+      object-fit: contain;
+   }
+   .Hamburger {
+      width: 58px;
+      height: 9px;
+      object-fit: contain;
+   }
+   .-Jun-2020 {
+      width: 112px;
+      height: 19px;
+      font-family: Manrope;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 0.5px;
+      text-align: right;
+      color: var(--dusk-blue);
+   }
+   .CLOSE {
+      font-family: Manrope;
+      font-size: 9px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.35px;
+      color: #28499f;
+      margin-left: -10px;
+   }
+   .Close-Menu {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+   }
+   .scrollbar
+   {
+      margin-left: 30px;
+      float: left;
+      height: 300px;
+      width: 65px;
+      background: #F5F5F5;
+      overflow-y: scroll;
+      margin-bottom: 25px;
+   }
+         /*
+         *  STYLE 2
+         */
+         #style-2::-webkit-scrollbar-track
+         {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            background-color: transparent;
+         }
+         #style-2::-webkit-scrollbar
+         {
+            width: 10px;
+            background-color: transparent;
+         }
+         #style-2::-webkit-scrollbar-thumb
+         {
+            background-color:   ;
+         }
+         #style-2::-webkit-scrollbar-thumb:hover
+         {
+            border-radius: 8px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color:   #bdbdbd;
+         }
+         .style-3:hover::-webkit-scrollbar-thumb
+         {
+            border-radius: 8px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color:   #bdbdbd;
+         }
+         .btn-circle.btn-sm {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            font-size: 8px;
+            text-align: center;
+         }
+         .btn-circle.btn-md {
+            width: 50px;
+            height: 50px;
+            padding: 7px 10px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+         }
+         .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+         }
+         .left_menu {
+            overflow:auto;
+         }
+         .left_menu:hover {
+            overflow-y:auto;
+         }
+         .software_icon_desktop{
+            position: fixed;
+            bottom:0px;
+            padding-left: 43px;
+            padding-bottom: 10px;
+         }
+         .software_icon_mobile{
+            bottom:0px;
+            padding-left: 43px;
+            padding-bottom: 5px;
+            padding-top: 5px;
+         }
+         .version_desktop {
+            position: fixed;
+            bottom:0px;
+            padding-left: 75px;
+            padding-bottom: 95px;
+         }
+         .version_mobile {
+            padding-left: 75px;
+         }
+      </style>
+   </head>
+   <body id="body_id" class="">
+      <!--rgb(57, 12, 161)-->
+      <!-- ########## START: LEFT PANEL ########## -->
+      <!--<div class="br-logo bg-dark pr-0 tx-white" id="logo_change"> <img src="/static/img/cyronics_iot_logo_white.png" width="80px" class="LOGO-Header"></div>-->
+      <div class="br-logo bg-dark pr-0 tx-white" style="background-color:#343A40 !important ;" id="logo_change1"> <img src="{{ url_for('static', filename='img/fie.png')}}" class="LOGO-Header"></div>
+      <div class="br-sideleft style-3" >
+         <div class="left_menu" id="style-2" style="height:80vh !important;" >
+
+                   {% if "Super-Admin" == role or 'Admin' == role or "Super-Admin" in role%}
+               <!-- <a href="/twin_home" id="twin_home" class="br-menu-link">
+                  <div class="br-menu-item mg-t-10">
+                     <div class="col-2"><i class="fa fa-home fa-2x" style="color:#607d8b;"></i></div>
+                     <div class="col-10 "><span class="menu-item-label"> Home </span></div>
+                  </div>
+              
+               </a> -->
+              
+               {% endif %}
+
+
+            <!--   <div class="br-sideleft-menu"> -->
+
+
+
+               {% if "Super-Admin" == role or 'Admin' == role or "Super-Admin" in role%}
+        <a href="/production_plan" id="customer_database1" class="br-menu-link">
+                <div class="br-menu-item mg-t-10">
+                 <div class="col-2"><i class="fa fa-tasks fa-2x" style="color:#607d8b;"></i></div>
+                 <div class="col-10 "><span class="menu-item-label"> Production Plan</span></div>
+              </div><!-- menu-item -->
+           </a><!-- br-menu-link -->
+
+           <a href="/gap_analysis" id="customer_database" class="br-menu-link">
+                <div class="br-menu-item mg-t-10">
+                 <div class="col-2"><i class="fa fa-table fa-2x" style="color:#607d8b;"></i></div>
+                 <div class="col-10 "><span class="menu-item-label"> Gap Analysis</span></div>
+              </div><!-- menu-item -->
+           </a>
+
+             <a href="/gap_calculator" id="gap_calculator" class="br-menu-link">
+                <div class="br-menu-item mg-t-10">
+                 <div class="col-2"><i class="fa fa-table fa-2x" style="color:#607d8b;"></i></div>
+                 <div class="col-10 "><span class="menu-item-label"> Gap Calculator</span></div>
+              </div><!-- menu-item -->
+           </a>
+             {% endif %}
+
+
+            {% if "Super-Admin" == role or 'Admin' == role or "Super-Admin" in role%}
+               <a href="/history" id="history_fie" class="br-menu-link">
+                  <div class="br-menu-item mg-t-10">
+                     <div class="col-2"><i class="fa fa-history fa-2x" style="color:#607d8b;"></i></div>
+                     <div class="col-10 "><span class="menu-item-label"> HISTORY </span></div>
+                  </div>
+                  <!-- menu-item -->
+               </a>
+               <!-- br-menu-link -->
+         {% endif %}
+
+
+
+              
+               
+               <!-- {% if "Super-Admin" == role or 'Admin' == role or 'Customer' == role or "Super-Admin" in role%}
+               <a href="/activity_presets" id="activity_presets" class="br-menu-link ">
+                  <div class="br-menu-item mg-t-10">
+                     <div class="col-2"><i class="fa fa-file-text fa-2x " style="color:#607d8b;"></i></div>
+                     <div class="col-10 "><span class="menu-item-label"> Activity Presets </span></div>
+                  </div>
+                
+               </a>
+               
+               {% endif %} -->
+
+          
+
+
+
+              <!--  {% if "Super-Admin" == role or 'Admin' == role or 'Customer' == role or "Super-Admin" in role %}
+               <a href="/approval" id="approvals" class="br-menu-link ">
+                  <div class="br-menu-item mg-t-10">
+                     <div class="col-2"><i class="fa fa-check-circle fa-2x " style="color:#607d8b;"></i></div>
+                     <div class="col-10 "><span class="menu-item-label"> Approvals </span></div>
+                  </div>
+            
+               </a>
+         
+               {% endif %} -->
+              <!--  {% if "Super-Admin" == role or 'Admin' == role or  "Super-Admin" in role %}
+               <a href="/customer_home" id="customer_home" class="br-menu-link">
+                  <div class="br-menu-item mg-t-10">
+                     <div class="col-2"><i class="fa fa-eye fa-2x" style="color:#607d8b;"></i></div>
+                     <div class="col-10 "><span class="menu-item-label"> Customer View </span></div>
+                  </div>
+                 
+               </a>
+               
+               {% endif %} -->
+
+
+           <!--     {% if "Super-Admin" == role or 'Office' == role or "Super-Admin" in role%}
+               <a href="/customer_database" id="customer_database" class="br-menu-link">
+                <div class="br-menu-item mg-t-10">
+                 <div class="col-2"><i class="fa fa-database fa-2x" style="color:#607d8b;"></i></div>
+                 <div class="col-10 "><span class="menu-item-label"> Customer Database </span></div>
+              </div>
+           </a>
+           {% endif %} -->
+
+
+
+           {% if "Super-Admin" == role or 'Admin' == role or "Super-Admin" in role%}
+                     <a href="/spr" id="spr" class="br-menu-link ">
+                     <div class="br-menu-item mg-t-10">
+                     <div class="col-2"><i class="fa fa-file-pdf-o fa-2x " style="color:#607d8b;"></i></div>
+                     <div class="col-9"><span class="menu-item-label"> Databases </span></div>
+                     <div><i class="menu-item-arrow fa fa-angle-down"></i></div>
+                     </div><!-- menu-item -->
+                     </a><!-- br-menu-link -->
+                     <ul class="br-menu-sub nav flex-column" style="background-color: #EAF0F4;">
+
+                     <li class="nav-item"><b><a href="/sales_order" class="nav-link" style="font-size: 12px;font-weight:normal;color:#2E2E2E;" id="sales_order
+                         ">Sales Order</a></b></li>
+
+                     <li class="nav-item"><b><a href="/stock" class="nav-link" style="font-size: 12px;font-weight:normal;color:#2E2E2E;" id="stock_data">Machine Stock</a></b></li>
+
+                     <!-- <li class="nav-item"><b><a href="/parts" class="nav-link" style="font-size: 12px;font-weight:normal;color:#2E2E2E;" id="parts_data">Parts</a></b></li> -->
+
+                     <li class="nav-item"><b><a href="/machinery_components" class="nav-link" style="font-size: 12px;font-weight:normal;color:#2E2E2E;" id="machinery_components_data">Machinery Components</a></b></li>
+
+                     <li class="nav-item"><b><a href="/wip_stocks" class="nav-link" style="font-size: 12px;font-weight:normal;color:#2E2E2E;" id="wip_stocks_data">WIP</a></b></li>
+
+                     <li class="nav-item"><b><a href="/vendor_details" class="nav-link" style="font-size: 12px;font-weight:normal;color:#2E2E2E;" id="vendor_details_data">Vendor Details</a></b></li>
+
+                     </ul>
+              {% endif %}
+
+
+
+
+
+           {% if "Super-Admin" == role or 'Office' == role or "Super-Admin" in role%}
+           <a href="/applications" id="applications" class="br-menu-link">
+             <div class="br-menu-item mg-t-10">
+              <div class="col-2"><i class="fa fa-users fa-2x" style="color:#607d8b;"></i></div>
+              <div class="col-10 "><span class="menu-item-label"> Applications </span></div>
+           </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
+
+      {% endif %}    
+      
+
+
+
+
+
+
+     </div>
+     <!--     </div> -->
+  </div>
+  <!-- br-sideleft -->
+  <!-- ########## END: LEFT PANEL ########## -->
+  <!-- ########## START: HEAD PANEL ########## -->
+  <div class="br-header pl-0 bg-dark" >
+   <div class="br-header-left ">
+      <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile"  href=""><i class="tx-white icon ion-navicon-round" ></i></a></div>
+   </div>
+   <!-- br-header-left -->
+   <div class="br-header-right">
+      <div class="dropdown">
+         <a href="" class="nav-link nav-link-profile" class="br-logo bg-dark pr-0 tx-white"  data-toggle="dropdown" id="logo_change"><i class="fa fa-cog fa-2x" style="color:white;"></i> &nbsp;&nbsp;</a>
+         <!--  <span class="logged-name hidden-md-down tx-black tx-6" id="user"></span>-->
+               <!--
+                  <a href="/shift_plan" id="shift_plan" class="br-menu-link">
+                          <div class="br-menu-item mg-t-10">
+                      <div class="col-2"><i class="fa fa-calendar fa-2x" style="color:#607d8b;"></i></div>
+                          <div class="col-10 "><span class="menu-item-label"> Shift Plan </span></div>
+                       </div><!-- menu-item -->
+                       <div class="dropdown-menu dropdown-menu-header wd-250 tx-dark" >
+                        <ul class="list-unstyled user-profile-nav">
+                           <div id="user_credentials">
+                           </div>
+                           <hr>
+                           <span class="col-12 tx-dark tx-bold pb-2">OPTIONS</span>
+                           <a href="/notifications" class="br-menu-link p-0 mg-0">
+                              <div class="br-menu-item mg-t-0 p-0">
+                                 <div class="col-3"><i class="fa fa-bell fa-2x" style="color:#607d8b;"></i></div>
+                                 <div class="col-9 "><span class="menu-item-label tx-dark"> Notifications </span></div>
+                              </div>
+                              <!-- menu-item -->
+                           </a>
+                           <!-- br-menu-link -->
+                           <a href="/profile" class="br-menu-link p-0 mg-0">
+                              <div class="br-menu-item mg-t-0 p-0">
+                                 <div class="col-3"><i class="fa fa-id-card fa-2x" style="color:#607d8b;"></i></div>
+                                 <div class="col-9 "><span class="menu-item-label tx-dark"> My Account </span></div>
+                              </div>
+                              <!-- menu-item -->
+                           </a>
+                           <!-- br-menu-link -->
+                           <a href="/contact" class="br-menu-link p-0 mg-0">
+                              <div class="br-menu-item mg-t-0 p-0">
+                                 <div class="col-3"><i class="fa fa-question fa-2x" style="color:#607d8b;"></i></div>
+                                 <div class="col-9 "><span class="menu-item-label tx-dark"> Help </span></div>
+                              </div>
+                              <!-- menu-item -->
+                           </a>
+                           <!-- br-menu-link -->
+                           <a onclick='logout()' id="login" class="br-menu-link p-0 mg-0">
+                              <div class="br-menu-item mg-t-0 p-0">
+                                 <div class="col-3"><i class="fa fa-sign-out fa-2x" style="color:#607d8b;"></i></div>
+                                 <div class="col-9 "><span class="menu-item-label tx-dark"> Log Out </span></div>
+                              </div>
+                              <!-- menu-item -->
+                           </a>
+                           <!-- br-menu-link -->
+                        </ul>
+                     </div>
+                     <!-- dropdown-menu -->
+                  </div>
+                  <!-- dropdown -->
+               </div>
+            </div>
+            <!-- br-sideright -->
+            <!-- ########## END: RIGHT PANEL ########## --->
+            <!-- ########## START: MAIN PANEL ########## -->
+            <div class="br-mainpanel " id="main_panel">
+               <div class="ht-1 bd bg-gray-100 pd-x-15 d-flex align-items-center justify-content-between mg-t-20">
+               </div>
+               <!-- ht-65 -->
+               <div class="br-pagebody">
+                  <!-----------------------------------Android JAVASCRIPT------------------------------->
+                  <script type="text/javascript">
+                     var phone ='{{phone}}';
+                     function Switch_OEE()
+                     {
+                       try{
+                         SwitchO.switchoee("");
+                      }
+                      catch(err){
+                         window.location.href='http://oee.ppapco.in/production_plan';
+                      }
+                   }
+
+                   function Switch_CBM()
+                   {
+                    try{
+                      SwitchC.switchcbm("");
+                   }
+                   catch(err){
+                      window.location.href='http://cbm.ppapco.in/external_login/' + phone;
+                   }
+                }
+
+                function Switch_TRACE()
+                {
+                 try{
+                   SwitchT.switchtrace("");
+                }
+                catch(err){
+                   window.location.href='http://trace.ppapco.in/external_login/' + phone;
+                }
+             }
+
+             function Switch_FLEET()
+             {
+              try{
+                SwitchF.switchfleet("");
+             }
+             catch(err){
+                window.location.href='http://fleet.ppapco.in/external_login/' + phone;
+             }
+          }
+       </script>
+       <!----------------------------------------------------------------------------------->
+       <script src="{{url_for('static',filename='socket.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/jquery/jquery.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/popper.js/popper.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/moment/moment.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/jquery-ui/jquery-ui.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/jquery-switchbutton/jquery.switchButton.js')}}"></script>
+       <script src="{{ url_for('static', filename='lib/peity/jquery.peity.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/echarts.min.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/echarts-gl.min.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/ecStat.min.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/dataTool.min.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/china.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/world.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/bmap.min.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/world.js')}}"></script>
+       <script src="{{ url_for('static', filename='echarts_js/simplex.js')}}"></script>
+       <script type="text/javascript" src="http://www.gstatic.com/charts/loader.js"></script>
+       <script src="{{ url_for('static', filename='js/bracket.js')}}"></script>
+       <script src="{{ url_for('static', filename='js/moment.min.js')}}"></script>
+       <!---------data_tables-->
+       <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+       <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+       <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+       <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+       <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+       <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+       <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+       <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+       <!--custom script -->
+       <script type="text/javascript">
+         $.fn.dataTable.ext.errMode = 'none';
+
+         ht=window.screen.availWidth;
+         if(ht<768) {
+               //  document.getElementById("change_class").className="images"
+               //  document.getElementById("change_class").innerHTML='<img src="/static/img/cyronics_iot_logo_white.png" class="images">';
+               document.getElementById("logo_change").className='br-logo  pr-0  bg-white'
+               
+               document.getElementById("logo_change").innerHTML='<div class="row" > <center>\
+               <div class="col-12 pd-l-40 mg-5"><img src="/static/img/logo.png"  class="Close-Menu"></div>\
+               </center> </div>';
+               
+               document.getElementById("OEE_logo_SVG").classList.remove("software_icon_desktop");
+               document.getElementById("OEE_logo_SVG").classList.add("software_icon_mobile");
+               
+               document.getElementById("version_code").classList.remove("version_desktop");
+               document.getElementById("version_code").classList.add("version_mobile");
+               
+               
+            }
+               //alert(window.screen.availHeight);
+               
+               console.log( '{{ role }}' );
+               
+               console.log( '{{ active_page }}' );
+               
+               var element = document.getElementById('{{ active_page }}');
+               if(element){
+                 element.classList.add("active");
+              }
+
+
+
+           </script>
+           <script>
+            function logout(){
+               socket.emit("logout");
+               console.log('logout');
+               location.href = "/";
+               Logout.showToast();
+            }
+
+            $( document ).ready(function() {
+               console.log( "ready!" );
+               html= '<center>\
+               <div class="pt-1">\
+               <span class="menu-item-label "> <button type="button" class="btn btn-warning btn-circle btn-xl" id="initials"> </button> </span>\
+               </div>\
+               <span class="menu-item-label" id="change_class"> <div class="btn btn-sm btn-block  btn  tx-dark" style="border: 2px solid #e7e7e7; border-radius: 12px;"  > Hello, ' + '{{name}}' +'! </div> </span></center>' ;
+               
+               
+               document.getElementById("user_credentials").innerHTML = html ;
+               
+               try{
+                var str = '{{name}}' ;
+                var res = str.substring(0, 1);
+                document.getElementById("initials").innerHTML = res;
+
+             }
+             catch(e){
+
+                console.log("Could not load Initials.");
+
+             }
+
+          });
+
+       </script>   
+       {% block content %}
+       {% endblock %}
+       <!-- ########## END: MAIN PANEL ########## -->
+    </div>
+ </div>
+</body>
+</html>

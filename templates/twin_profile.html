@@ -1,0 +1,185 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   }
+</style>
+<div class="card mg-t-20 ">
+   <div class="card-header">
+      <div class="tx-dark tx-15 tx-bold">PROFILE
+      </div>
+      <!-- card-header -->
+   </div>
+   <div class="card-body ">
+      <!-- ====================== Row Start ================================== -->
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Organization ID</label>
+               <input type="text" class="form-control form-control-sm" id="org_id" required>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Organization Name</label>
+               <input type="text" class="form-control form-control-sm" id="org_name" required>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Organization Address</label>
+               <input type="text" class="form-control form-control-sm" id="org_address" required>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <div class='row '>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Username</label>
+               <input type="text" class="form-control form-control-sm" id="username" required>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Password</label>
+               <input type="text" class="form-control form-control-sm" id="password" required>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <div class='row '>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Contact Person</label>
+               <input type="text" class="form-control form-control-sm" id="contact_person" required>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Contact Number</label>
+               <input type="text" class="form-control form-control-sm" id="contact_number" required>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <div class='row '>
+         <div class='col-lg-6 col-md-12 col-sm-12'>
+            <div class="form-group">
+               <label class="tx-black">Notes</label>
+               <textarea class="form-control form-control-sm" id="notes" required></textarea>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <br>
+      <br>
+      <div class="row mb-2">
+         <div class="col-2"><label>Console Message:</label></div>
+         <div class="col-5"><textarea class="form-control" id="console_status" rows="1" cols="80" readonly></textarea></div>
+      </div>
+      <br><br>
+      <div class='row pt-2 pb-2 justify-content-center'>
+         <div class='col-lg-4 col-md-12'>
+            <button id="save" class="btn btn-block Rectangle" onclick="save_details()">SAVE</button>
+            <small id="button_help"> </small>
+         </div>
+      </div>
+   </div>
+   <!-- card-body -->
+</div>
+<!-- card -->
+<footer class="br-footer">
+   <div class="footer-left">
+      <div class="mg-b-2">Copyright &copy; 2021.C4i4. All Rights Reserved.</div>
+   </div>
+</footer>
+<!-- ########## END: MAIN PANEL ########## -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script>
+   var socket=io.connect('http://'+document.domain+":"+location.port)
+   
+   function save_details(){
+   
+   var org_id = document.getElementById("org_id").value;
+   var org_name = document.getElementById("org_name").value;
+   var org_address = document.getElementById("org_address").value;
+   var username = document.getElementById("username").value;
+   var password = document.getElementById("password").value;
+   var contact_person = document.getElementById("contact_person").value;
+   var contact_number = document.getElementById("contact_number").value;
+   var notes = document.getElementById("notes").value;
+   
+   if(org_id.length > 0 && org_name.length > 0 && org_address.length > 0 && username.length > 0 && password.length > 0
+          && contact_person.length > 0 && contact_number.length > 0 && notes.length > 0){
+   
+   var profile_details = {};
+   
+   profile_details["Organization ID"] = org_id;
+   profile_details["Organization Name"] = org_name;
+   profile_details["Organization Address"] = org_address;
+   profile_details["Username"] = username;
+   profile_details["Password"] = password;
+   profile_details["Contact Person"] = contact_person;
+         profile_details["Contact Number"] = contact_number;
+         profile_details["Notes"] = notes;
+   
+   
+   socket.emit("save_profile_details",profile_details);
+   
+   document.getElementById("console_status").value = "Data saved successfully!";
+   
+   }
+   
+   else{
+   
+   document.getElementById("console_status").value = "Please fill all the fields to save the data.";
+   }
+   
+   }
+   
+</script>
+{% endblock %}

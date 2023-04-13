@@ -1,0 +1,1338 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   }
+   .twin_red{
+   background-color:#C94C0F;
+   }
+   .twin_green{
+   background-color:#6CBF1D;
+   }
+   .twin_yellow{
+   background-color:#BFBF1D;
+   }
+   .twin_inactive_blue{
+   background-color:#0768A6;
+   }
+   .twin_grey{
+   background-color:#343A40;
+   }
+</style>
+
+<div class="p-3">
+   <div class="p-1">
+      <div class="tx-dark tx-15 tx-bold">ACTIVE PROJECTS</div>
+   </div>
+   <!-- <div class="d-flex justify-content-end mg-t-10">
+      <div class="p-2 btn btn-sm Rectangle" type="button" data-toggle="modal" onclick="window.location.href = '/new_client'" > <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;<b>NEW RPO</b></div>
+   </div> -->
+   <div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div id="table_button">
+      </div>
+      <!-- <input type="text" class="form-control" placeholder="Search" id="search_table"> -->
+      <div class="input-group">
+         <input type="text" id="datatable1_search" class="form-control" placeholder="Search" >
+      </div>
+   </div>
+   <table id="datatable1" class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" >
+      <thead class="bg-dark tx-white">
+         <tr>
+            <th>SR.NO.</th>
+            <th>RPO</th>
+            <th>CLIENT ID</th>
+            <th>CLIENT NAME</th>
+            <th>MACHINE CATEGORY</th>
+            <th>MACHINE TYPE</th>
+            <th>STATUS</th>
+            <th>DELIVERY DATE</th>
+            <th>POINT OF CONTACT</th>
+            <th>PROGRESS</th>
+            <th>UPDATES</th>
+            <th>ACTION</th>
+         </tr>
+      </thead>
+      <tbody id="tablebody">
+      </tbody>
+   </table>
+   <div class="row mg-b-5 ht-5"></div>
+   <div class="row mg-b-5">
+      <div class="col-md-12">
+         <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); height: 500px">
+            <div class="card-header">
+               <div class="tx-dark tx-15 tx-bold">RPO COMPLETION STATUS</div>
+            </div>
+            <div class="card-body" id="rpo_chart">
+               <!-- chart goes here! -->
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row mg-b-5 ht-5"></div>
+   <div class="row mg-b-5">
+      <div class="col-md-12">
+         <div class = "card shadow-base bd-1" style="border-radius: 5px; box-shadow: 0 2px 6px 0 var(--bluish-grey); height: 500px">
+            <div class="card-header">
+               <div class="tx-dark tx-15 tx-bold">RPO STATUS SUMMARY</div>
+            </div>
+            <div class="card-body" id="donught">
+               <!-- chart goes here! -->
+            </div>
+         </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+      $.fn.dataTable.ext.errMode = 'none';
+      var socket = io.connect('http://'+document.domain+':'+location.port);
+      
+      socket.on('connect', function() {
+         console.log('connected');
+         socket.emit('active_projects_page','Connected')
+      });
+      
+      
+      socket.on('sent_active_projects', function(data) {
+      
+      console.log(data);
+      
+      var keys =  ['RPO','Client Name','Client Type','Machine Type','Delivery Date','POC'];
+      
+      inner_html="";
+      var data_for_chart = [];
+      var rpo_names = [];
+      var dougnut_data = [{value: 0, name: "DELAYED",itemStyle: {
+                      color: '#C94C0F'
+                  }},
+                          {value: 0, name: "WORK IN PROGRESS",itemStyle: {
+                      color: '#6CBF1D'
+                  }},
+                          {value: 0, name: "READY TO DISPATCH",itemStyle: {
+                      color: '#0768A6'
+                  }},
+                          {value: 0, name: "NOT STARTED",itemStyle: {
+                      color: '#343A40'
+                  }}];
+      
+      for(var j=0; j< data.length;j++){
+      
+       
+      
+          var rpo_name = "";
+      
+        var format = {
+                  value: 0,
+                  itemStyle: {
+                      color: '#9e6468'
+                  }
+              } ;
+      
+      
+          var num = data[j]["Total Status %"];
+          
+        var num2 = parseFloat(num);
+        var n = num2.toFixed(2);
+        var n_str = n.toString();
+      
+      
+        var total_status = n_str + "%";
+        var bar_color = "";
+        inner_html += '<td>'+String(j+1)+'</td>';
+        inner_html += '<td>'+data[j]["RPO"]+'</td>';
+        inner_html += '<td>'+data[j]["Client ID"]+'</td>'
+        inner_html += '<td>'+data[j]["Client Name"]+'</td>';
+        inner_html += '<td>'+data[j]["Client Type"]+'</td>';
+        inner_html += '<td>'+data[j]["Machine Type"]+'</td>';
+      
+        if(data[j]["Project Status"] == "PROJECT HALT"){
+      
+          dougnut_data[0]["value"] = dougnut_data[0]["value"] + 1;
+          format = {
+                  value:n ,
+                  itemStyle: {
+                      color: '#C94C0F'
+                  }
+              };
+      
+            rpo_name = data[j]["RPO"] + " | " + data[j]["Client Name"];
+            rpo_names.push(rpo_name);
+            data_for_chart.push(format);
+      
+      
+      
+      
+          bar_color = "bg-danger";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm twin_red Rectangle_without_color">DELAYED</button> </td>';
+      
+        }
+        else if(data[j]["Project Status"] == "WORK IN PROGRESS"){
+      
+          dougnut_data[1]["value"] = dougnut_data[1]["value"] + 1;
+      
+          format = {
+                  value:n ,
+                  itemStyle: {
+                      color: '#6CBF1D'
+                  }
+              };
+      
+            rpo_name = data[j]["RPO"] + " | " + data[j]["Client Name"];
+            rpo_names.push(rpo_name);
+            data_for_chart.push(format);
+      
+      
+      
+      
+            bar_color = "twin_green progress-bar-animated";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm twin_green Rectangle_without_color">IN PROGRESS</button></td> ';
+      
+        }
+      
+        else if(data[j]["Project Status"] == "READY TO DISPATCH"){
+          dougnut_data[2]["value"] = dougnut_data[2]["value"] + 1;
+      
+          format = {
+                  value:n ,
+                  itemStyle: {
+                      color: '#0768A6'
+                  }
+              };
+      
+            rpo_name = data[j]["RPO"] + " | " + data[j]["Client Name"];
+            rpo_names.push(rpo_name);
+            data_for_chart.push(format);
+      
+      
+      
+      
+            bar_color = "twin_green";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm twin_blue Rectangle">READY TO DISPATCH</button></td> ';
+      
+        }
+      
+      
+        else{
+          dougnut_data[3]["value"] = dougnut_data[3]["value"] + 1;
+          format = {
+                  value:n ,
+                  itemStyle: {
+                      color: '#343A40'
+                  }
+              };
+      
+            rpo_name = data[j]["RPO"] + " | " + data[j]["Client Name"];
+            rpo_names.push(rpo_name);
+            data_for_chart.push(format);
+      
+          bar_color = "twin_grey";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm twin_grey Rectangle_without_color">NOT STARTED</button></td>';
+        }
+      
+      
+       
+        inner_html += '<td>'+data[j]["Delivery Date"]+'</td>';
+        inner_html += '<td>'+data[j]["POC"]+'</td>';
+      
+      
+        inner_html+='<td><div class="progress">';
+        inner_html+='<div class="progress-bar progress-bar-striped '+bar_color+'" role="progressbar" style="width: '+n_str+'%" >'+total_status+'</div>';
+        
+      
+           
+        inner_html+='</div></td>';   
+      
+        inner_html += '<td style="text-align:center"><div id ="'+ data[j]["RPO"]+'"> ';
+        inner_html += '<button type="button" class="btn btn-sm btn-dark Rectangle_without_color" onclick="updates_function(this)"> VIEW </button> ';
+        inner_html += '</div></td>';
+      
+      
+        inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-dark Rectangle_without_color" id="'+data[j]["_id"]+'" onclick="edit_rpo(this)">EDIT</button></td>';
+        inner_html += '</tr>';
+      
+      }
+      
+      document.getElementById("tablebody").innerHTML = inner_html;
+      console.log(data_for_chart);
+      console.log(rpo_names);
+      console.log(dougnut_data);
+      fill_doughnut(dougnut_data);
+      
+      draw_chart(data_for_chart,rpo_names);
+      
+      if (j > 0)
+      
+      {
+      
+      $('#datatable1').dataTable().fnDestroy();
+      
+       var table1 = $('#datatable1').DataTable( {
+              //"scrollX": true,
+              lengthChange: false,
+              "dom": 'lrtip',
+              "deferRender": true,
+              "initComplete": function (settings, json) {
+          $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+      
+      
+      buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+              ]
+      
+      
+          } );
+          table1.buttons( 0, null ).containers().appendTo( '#table_button' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable1_search').on( 'keyup', function () {
+          table1.search( this.value ).draw();
+          console.log("working")
+      } );
+      
+      }
+      });
+      
+      function updates_function(element){
+      
+        var rpo = ($(element).closest("div").attr("id"));
+      
+        window.location.href = "/updates/"+rpo;
+      
+      }
+      
+      
+      function draw_chart(data_for_chart,rpo_names){
+      
+      var dom = document.getElementById("rpo_chart");
+          var myChart = echarts.init(dom);
+          
+          
+          option = null;
+          option = {
+      
+          responsive: true,
+      
+          title: {
+            text: '',
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+                          data: []
+            },
+      
+          calculable: true,
+          xAxis: [
+            {
+              type: 'category',
+              name:'RPO | CLIENT',
+              nameLocation: 'middle',
+              nameGap: 50,
+              data: rpo_names,
+              axisLabel: {
+              interval: 0,
+              rotate: 30 ,
+              fontSize: 12 
+            }
+          }
+          ],
+          grid: {
+                  left: '10%',
+                  right: '10%',
+                  bottom: '10%',
+                  top:'10%',
+                  containLabel: true
+              },
+          yAxis: [
+            {
+              type: 'value',
+              nameLocation: 'middle',
+              nameGap: 50,
+              name:'COMPLETION (%)',
+              max:100
+            }
+          ],
+          series: [
+            {
+              name: 'COMPLETION(%)',
+              
+              
+              type: 'bar',
+              data: data_for_chart,
+              barMaxWidth: 50
+              
+              
+            },
+      
+          ]
+          
+          };
+          
+          if (option && typeof option === "object") {
+          myChart.setOption(option, true);
+          }
+
+      
+      }
+      
+      
+      
+      // --------------------- DOUGNUT ---------------------------------------------------
+      
+      function fill_doughnut(data){
+      
+       //{value: 2.4000000000000004, name: "PROCESS SCRAP"}
+          
+          console.log(data);
+        
+          
+          var dom_rej_donught1 = document.getElementById("donught");
+          var myChart_rej_donught1 = echarts.init(dom_rej_donught1);
+          var app = {};
+          option_rej_donught1 = null;
+          app.title = '';
+      
+          option_rej_donught1 = {
+          tooltip: {
+              trigger: 'item',
+              formatter: '{a} <br/>{b}: {c} ({d}%)'
+          },
+          legend: {
+              orient: 'vertical',
+              left:'auto'  ,
+              top: 'auto' ,
+              right: 'auto' ,
+              bottom: 'auto' ,
+              width: 'auto' ,
+              height: 'auto',
+              textStyle: {
+                           size: 5 }, 
+              data: ["DELAYED", "WORK IN PROGRESS", "READY TO DISPATCH","NOT STARTED"]
+          },
+          
+          series: [
+              {
+                  name: 'NUMBER OF RPOs',
+                  type: 'pie',
+                  radius: ['50%', '80%'],
+                  avoidLabelOverlap: false,
+                  label: {
+                      show: false,
+                      position: 'center'
+                  },
+                  emphasis: {
+                      label: {
+                          show: true,
+                          fontSize: '10',
+                          
+                          opacity:0.5
+                      }
+                  },
+                  labelLine: {
+                      show: false
+                  },
+                  data: data
+              }
+          ]
+      };
+          myChart_rej_donught1.setOption(option_rej_donught1, true);
+      
+      
+          
+      }// function ends
+      
+      
+      function edit_rpo(element){
+      
+      var id = element.id
+      
+      window.location.href = "/edit_rpo/"+ id;
+      
+      
+      
+      
+      
+      }
+
+      // window.onload = abc;
+
+      function abc(){
+        abc_data();
+        def_data();
+      }
+
+
+  function abc_data(){
+
+   var json = [
+        {
+            "Serial No": 1, 
+            "Machine_Name": "PRO-BROACH", 
+            "Parent": "IMPACT M/C", 
+            "Present_Quantity": 6, 
+            "price_list": [
+                {
+                    "price_level": "Col-2", 
+                    "appl_from": "31-Jul-21", 
+                    "sale_price": "81299.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 1
+                }, 
+                {
+                    "price_level": "Col-2", 
+                    "appl_from": "1-Jul-21", 
+                    "sale_price": "198450.00/No.", 
+                    "discount": 0.78, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "Col-4", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "154791.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "22%", 
+                    "appl_from": "1-Aug-21", 
+                    "sale_price": "154791.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "22.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "154791.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "20.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "158760.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "18.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "162729.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "12.50%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "173643.75/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "10.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "178605.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }
+            ]
+        }, 
+        {
+            "Serial No": 2, 
+            "Machine_Name": "PRO-BROACH P+ (U&V)", 
+            "Parent": "IMPACT M/C", 
+            "Present_Quantity": 2, 
+            "price_list": [
+                {
+                    "price_level": "Col-4", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "187200.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "Col-2", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "240000.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "22%", 
+                    "appl_from": "1-Aug-21", 
+                    "sale_price": "187200.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "22.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "187200.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "20.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "192000.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "18.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "196800.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "12.50%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "210000.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "10.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "216000.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }
+            ]
+        }, 
+        {
+            "Serial No": 3, 
+            "Machine_Name": "BALANCE TECH HAC 300", 
+            "Parent": "BMD M/C"
+        }, 
+        {
+            "Serial No": 4, 
+            "Machine_Name": "BALANCE TECH VAC 10", 
+            "Parent": "BMD M/C"
+        }, 
+        {
+            "Serial No": 5, 
+            "Machine_Name": "AUTO IMPACT-30", 
+            "Parent": "IMPACT M/C"
+        }, 
+        {
+            "Serial No": 6, 
+            "Machine_Name": "AUTO IMPACT-75", 
+            "Parent": "IMPACT M/C"
+        }, 
+        {
+            "Serial No": 7, 
+            "Machine_Name": "VM-50 TS PRO", 
+            "Parent": "HTD M/C"
+        }, 
+        {
+            "Serial No": 8, 
+            "Machine_Name": "POWER BEND PRO", 
+            "Parent": "HTD M/C", 
+            "price_list": [
+                {
+                    "price_level": "Col-4", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "320580.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "Col-2", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "411000.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "22.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "320580.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "20.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "328800.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "18.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "337020.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "12.50%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "359625.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }, 
+                {
+                    "price_level": "10.00%", 
+                    "appl_from": "1-Jun-21", 
+                    "sale_price": "369900.00/No.", 
+                    "discount": 0, 
+                    "from_qty": 0, 
+                    "to_qty": 0
+                }
+            ]
+        }
+      ]
+
+
+ $.ajax({
+    type: 'POST',
+    url: '/fie_dump_database',
+    data: JSON.stringify(json),
+    contentType: 'application/json',
+    success: function (data) {
+
+
+
+  }
+
+})
+
+}
+
+
+
+function def_data(){
+
+   var json = [
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+", 
+            "Component_Name": "Broaching Machine-Auto", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+", 
+            "Component_Name": "V  NOTCH BROACH", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+", 
+            "Component_Name": "Pro Broch Machine Packing", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Component_Name": "U & V Broaching Machine", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Component_Name": "V  NOTCH BROACH", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Component_Name": "U NOTCH BROACH", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Component_Name": "Pro Broch Machine Packing", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Component_Name": "Sticker for Pro Broach M/c", 
+            "Qty_per_Machine": "1 No."
+        }, 
+        {
+            "Machine_Name": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Machine_Name_On_Portal": "Auto Broaching Machine Model:PRO-BROACH+ (U&V)", 
+            "Component_Name": "POLY COVER 2\" X 2\" X 4\"", 
+            "Qty_per_Machine": "2.0000 Kgs"
+        }, 
+        {
+            "Machine_Name": "Auto Correction Vertical Balancing Machine", 
+            "Machine_Name_On_Portal": "Auto Correction Vertical Balancing Machine", 
+            "Component_Name": "VAC-10 STD 3631 S/C", 
+            "Qty_per_Machine": "1 No.", 
+            "Spares": [
+                {
+                    "Spare_Item_Name": "HDV10/30/50 DRIVE SHAFT KEY", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10 BALANCE WEIGHT NUT [BLK]", 
+                    "Qty_per_Machine": "4 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 DRIVE SHAFT CHECK NUT [BLK]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10-30-50 DRIVE SHAFT [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV 10-30-50 DRIVE SHAFT HOUSING", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 DRIVE SHAFT REAR CAP [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 DRIVE SHAFT TOP CAP [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10 GRADUATED DISC DIA 250", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 NEW BASE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 MOTOR ANGLE PLATE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV 10 MOTOR PULLY", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 GENERATER HOLDER [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDM10/30/50 MAGNET HOLDING PIN", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 MAGNET HOLDING WASHER", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDM STD MAGNET SHOE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 MAGNET SHOE HOLDER", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDM 1T INNER BALL HOLDER [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDM 1T OUTER BALL HOLDER [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 PIEZO ADJESTING SCREW [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDM100-300 PIEZO ALLUMINIUM BUSH", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV 10/30/50 PIEZO FLANGE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 PIEZO SCREW CHECK NUT [BLK]", 
+                    "Qty_per_Machine": "4 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV 10/30/50 PRELOAD FLANGE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 PRELOAD SCREW [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10-30-50 PRELOAD SPRING HOLDER [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV AMPLIFIER PLATE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 COUPLING ADAPTOR [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "Hdv10/30/50 Barrel Holder", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10-30-50 COUPLING ADAPTOR WASHER [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10-30-50 OSCILLATING SPRING [BLK]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 SPINDLE BARREL BOTTOM CAP [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV103050 SPINDLE BARREL [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 SPINDLE BARREL TOP CAP [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 SPINDLE SHAFT CHECK NUT [BLK]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 SPINDLE SHAFT", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 SPRING CLAMP PLATE BIG [BLK]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 SPRING CLAMP PLATE SMALL [BLK]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV 10/30/50 SPRING HOLDER", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10 DRIVE SHAFT PULLY", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDM10/30/50 CALIBRATION WEIGHT 30GM", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDV10/30/50 SPINDLE SHAFT KEY [B/O]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HDVM-10 DRILL HEAD SUPP.BASE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 BALL SCREW HOUSING PLATE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 BEARING BLOCK", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 DRILL HEAD", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 DRILL HEAD MOTOR PLATE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 DRILL HEAD SADDLE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 MOTOR BRACKET (MILL)1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 MOTOR PLATE (MILL)1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 MOTOR SUPPORT PLATE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 TRANSFORMER BOX [FAB]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 DRILL HEAD COVER [FAB]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 DRILL HEAD Z COVER [FAB]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 DRILL HEAD L PIECE [FAB]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 SWITCH BOX HMI [FAB]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "HBM-10 PANNEL 700X600X340 [FAB]", 
+                    "Qty_per_Machine": "1 No."
+                }
+            ]
+        }, 
+        {
+            "Machine_Name": "Auto Impact Testing Machine Model:AUTO IMPACT-30", 
+            "Machine_Name_On_Portal": "Auto Impact Testing Machine Model:AUTO IMPACT-30", 
+            "Component_Name": "IT30 AUTO-STD-497 S/C", 
+            "Qty_per_Machine": "1 No.", 
+            "Spares": [
+                {
+                    "Spare_Item_Name": "IT30 COMMON ASSEMBLY S/C", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT30 AUTO OTHER ASSEMBLY S/C", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT30 (AUTO) BASIC ASSEMBLY S/C", 
+                    "Qty_per_Machine": "1 No."
+                }
+            ]
+        }, 
+        {
+            "Machine_Name": "Auto Impact Testing Machine Model:AUTO IMPACT-75", 
+            "Machine_Name_On_Portal": "Auto Impact Testing Machine Model:AUTO IMPACT-75", 
+            "Component_Name": "IT-75 STD S/C 500", 
+            "Qty_per_Machine": "1 No.", 
+            "Spares": [
+                {
+                    "Spare_Item_Name": "IT75 BASE [GRI]2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 MAIN COLUMN [DRIL+TAP]1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 BEARING BLOCK (MIL)1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 BEARING CAP (PLT)3", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 BEARING SHAFT (PLT)3", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 G.B MTG BRACKET [MILL]1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 FEMALE CLAMP (PLT)", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 MALE CLAMP (PLT)", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 HAMMER PIPE (PLT)", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 BOTTOM FLANGE (PLT)", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 TOP PLATE (PLT)4", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 SIDE PLATE [PLT]", 
+                    "Qty_per_Machine": "2 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 CLAMPING PIECE (BLK)", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75- COMBINED BLOCK COVER [S/W]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 LATCH PIPE FLANGE (DRIL)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 LATCH PIPE NO.1 (M/C)1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 LATCH PIPE NO.2 (M/C-2)3", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 BRACKET PLATE (WEL)5", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 CLAMPING RING (DRIL)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 SPRING HOUSING (BLK)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 SPRING HOUSING STOPPER (BLK)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 CYLINDER PLATE (DRILL)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 CYLINDER PLATE SPACER (M/C)1", 
+                    "Qty_per_Machine": "4 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 COUPLER ADAPTOR (M/C)1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 RELEASE PIN (MIL)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 MOTOR SHAFT-CL (BLK)4", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT30 LOCATING STRIP STD [BLK]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 GEAR BOX MOUNTING BRACKET PLATE [SR/GR]3", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 SPACER FOR CLUTCH (DRI)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 ELECTRICAL & ELECTRONICS BOX WITH COVER [FAB]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 ELECTRICAL PANNEL PLATE [PLT]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 SPACER FOR GEAR BOX [M/C]1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 LINEAR ACTUATOR CLAMP BRACKET (MIL)1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 GRIPPING DEVICE", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 GUIDE CLAMP (PLT)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 LOCK NUT (PLT)2", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 ACTUATOR CLAMPING BRACKET (PLT)", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 PIN CONNECTED BRACKET [PLT]1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 ACTUATOR LOCK BRACKET [PLT]1", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 STRICKER 2R [W/M]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 STRICKER 8R [W/M]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 BACK COVER [W/M]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT-75 CLUTCH COVER[W/M]", 
+                    "Qty_per_Machine": "1 No."
+                }, 
+                {
+                    "Spare_Item_Name": "IT30 SELF CENTERING TONG (Spare)", 
+                    "Qty_per_Machine": "1 No."
+                }
+            ]
+        }
+        ]
+
+ $.ajax({
+    type: 'POST',
+    url: '/fie_dump_data',
+    data: JSON.stringify(json),
+    contentType: 'application/json',
+    success: function (data) {
+
+
+
+  }
+
+})
+
+}
+
+
+
+
+      
+   </script>
+</div>
+{% endblock %}

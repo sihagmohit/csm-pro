@@ -1,0 +1,243 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   }
+   .dataTables_scrollHeadInner{  width:100% !important; }
+   .dataTables_scrollHeadInner table{  width:100% !important; }
+</style>
+<div class="row mg-b-1 mg-l-5">
+   <button type="button" class="btn btn-light" onclick="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+</div>
+<script type="text/javascript">
+   function back(){
+         window.history.back();
+       }
+</script>
+<div class="card mg-t-20 ">
+   <div class="card-header">
+      <div class="tx-dark tx-15 tx-bold">DISPATCH DETAILS
+      </div>
+   </div>
+   <!-- card-header -->
+   <div class="card-body ">
+      <!-- ====================== Row Start ================================== -->
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">RPO</label>
+               <input type="text" class="form-control form-control-sm" id="rpo" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Client Name</label>
+               <input type="text" class="form-control form-control-sm" id="client_name" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Machine Type</label>
+               <input type="text" class="form-control form-control-sm" id="machine_type" readonly>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <div class='row '>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Delivery Date</label>
+               <input type="date" style="height:31px;" class="form-control base" id="delivery_date" placeholder="dd/MM/YYYY" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Point of Contact</label>
+               <input type="text" class="form-control form-control-sm" id="poc" readonly>
+            </div>
+         </div>
+         <div class='col-lg-4 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Machine Subtype</label>
+               <input type="text" class="form-control form-control-sm" id="machine_subtype" readonly>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+      <div class='row '>
+         <div class='col-lg-12 col-md-12'>
+            <div class="form-group">
+               <label class="tx-black">Current Status</label>
+               <div class="progress" style="height: 50px;" id="total_status"></div>
+            </div>
+         </div>
+      </div>
+      <!-- ====================== Row End ================================== -->
+   </div>
+</div>
+<hr>
+<div class="row">
+   <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="form-group">
+         <label class="tx-black">Organization Name</label>
+         <input type="text" class="form-control form-control-sm" id="org_name" required>
+      </div>
+   </div>
+   <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="form-group">
+         <label class="tx-black">Organization Address</label>
+         <textarea class="form-control form-control-sm" id="org_address" cols="180" required></textarea>
+      </div>
+   </div>
+   <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="form-group">
+         <label class="tx-black">Machine Details</label>
+         <textarea class="form-control form-control-sm" id="machine_details" cols="180" required></textarea>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="form-group">
+         <label class="tx-black">LR No.</label>
+         <input type="text" class="form-control form-control-sm" id="lr_no" required>
+      </div>
+   </div>
+   <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="form-group">
+         <label class="tx-black">Dispatch Notes/Transporter Details</label>
+         <textarea class="form-control form-control-sm" id="dispatch_notes" cols="180" required></textarea>
+      </div>
+   </div>
+</div>
+<br>
+<br>
+<div class="row mb-2">
+   <div class="col-2"><label>Console Message:</label></div>
+   <div class="col-5"><textarea class="form-control" id="console_status" rows="1" cols="80" readonly></textarea></div>
+</div>
+<br><br>
+<div class='row pt-2 pb-2 justify-content-center'>
+   <div class='col-lg-4 col-md-12'>
+      <button id="save" class="btn btn-block Rectangle" onclick="save_details()">SAVE</button>
+      <small id="button_help"> </small>
+   </div>
+</div>
+<footer class="br-footer">
+   <div class="footer-left">
+      <div class="mg-b-2">Copyright &copy; 2020.C4i4. All Rights Reserved.</div>
+   </div>
+</footer>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+<script>
+   var socket=io.connect('http://'+document.domain+":"+location.port)
+   
+   var rpo = '{{rpo}}';
+   
+   socket.emit("get_client_info",rpo);
+   
+   socket.on('sent_client_info', function(data) {
+   
+     document.getElementById("rpo").value = data["RPO"];
+     document.getElementById("client_name").value = data["Client Name"];
+     document.getElementById("machine_type").value = data["Machine Type"];
+     document.getElementById("delivery_date").value = data["Delivery Date"];
+     document.getElementById("poc").value = data["POC"];
+     document.getElementById("machine_subtype").value = data["Machine Subtype"]
+   
+     var num = data["Total Status %"];
+     num1 = num.replace("%","");
+   var num2 = parseFloat(num1);
+   var n = num2.toFixed(2);
+   var n_str = n.toString();
+   
+   var total_status = n_str + "%";
+   
+     inner_html = "";
+     inner_html += '<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+n+'%;height: 50px;" >';
+     inner_html += '<center><b><label style="padding-top:18px;font-size: 15px;">'+total_status+'</label></b></center></div>';
+     document.getElementById("total_status").innerHTML = inner_html;
+   
+   });
+   
+   function save_details(){
+   
+     var client_name = document.getElementById("client_name").value;
+   var org_name = document.getElementById("org_name").value;
+   var org_address = document.getElementById("org_address").value;
+   var machine_details = document.getElementById("machine_details").value;
+   var lr_no = document.getElementById("lr_no").value;
+   var dispatch_notes = document.getElementById("dispatch_notes").value;
+   
+   if(org_name.length > 0 && org_address.length > 0 && machine_details.length > 0 &&
+        lr_no.length > 0 && dispatch_notes.length > 0){
+   
+   var dispatch_details = {};
+   
+   dispatch_details["RPO"] = rpo;
+   dispatch_details["Client Name"] = client_name;
+   dispatch_details["Organization Name"] = org_name;
+   dispatch_details["Organization Address"] = org_address;
+   dispatch_details["Machine Details"] = machine_details;
+   dispatch_details["LR No"] = lr_no;
+   dispatch_details["Dispatch Notes"] = dispatch_notes;
+   
+   socket.emit("save_dispatch_details",dispatch_details);
+   
+   document.getElementById("console_status").value = "Data saved successfully!";
+   
+   }
+   
+   else{
+   
+   document.getElementById("console_status").value = "Please fill all the fields to save the data.";
+   }
+   
+   }
+   
+   
+</script>
+{% endblock %}

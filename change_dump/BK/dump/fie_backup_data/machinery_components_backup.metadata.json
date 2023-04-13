@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"4024ddb5a18c4c07adbfdfe8d0c086f5","collectionName":"machinery_components_backup","type":"collection"}

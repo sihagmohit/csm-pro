@@ -1,0 +1,640 @@
+{% extends "template.html" %}
+{% block content %}
+<style>
+   :root {
+   --windows-blue: #365ec8;
+   --bluish: #3091c9;
+   --warm-blue: #5460dc;
+   --white: #ffffff;
+   --dusk-blue: #28499f;
+   --bluey-grey: #85a5c2;
+   --light-sky-blue: #d4e3f0;
+   --lipstick: #bb166b;
+   --bluish-grey-20: rgba(115, 137, 156, 0.2);
+   --topaz: #16b8bb;
+   --aquamarine: #00d7af;
+   --metallic-blue: #546593;
+   --bluish-grey: #73899c;
+   --very-light-pink: #d7d7d7;
+   --gray-medium: rgba(205, 205, 210, 0.5);
+   --text: #77777a;
+   ---style: #002251;
+   }
+   .Rectangle {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--windows-blue);
+   }
+   .Rectangle_dark {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 300;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   background-color: var(--bluish-grey);
+   }
+   .Rectangle_without_color {
+   font-family: Montserrat;
+   font-size: 12px;
+   font-weight: 400;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: normal;
+   letter-spacing: 1.75px;
+   text-align: center;
+   color: var(--white);
+   border-radius: 5px;
+   box-shadow: 0 2px 6px 0 #b9b9b9;
+   }
+</style>
+
+
+<div id="close_rpo_modal" class="modal fade">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content tx-size-lg">
+         <div class="modal-header">
+         </div>
+         <div class="modal-body" id="modal_body">
+            <div class="row">
+               <div class="col-lg-12">
+                  <h6 id="delete_header">
+                  </h6>
+                  <h6>Do you want to close RPO number?</h6>
+                  <small><i class="fa fa-info-circle" aria-hidden="true"></i> Please check dispatch status before closing RPO.</small>
+               </div>
+            </div>
+         </div>
+         <!-- modal-body -->
+         <div class="modal-footer d-flex justify-content-end" id="modal_button">
+            
+         </div>
+      </div>
+   </div>
+   <!-- modal-dialog -->
+</div>
+
+
+
+
+<div class="p-3">
+   <div class="p-1">
+      <div class="tx-dark tx-15 tx-bold">PENDING APPROVALS</div>
+   </div>
+   <div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div id="table_button">
+      </div>
+      
+      <div class="input-group">
+         <input type="text" id="datatable1_search" class="form-control" placeholder="Search" >
+      </div>
+   </div>
+   <table id="datatable1" class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" >
+      <thead class="bg-dark tx-white">
+         <tr>
+            <th>SR.NO.</th>
+            <th>RPO</th>
+            <th>CLIENT NAME</th>
+            <th>STATUS</th>
+            <th>DELIVERY DATE</th>
+            <th>PRODUCTION</th>
+            <th>MARKETING</th>
+            <th>COMMERCIAL</th>
+            <th>PROGRESS</th>
+            <th>UPDATES</th>
+            <th>CLOSE RPO</th>
+         </tr>
+      </thead>
+      <tbody id="tablebody">
+      </tbody>
+   </table>
+   <div class="row mg-b-5 ht-5"></div>
+
+
+
+
+    <div class="p-1">
+      <div class="tx-dark tx-15 tx-bold">CLOSED RPO(S)</div>
+   </div>
+   <div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+      <div id="table_button2">
+      </div>
+      
+      <div class="input-group">
+         <input type="text" id="datatable2_search" class="form-control" placeholder="Search" >
+      </div>
+   </div>
+   <table id="datatable2" class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" >
+      <thead class="bg-dark tx-white">
+         <tr>
+            <th>SR.NO.</th>
+            <th>RPO</th>
+            <th>CLIENT NAME</th>
+            
+            <th>DELIVERY DATE</th>
+            <th>SEND TO DSM</th>
+         </tr>
+      </thead>
+      <tbody id="tablebody2">
+      </tbody>
+   </table>
+   <div class="row mg-b-5 ht-5"></div>
+
+
+
+
+
+
+   <script type="text/javascript">
+
+      function open_close_modal(element){
+
+            console.log(element.id);
+        var buttons = '<button type="button" class="btn btn-danger  Rectangle_without_color  px-4" id="'+ element.id +  '"    onclick="close_rpo(this)" >YES</button>\
+            <button type="button" class="btn  btn-primary Rectangle_without_color px-4"  class="close" data-dismiss="modal">NO</button>';
+
+            document.getElementById("modal_button").innerHTML = buttons;
+
+            $('#close_rpo_modal').modal('show');
+  
+
+      }
+
+
+      $.fn.dataTable.ext.errMode = 'none';
+      var socket = io.connect('http://'+document.domain+':'+location.port);
+      
+     
+     
+     socket.emit('get_rpos_ready_to_dispatch');
+     socket.emit('get_closed_rpos');
+     
+      
+      socket.on('sent_rpos_ready_to_dispatch', function(data) {
+      $('#datatable1').dataTable().fnDestroy();
+      console.log(data);
+      
+      
+      
+      inner_html="";
+     
+      
+      
+      for(var j=0; j< data.length;j++){
+      
+        
+      
+          var rpo_name = "";
+      
+        var format = {
+                  value: 0,
+                  itemStyle: {
+                      color: '#9e6468'
+                  }
+              } ;
+      
+      
+          var num = data[j]["Total Status %"];
+          
+        var num2 = parseFloat(num);
+        var n = num2.toFixed(2);
+        var n_str = n.toString();
+      
+      
+        var total_status = n_str + "%";
+        var bar_color = "";
+        inner_html += '<td>'+String(j+1)+'</td>';
+        inner_html += '<td>'+data[j]["RPO"]+'</td>';
+        inner_html += '<td>'+data[j]["Client Name"]+'</td>';
+        
+      
+        if(data[j]["Project Status"] == "PROJECT HALT"){
+      
+      
+         
+      
+      
+      
+      
+          bar_color = "bg-danger";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-danger Rectangle_without_color">ON HALT</button> </td>';
+      
+        }
+        else if(data[j]["Project Status"] == "WORK IN PROGRESS"){
+      
+      
+          
+      
+      
+      
+      
+            bar_color = "bg-success";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-success Rectangle_without_color">IN PROGRESS</button></td> ';
+      
+        }
+      
+        else if(data[j]["Project Status"] == "READY TO DISPATCH"){
+      
+          
+            bar_color = "bg-success";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-primary Rectangle_without_color">READY TO DISPATCH</button></td> ';
+      
+        }
+        else{
+      
+      
+          bar_color = "bg-secondary";
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-secondary Rectangle_without_color">NOT STARTED</button></td>';
+        } 
+        inner_html += '<td>'+data[j]["Delivery Date"]+'</td>';
+      
+      
+        if(data[j]["approval1_status"] == "Approved"){
+          
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-success Rectangle_without_color">Approved</button><br>'+data[j]["approved1_by"]+'</td>';
+      
+        }
+        else{
+      
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-dark Rectangle_without_color" id="'+data[j]["RPO"]+'" onclick="approve1_rpo(this)">Approve</button></td>';
+      
+        }
+      
+      // ---------------------------------------------------------------------------------
+      
+      if(data[j]["approval2_status"] == "Approved"){
+          
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-success Rectangle_without_color">Approved</button><br>'+data[j]["approved2_by"]+'</td>';
+      
+        }
+        else{
+      
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-dark Rectangle_without_color" id="'+data[j]["RPO"]+'" onclick="approve2_rpo(this)">Approve</button></td>';
+      
+        }
+      
+        
+      
+      
+        if(data[j]["approval3_status"] == "Approved"){
+          
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-success Rectangle_without_color">Approved</button><br>'+data[j]["approved3_by"]+'</td>';
+      
+        }
+        else{
+      
+          inner_html += '<td style="text-align:center"><button type="button" class="btn btn-sm btn-dark Rectangle_without_color" id="'+data[j]["RPO"]+'" onclick="approve3_rpo(this)">Approve</button></td>';
+      
+        }
+        
+      
+      
+        inner_html+='<td><div class="progress">';
+        inner_html+='<div class="progress-bar progress-bar-striped '+bar_color+'" role="progressbar" style="width: '+n_str+'%" >'+total_status+'</div>';
+        
+      
+           
+        inner_html+='</div></td>';
+      
+        inner_html += '<td style="text-align:center"><div id ="'+ data[j]["RPO"]+'"> ';
+        inner_html += '<button type="button" class="btn btn-sm btn-dark Rectangle_without_color" onclick="updates_function(this)"> View </button> ';
+        inner_html += '</div></td>';
+
+
+
+        inner_html += '<td style="text-align:center"><div id ="'+ data[j]["RPO"]+'"> ';
+        inner_html += '<button type="button" class="btn btn-sm btn-danger Rectangle_without_color" id ="'+ data[j]["RPO"]+'" onclick="open_close_modal(this)"> CLOSE RPO </button> ';
+        inner_html += '</div></td>';
+
+
+
+
+
+
+
+        inner_html += '</tr>';
+      
+      }
+      
+      document.getElementById("tablebody").innerHTML = inner_html;
+      
+      
+      
+      if (j > 0)
+      
+      {
+      
+      
+      
+       var table1 = $('#datatable1').DataTable( {
+              //"scrollX": true,
+              lengthChange: false,
+              "dom": 'lrtip',
+              "deferRender": true,
+              "initComplete": function (settings, json) {
+          $("#datatable1").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+      
+      
+      buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+              ]
+      
+      
+          } );
+          table1.buttons( 0, null ).containers().appendTo( '#table_button' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable1_search').on( 'keyup', function () {
+          table1.search( this.value ).draw();
+          console.log("working")
+      } );
+      
+      }
+      });
+
+
+
+
+
+
+  // ------------------------------------- CLOSED RPO  ---------------------------------------
+
+
+      socket.on('sent_closed_rpos', function(data) {
+      $('#datatable2').dataTable().fnDestroy();
+      console.log(data);
+      
+      
+      
+      inner_html="";
+     
+      
+      
+      for(var j=0; j< data.length;j++){
+      
+        
+
+        inner_html += '<td>'+String(j+1)+'</td>';
+        inner_html += '<td>'+data[j]["RPO"]+'</td>';
+        inner_html += '<td>'+data[j]["Client Name"]+'</td>';
+        inner_html += '<td>'+data[j]["Delivery Date"]+'</td>';
+        inner_html += '<td style="text-align:center"><div id ="'+ data[j]["RPO"]+'"> ';
+        inner_html += '<button type="button" class="btn btn-sm btn-info Rectangle_without_color" id ="'+ data[j]["RPO"]+'" onclick="send_to_dsm(this)"> COPY TO DSM </button>';
+        inner_html += '</div></td>';
+        inner_html += '</tr>';
+      
+      }
+      
+      document.getElementById("tablebody2").innerHTML = inner_html;
+      
+      
+      
+      if (j > 0)
+      
+      {
+      
+      
+      
+       var table2 = $('#datatable2').DataTable( {
+              //"scrollX": true,
+              lengthChange: false,
+              "dom": 'lrtip',
+              "deferRender": true,
+              "initComplete": function (settings, json) {
+          $("#datatable2").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+        },
+      
+      
+      buttons: [
+                  {
+                      extend: 'collection',
+                      text: 'Export',
+                      autoClose: true,
+                      buttons: [
+                      {
+                      extend:    'copy',
+                      text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                      titleAttr: 'Copy'
+                      },
+                      {
+                      extend:    'excel',
+                      text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                      titleAttr: 'Excel'
+                      },
+                      {
+                      extend:    'pdf',
+                      text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                      titleAttr: 'PDF'
+                      },
+                      {
+                      extend:    'print',
+                      text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                      titleAttr: 'Print'
+                      },
+                      {
+                      extend:    'csv',
+                      text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                      titleAttr: 'CSV'
+                      },
+                      {
+                      extend:    'colvis',
+                      text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                      titleAttr: 'Columns'
+                      },
+                      ]
+                  }
+              ]
+      
+      
+          } );
+          table2.buttons( 0, null ).containers().appendTo( '#table_button2' );
+      
+       // #myInput is a <input type="text"> element
+      $('#datatable2_search').on( 'keyup', function () {
+          table1.search( this.value ).draw();
+          console.log("working")
+      } );
+      
+      }
+      });
+      
+
+
+
+
+
+
+      
+      function updates_function(element){
+      
+        var rpo = ($(element).closest("div").attr("id"));
+      
+        window.location.href = "/updates/"+rpo;
+      
+      }
+      
+      
+      
+      
+      function approve1_rpo(element){
+      
+      var rpo_number = element.id;
+      var user = '{{name}}';
+      
+      var to_send = {};
+      to_send["rpo"] = rpo_number;
+      to_send["user"] = user;
+      
+      
+      var x = confirm("Approve " + rpo_number + " ?");
+      if(x==true){
+        socket.emit("approve1_rpo",to_send);
+      socket.emit("get_rpos_ready_to_dispatch");
+      }
+      else{
+        console("approve cancelled");
+      }
+      
+      
+      }
+      
+      
+      function approve2_rpo(element){
+      
+      var rpo_number = element.id;
+      var user = '{{name}}';
+      
+      var to_send = {};
+      to_send["rpo"] = rpo_number;
+      to_send["user"] = user;
+      var x = confirm("Approve " + rpo_number + " ?");
+      if(x==true){
+        socket.emit("approve2_rpo",to_send);
+      socket.emit("get_rpos_ready_to_dispatch");
+      }
+      else{
+        console("approve cancelled");
+      }
+      
+      }
+      
+      
+      function approve3_rpo(element){
+      
+      var rpo_number = element.id;
+      var user = '{{name}}';
+      
+      var to_send = {};
+      to_send["rpo"] = rpo_number;
+      to_send["user"] = user;
+      var x = confirm("Approve " + rpo_number + " ?");
+      if(x==true){
+        socket.emit("approve3_rpo",to_send);
+      socket.emit("get_rpos_ready_to_dispatch");
+      }
+      else{
+        console("approve cancelled");
+      }
+      }
+
+
+
+
+
+      function close_rpo(element){
+      
+      var rpo_number = element.id;
+      var user = '{{name}}';
+      
+      var to_send = {};
+      to_send["rpo"] = rpo_number;
+      to_send["user"] = user;
+
+      socket.emit("close_rpo",to_send);
+
+      console.log("RPO CLOSED!");
+      $('#close_rpo_modal').modal('hide');
+
+      socket.emit('get_rpos_ready_to_dispatch');
+     socket.emit('get_closed_rpos');
+
+      
+      }
+
+
+      function send_to_dsm(element){
+      
+      var rpo_number = element.id;
+      var user = '{{name}}';
+      
+      var to_send = {};
+      to_send["rpo"] = rpo_number;
+      to_send["user"] = user;
+
+      socket.emit("send_to_dsm",to_send);
+
+      console.log("SENT TO DSM");
+
+      socket.on('sent_to_dsm', function(data) {
+
+        alert(data);
+
+
+      });
+      }
+      
+      
+   </script>
+</div>
+{% endblock %}

@@ -1,0 +1,700 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+
+<style>
+  :root {
+    --windows-blue: #365ec8;
+    --bluish: #3091c9;
+    --warm-blue: #5460dc;
+    --white: #ffffff;
+    --dusk-blue: #28499f;
+    --bluey-grey: #85a5c2;
+    --light-sky-blue: #d4e3f0;
+    --lipstick: #bb166b;
+    --bluish-grey-20: rgba(115, 137, 156, 0.2);
+    --topaz: #16b8bb;
+    --aquamarine: #00d7af;
+    --metallic-blue: #546593;
+    --bluish-grey: #73899c;
+    --very-light-pink: #d7d7d7;
+    --gray-medium: rgba(205, 205, 210, 0.5);
+    --text: #77777a;
+    ---style: #002251;
+  }
+
+  .Rectangle {
+
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #b9b9b9;
+  background-color: var(--windows-blue);
+
+  }
+   .Rectangle_without_color {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 #B9B9B9;
+  }
+
+.dataTables_scrollHeadInner{  width:100% !important; }
+.dataTables_scrollHeadInner table{  width:100% !important; }
+
+.twin_red{
+    background-color:#C94C0F;
+}
+.twin_green{
+    background-color:#6CBF1D;
+}
+.twin_yellow{
+    background-color:#BFBF1D;
+}
+.twin_inactive_blue{
+    background-color:#0768A6;
+}
+.twin_grey{
+    background-color:#343A40;
+}
+
+</style>
+
+<div class="row mg-b-1 mg-l-5">
+                <button type="button" class="btn btn-light" onclick="back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                </div>
+                <script type="text/javascript">
+                  function back(){
+                        window.history.back();
+                      }
+                </script>
+
+
+<div class="card mg-t-20 ">
+
+          <div class="card-header">
+             <div class="tx-dark tx-15 tx-bold">PURCHASE/STORES UPDATES
+        </div>
+          </div><!-- card-header -->
+
+          <div class="card-body ">
+
+              <!-- ====================== Row Start ================================== -->
+			    <div class='row '>
+
+				  <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">RPO</label>
+				        <input type="text" class="form-control form-control-sm" id="rpo" readonly>
+				       </div>
+
+				  </div>
+
+				   <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Client Name</label>
+				        <input type="text" class="form-control form-control-sm" id="client_name" readonly>
+				       </div>
+
+				  </div>
+
+				  <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Machine Type</label>
+				      	<input type="text" class="form-control form-control-sm" id="machine_type" readonly>
+				       </div>
+
+				  </div>
+
+
+			    </div>
+ 			<!-- ====================== Row End ================================== -->
+
+              <div class='row '>
+
+			      <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Delivery Date</label>
+				        <input type="date" style="height:31px;" class="form-control base" id="delivery_date" placeholder="dd/MM/YYYY" readonly>
+				       </div>
+
+				  </div>
+
+				  <div class='col-lg-4 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Point of Contact</label>
+				        <input type="text" class="form-control form-control-sm" id="poc" readonly>
+				       </div>
+
+				  </div>
+
+
+          <div class='col-lg-4 col-md-12'>
+
+                <div class="form-group">
+                <label class="tx-black">Machine Subtype</label>
+                <input type="text" class="form-control form-control-sm" id="machine_subtype" readonly>
+               </div>
+
+          </div>
+			    </div>
+
+				 <!-- ====================== Row End ================================== -->
+
+			  <div class='row '>
+
+			      <div class='col-lg-12 col-md-12'>
+
+			          <div class="form-group">
+				        <label class="tx-black">Current Status</label>
+				        <div class="progress" style="height: 50px;" id="total_status"></div>
+				       </div>
+				  </div>
+
+			    </div>
+				 <!-- ====================== Row End ================================== -->
+
+          </div>
+</div>
+
+<!--------------------------------------------------------modal for new design activity--------------------------------------------------------->
+
+  <div id="new_update_modal" class="modal fade">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content tx-size-lg">
+                      <div class="modal-header pd-x-20">
+                        <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold " id="heading">New Activity</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+            <form id="modal_form">
+
+            <div class="row">
+              <div class="col-md-6">
+              <label>Activity No.:</label>
+                <input type="text" class="form-control form-control-sm" id="activity_no" placeholder="" required>
+              </div>
+
+
+            </div>
+            <br>
+             <div class="row">
+
+              <div class="col-md-6">
+              <label>Activity Type:</label>
+                <input type="text" class="form-control form-control-sm" id="activity_type" placeholder="" required>
+              </div>
+            
+              <div class="col-md-6">
+              <label>Activity Subtype:</label>
+                <input type="text" class="form-control form-control-sm" id="activity_subtype" placeholder="" required>
+              </div>
+
+
+
+            </div>
+              <br>
+            <div class="row">
+ 
+              <div class="col-md-6" style="display: none;">
+              <label>Activity:</label>
+                <textarea class="form-control form-control-sm" id="activity" placeholder="" rows="2" cols="80" required></textarea>
+              </div>
+
+              <div class="col-md-12">
+              <label>Note:</label>
+                <textarea class="form-control form-control-sm" id="note" placeholder="" rows="2" cols="80"></textarea>
+              </div>
+            </div>
+
+              <br>
+              <div class="row">
+              <div class="col-md-6">
+              <label>Time Taken (Days):</label>
+                <input type="text" class="form-control form-control-sm" id="time_taken" placeholder="" required>
+              </div>
+
+
+            <div class="col-md-6">
+              <label>Status:</label>
+              <select class="form-control form-control-sm" id="status">
+                <!-- <option>Not Started</option> -->
+                  <option>In Progress</option>
+                  <option>Halt</option>
+                <option>Done</option>
+              </select>
+              </div>
+
+            </div>
+
+              <div class="row">
+              <div class="col-md-12">
+              <br>
+              <label id="console" class="form-text"></label>
+              </div>
+
+            </div>
+
+            </form>
+                      </div><!-- modal-body -->
+                      <div class="modal-footer d-flex justify-content-center" id="modal_button">
+                       <!-- <button type="button" class="btn btn-primary tx-size-xs" onclick=""  class="close" data-dismiss="modal">Submit</button>-->
+                      </div>
+                    </div>
+                  </div><!-- modal-dialog -->
+                </div><!-- modal ends-->
+
+
+
+<div class="d-flex justify-content-end mg-t-10">
+  
+
+  <div class="p-2 btn btn-sm Rectangle" onclick="open_modal_new_activity()"> <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;ADD ACTIVITY</div>
+  
+
+</div>
+
+
+                
+
+<div class="btn-toolbar justify-content-between pt-2" role="toolbar" aria-label="Toolbar with button groups">
+  <div id="table_button">
+
+  </div>
+
+    <!-- <input type="text" class="form-control" placeholder="Search" id="search_table"> -->
+       <div class="input-group">
+         <input type="text" id="datatable1_search" class="form-control" placeholder="Search" >
+        </div>
+   </div>
+
+<table class="table table-sm table-striped table-bordered pt-2 pb-2" style="width:100%" id="purchase_activity_table">
+						<thead class="bg-dark tx-white">
+                <tr>
+                <th>SR.NO.</th>
+                <th>ACTIVITY NO</th>
+                <th>ACTIVITY TYPE</th>
+                <th>ACTIVITY SUBTYPE</th>
+                <th>WEIGHTAGE (%)</th>
+                <th>TIME TAKEN (DAYS)</th>
+                <th>NOTE</th>
+                <th>LAST UPDATED</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+                               </tr>
+                            </thead>
+                            <tbody id="tablebody">
+
+                            </tbody>
+            </table>
+
+    <!-- <div class='row pt-2 justify-content-center'>
+
+				  <div class='col-lg-4 col-md-12'>
+					 <button id="add" class="btn btn-block Rectangle" onclick="open_modal_new_activity()">+ ADD NEW ACTIVITY</button>
+	        	  </div>
+    </div> -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+<script>
+
+  var socket=io.connect('http://'+document.domain+":"+location.port)
+
+  var rpo = '{{rpo}}';
+
+  socket.emit("get_client_info",rpo);
+
+  socket.on('sent_client_info', function(data) {
+
+    document.getElementById("rpo").value = data["RPO"];
+    document.getElementById("client_name").value = data["Client Name"];
+    document.getElementById("machine_type").value = data["Machine Type"];
+    document.getElementById("delivery_date").value = data["Delivery Date"];
+    document.getElementById("poc").value = data["POC"];
+    document.getElementById("machine_subtype").value = data["Machine Subtype"]
+	var num = data["Total Status %"];
+    num1 = num.replace("%","");
+	var num2 = parseFloat(num1);
+	var n = num2.toFixed(2);
+	var n_str = n.toString();
+
+	var total_status = n_str + "%";
+
+    inner_html1 = "";
+    inner_html1 += '<div class="progress-bar twin_green progress-bar-striped progress-bar-animated " role="progressbar" style="width: '+n+'%;height: 50px;" >';
+    inner_html1 += '<center><b><label style="padding-top:18px;font-size: 15px;">'+total_status+'</label></b></center></div>';
+    document.getElementById("total_status").innerHTML = inner_html1;
+
+  });
+
+
+socket.emit("get_purchase_activity_data",rpo);
+
+socket.on('sent_purchase_activity_info', function(data) {
+$('#purchase_activity_table').dataTable().fnDestroy();
+
+var keys1 =  ['Activity No','Activity Type','sub_type'];
+
+var keys2 = ['Time Taken (Days)','Note','last_updated'];
+
+inner_html="";
+
+for(var j=0; j< data.length;j++){
+
+  inner_html += '<tr>';
+  inner_html += '<td>'+String(j+1)+'</td>';
+  for(var key=0 ; key < keys1.length; key++){
+    var k = keys1[key];
+    inner_html += '<td>'+String(data[j][k])+'</td>';
+  }
+
+  var num = data[j]["Weightage %"];
+    num1 = num.replace("%","");
+  var num2 = parseFloat(num1);
+  var n = num2.toFixed(2);
+  var n_str = n.toString();
+
+  var weightage = n_str + "%";
+
+  inner_html += '<td>'+weightage+'</td>';
+
+  for(var key=0 ; key < keys2.length; key++){
+    var k = keys2[key];
+    inner_html += '<td>'+String(data[j][k])+'</td>';
+  }
+
+  if(data[j]["Status"] == "In Progress"){
+
+inner_html += '<td><center>';
+  inner_html += '<div class="btn btn-sm twin_green Rectangle_without_color">'+data[j]["Status"]+'</div>';
+  inner_html += '</center></td>';
+
+  }
+  else if(data[j]["Status"] == "Halt"){
+   
+   inner_html += '<td><center>';
+   inner_html += '<div class="btn btn-sm twin_red Rectangle_without_color">Delayed</div>';
+   inner_html += '</center></td>';
+   
+   }
+   else if(data[j]["Status"] == "Not Started"){
+   
+   inner_html += '<td><center>';
+   inner_html += '<div class="btn btn-sm twin_grey  Rectangle_without_color">Not Started</div>';
+   inner_html += '</center></td>';
+   
+   }
+  else{
+    inner_html += '<td><center>';
+  inner_html += '<div class="btn btn-sm btn-dark Rectangle_without_color">'+data[j]["Status"]+'</div>';
+  inner_html += '</center></td>';
+
+
+  }
+  
+  inner_html += '<td><center>';
+  inner_html += '<div class="btn btn-sm btn-dark Rectangle_without_color" id ="'+ data[j]["Activity No"]+'" onclick="open_modal_edit_activity(this)"> EDIT';
+  inner_html += '</div></center></td>';
+  inner_html += '</tr>';
+
+}
+
+document.getElementById("tablebody").innerHTML = inner_html;
+
+
+if (j > 0)
+
+{
+
+
+
+ var table1 = $('#purchase_activity_table').DataTable( {
+        //"scrollX": true,
+        lengthChange: false,
+        "dom": 'lrtip',
+        "deferRender": true,
+        "initComplete": function (settings, json) {
+    $("#purchase_activity_table").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
+  },
+
+
+buttons: [
+            {
+                extend: 'collection',
+                text: 'Export',
+                autoClose: true,
+                buttons: [
+                {
+                extend:    'copy',
+                text:      '<img src="/static/img/ICONS/copy.png" style="height:24px"></img> Copy ',
+                titleAttr: 'Copy'
+                },
+                {
+                extend:    'excel',
+                text:      '<img src="/static/img/ICONS/excel.png" style="height:24px"></img> Excel ',
+                titleAttr: 'Excel'
+                },
+                {
+                extend:    'pdf',
+                text:      '<img src="/static/img/ICONS/pdf.png" style="height:24px"></img> PDF ',
+                titleAttr: 'PDF'
+                },
+                {
+                extend:    'print',
+                text:      '<img src="/static/img/ICONS/print.png" style="height:24px"></img> Print ',
+                titleAttr: 'Print'
+                },
+                {
+                extend:    'csv',
+                text:      '<img src="/static/img/ICONS/csv.png" style="height:24px"></img> CSV ',
+                titleAttr: 'CSV'
+                },
+                {
+                extend:    'colvis',
+                text:      '<img src="/static/img/ICONS/columns.png" style="height:24px"></img> Columns ',
+                titleAttr: 'Columns'
+                },
+                ]
+            }
+        ]
+
+
+    } );
+    table1.buttons( 0, null ).containers().appendTo( '#table_button' );
+
+ // #myInput is a <input type="text"> element
+$('#datatable1_search').on( 'keyup', function () {
+    table1.search( this.value ).draw();
+    console.log("working")
+} );
+
+}
+});
+
+function open_modal_new_activity(){
+
+// Reset form
+$('#modal_form')[0].reset();
+document.getElementById("activity_no").removeAttribute("readonly");
+document.getElementById("console").innerHTML="";
+document.getElementById("heading").innerText = "New Activity";
+
+button = '<button type="button" class="btn btn-primary Rectangle_without_color" onclick="save_purchase_activity()" >SAVE</button>'
+
+document.getElementById("modal_button").innerHTML = button;
+
+$('#new_update_modal').modal('show');
+
+}
+
+function save_purchase_activity(){
+
+var purchase_activity_info = {};
+
+  purchase_activity_info["RPO"] = document.getElementById("rpo").value;
+  purchase_activity_info["Client Name"] = document.getElementById("client_name").value;
+  purchase_activity_info["Activity No"] = document.getElementById("activity_no").value;
+  purchase_activity_info["Activity"] = document.getElementById("activity").value;
+  purchase_activity_info["Time Taken (Days)"] = document.getElementById("time_taken").value;
+  purchase_activity_info["Note"] = document.getElementById("note").value;
+  purchase_activity_info["Status"] = document.getElementById("status").value;
+  purchase_activity_info["Activity Type"] = document.getElementById("activity_type").value; ;
+  purchase_activity_info["sub_type"] = document.getElementById("activity_subtype").value;
+  purchase_activity_info["last_updated"] = "-";
+console.log(purchase_activity_info);
+console.log("pass1");
+if(purchase_activity_info["Activity No"] != "" && 
+    
+    purchase_activity_info["Time Taken (Days)"] != "" &&
+    purchase_activity_info["Activity Type"] != "" &&
+    purchase_activity_info["sub_type"] != "" 
+    ){
+
+console.log("pass");
+socket.emit("add_new_purchase_activity",purchase_activity_info);
+}
+else{
+  console.log("here");
+  document.getElementById("console").innerHTML = "Incomplete fields. Please fill the details and click SAVE."
+}
+
+
+socket.on('add_new_purchase_activity_response', function(data) {
+
+if(data == 1){
+
+
+document.getElementById("console").innerHTML = "ACTIVITY SAVED SUCCESSFULLY!"
+
+
+}
+  else{
+
+    document.getElementById("console").innerHTML = "ACTIVITY NUMBER ALREADY EXISTS! PLEASE USE A DIFFERENT ACTIVITY NUNMBER"
+  }
+
+
+
+});
+
+
+
+
+
+
+
+
+//$('#new_update_modal').modal('hide');
+
+$('#purchase_activity_table').DataTable().destroy();
+
+socket.emit("get_purchase_activity_data",rpo);
+
+socket.emit("get_client_info",rpo);
+
+  
+
+}
+
+
+function open_modal_edit_activity(element){
+
+var id = element.id;
+
+socket.emit("get_specific_purchase_activity_data",id,rpo);
+
+button = '<button type="button" class="btn btn-danger Rectangle_without_color" onclick="delete_activity()"  class="close" data-dismiss="modal"><i class="fa fa-trash"></i> DELETE ACTIVITY</button>&nbsp<button type="button" class="btn btn-primary Rectangle_without_color" onclick="update_activity()"  class="close" data-dismiss="modal">SAVE CHANGES</button>'
+
+document.getElementById("modal_button").innerHTML = button;
+document.getElementById("activity_no").setAttribute('readonly', true);
+
+document.getElementById("activity_type").setAttribute('readonly', true); 
+document.getElementById("activity_subtype").setAttribute('readonly', true);      //disable label editing.
+document.getElementById("heading").innerText = "Edit Activity";
+document.getElementById("console").innerHTML = "";
+socket.on("sent_specific_purchase_activity_data",function(data){
+
+    activity_data = data;
+
+  document.getElementById("activity_no").value = activity_data["Activity No"];
+	document.getElementById("activity").value = activity_data["Activity"];
+	document.getElementById("time_taken").value = activity_data["Time Taken (Days)"];
+	document.getElementById("note").value = activity_data["Note"];
+	document.getElementById("status").value = activity_data["Status"];
+  document.getElementById("activity_type").value = activity_data["Activity Type"];
+  document.getElementById("activity_subtype").value = activity_data["sub_type"];
+
+
+
+});
+
+$('#new_update_modal').modal('show');
+
+}
+
+
+function update_activity(){
+
+var to_send = {};
+
+
+  to_send["RPO"] = document.getElementById("rpo").value;
+  to_send["Client Name"] = document.getElementById("client_name").value;
+  to_send["Activity No"] = document.getElementById("activity_no").value;
+  to_send["Activity"] = document.getElementById("activity").value;
+  to_send["Time Taken (Days)"] = document.getElementById("time_taken").value;
+  to_send["Note"] = document.getElementById("note").value;
+  to_send["Status"] = document.getElementById("status").value;
+
+  console.log(to_send);
+
+
+socket.emit("update_specific_purchase_activity_data",to_send);
+$('#new_update_modal').modal('hide');
+
+
+$('#purchase_activity_table').DataTable().destroy();
+
+socket.emit("get_purchase_activity_data",rpo);
+
+socket.emit("get_client_info",rpo);
+
+  socket.on('sent_client_info', function(data) {
+
+	var num = data["Total Status %"];
+    num1 = num.replace("%","");
+	var num2 = parseFloat(num1);
+	var n = num2.toFixed(2);
+	var n_str = n.toString();
+
+	var total_status = n_str + "%";
+
+    inner_html1 = "";
+    inner_html1 += '<div class="progress-bar twin_green" role="progressbar" style="width: '+n+'%;height: 50px;" >';
+    inner_html1 += '<center><b><label style="padding-top:18px;font-size: 15px;">'+total_status+'</label></b></center></div>';
+    document.getElementById("total_status").innerHTML = inner_html1;
+
+  });
+
+}
+
+
+function delete_activity(){
+
+var rpo = document.getElementById("rpo").value;
+var activity_no = document.getElementById("activity_no").value;
+
+socket.emit("delete_specific_purchase_activity_data",rpo,activity_no);
+$('#new_update_modal').modal('hide');
+
+$('#purchase_activity_table').DataTable().destroy();
+
+socket.emit("get_purchase_activity_data",rpo);
+
+socket.emit("get_client_info",rpo);
+
+  socket.on('sent_client_info', function(data) {
+
+	var num = data["Total Status %"];
+    num1 = num.replace("%","");
+	var num2 = parseFloat(num1);
+	var n = num2.toFixed(2);
+	var n_str = n.toString();
+
+	var total_status = n_str + "%";
+
+    inner_html1 = "";
+    inner_html1 += '<div class="progress-bar twin_green" role="progressbar" style="width: '+n+'%;height: 50px;" >';
+    inner_html1 += '<center><b><label style="padding-top:18px;font-size: 15px;">'+total_status+'</label></b></center></div>';
+    document.getElementById("total_status").innerHTML = inner_html1;
+
+  });
+
+}
+
+ </script>
+
+{% endblock %}
